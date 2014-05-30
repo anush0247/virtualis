@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:baselineAligned="false"
+    android:id="@+id/fragment_container"
+    
+    >
+
+    <fragment android:name="com.aakash.vlabs.SubjectList"
+              android:id="@+id/subject_list"
+              android:layout_width="100dp"
+              android:layout_height="match_parent" />
+
+    <fragment android:name="com.aakash.vlabs.ListExp"
+        	  android:layout_width="200dp"
+              android:id="@+id/list_exp"
+              android:layout_height="match_parent" />
+    
+
+</LinearLayout>
