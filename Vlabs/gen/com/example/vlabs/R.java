@@ -1071,6 +1071,10 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020057;
     }
     public static final class id {
+        public static final int ImageButton01=0x7f050042;
+        public static final int ImageButton02=0x7f050041;
+        public static final int ImageButton03=0x7f050040;
+        public static final int ImageButton04=0x7f05003f;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05001b;
@@ -1101,6 +1105,7 @@ containing a value of this type.
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
+        public static final int imageButton1=0x7f050043;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int menu=0x7f05003d;
@@ -1187,7 +1192,8 @@ containing a value of this type.
         public static final int abc_simple_decor=0x7f030017;
         public static final int content=0x7f030018;
         public static final int main=0x7f030019;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
+        public static final int menu=0x7f03001a;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001b;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 

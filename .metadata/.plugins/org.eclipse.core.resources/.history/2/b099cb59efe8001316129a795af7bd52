@@ -1,0 +1,159 @@
+package com.example.icons;
+
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
+public class Menu extends Fragment{
+	
+	interface OnIconClick{
+		public void changeView(int id);
+	}
+	
+	int Id;
+	OnIconClick icon;
+	private Button prev = null;
+	
+	@Override
+	public void onAttach(Activity activity) {
+	    super.onAttach(activity);
+	        try {
+	            icon = (OnIconClick) activity;
+	        } catch (ClassCastException e) {
+	            throw new ClassCastException(activity.toString()
+	                    + " must implement ToolbarListener");
+	      }
+	 }
+	 
+	 public void buttonClicked (View view, int id) {
+		   icon.changeView(id);
+	   }
+	 
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		//super.onCreateView(inflater, container, savedInstanceState);
+		View view  = inflater.inflate(R.layout.menu, container, false);
+		
+		
+		
+		final Button theory = (Button) view.findViewById(R.id.theory);
+		theory.setBackgroundColor(Color.TRANSPARENT);
+		theory.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				try{
+					prev.setBackgroundColor(Color.TRANSPARENT);
+				}catch(Exception e){
+					
+				}
+				Id = 0;
+				buttonClicked(v,Id);
+				theory.setBackgroundColor(Color.BLUE);
+				prev = theory;
+			}			
+		});
+		
+		
+		final Button procedure = (Button) view.findViewById(R.id.procedure);
+		procedure.setBackgroundColor(Color.TRANSPARENT);
+		procedure.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				try{
+					prev.setBackgroundColor(Color.TRANSPARENT);
+				}catch(Exception e){
+					
+				}
+				Id = 1;
+				buttonClicked(v,Id);
+				procedure.setBackgroundColor(Color.BLUE);
+				prev = procedure;
+			}			
+		});
+		
+		final Button videos = (Button) view.findViewById(R.id.videos);
+		videos.setBackgroundColor(Color.TRANSPARENT);
+		videos.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				try{
+					prev.setBackgroundColor(Color.TRANSPARENT);
+				}catch(Exception e){
+					
+				}
+				Id = 2;
+				buttonClicked(v,Id);
+				videos.setBackgroundColor(Color.BLUE);
+				prev = videos;
+			}			
+		});
+		
+		final Button simulation = (Button) view.findViewById(R.id.simulation);
+		simulation.setBackgroundColor(Color.TRANSPARENT);
+		simulation.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				try{
+					prev.setBackgroundColor(Color.TRANSPARENT);
+				}catch(Exception e){
+					
+				}
+				Id = 3;
+				buttonClicked(v,Id);
+				simulation.setBackgroundColor(Color.BLUE);
+				prev = simulation;
+			}			
+		});
+		
+		final Button quiz = (Button) view.findViewById(R.id.quiz);
+		quiz.setBackgroundColor(Color.TRANSPARENT);
+		quiz.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				try{
+					prev.setBackgroundColor(Color.TRANSPARENT);
+				}catch(Exception e){
+					
+				}
+				Id = 4;
+				buttonClicked(v,Id);
+				quiz.setBackgroundColor(Color.BLUE);
+				prev = quiz;
+			}			
+		});
+		
+		final Button resources = (Button) view.findViewById(R.id.resources);
+		resources.setBackgroundColor(Color.TRANSPARENT);
+		resources.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				try{
+					prev.setBackgroundColor(Color.TRANSPARENT);
+				}catch(Exception e){
+					
+				}
+				Id = 5;
+				buttonClicked(v,Id);
+				resources.setBackgroundColor(Color.BLUE);
+				prev = resources;
+			}			
+		});
+		
+		return view;
+	}
+
+	
+}

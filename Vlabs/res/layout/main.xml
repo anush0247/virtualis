@@ -11,12 +11,14 @@
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:id="@+id/menu" 
-        class="com.example.vlabs.Menu"/>
+        class="com.example.vlabs.Menu"
+        tools:layout="@layout/menu"/>
     
     <fragment 
         android:layout_width="0dp"
         android:layout_weight="5"
         android:layout_height="match_parent"
         android:id="@+id/content" 
-        class="com.example.vlabs.Content"/>
+        class="com.example.vlabs.Content"
+        tools:layout="@layout/content"/>
 </LinearLayout>

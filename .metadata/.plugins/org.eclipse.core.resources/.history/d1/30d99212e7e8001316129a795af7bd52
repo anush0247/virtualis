@@ -1,0 +1,68 @@
+package com.example.icons;
+
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
+public class Menu extends Fragment{
+	
+	interface OnIconClick{
+		public void changeView(int id);
+	}
+	
+	int Id;
+	OnIconClick icon;
+
+	 @Override
+	  public void onAttach(Activity activity) {
+	        super.onAttach(activity);
+	        try {
+	            icon = (OnIconClick) activity;
+	        } catch (ClassCastException e) {
+	            throw new ClassCastException(activity.toString()
+	                    + " must implement ToolbarListener");
+	        }
+	    }
+	 
+	 public void buttonClicked (View view) {
+		   icon.changeView(Id);
+	   }
+	 
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		//super.onCreateView(inflater, container, savedInstanceState);
+		View view  = inflater.inflate(R.layout.menu, container, false);
+		
+		
+		
+		final Button theory = (Button) view.findViewById(R.id.theory);
+		final Button procedure = (Button) view.findViewById(R.id.procedure);
+		final Button videos = (Button) view.findViewById(R.id.videos);
+		final Button simulation = (Button) view.findViewById(R.id.simulation);
+		final Button img5 = (Button) view.findViewById(R.id.ImageButton04);
+		
+		
+		img1.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				buttonClicked(v);
+				Id = img1.getId();
+			}
+
+			
+		});
+		
+		return view;
+	}
+
+	
+}

@@ -1,13 +1,14 @@
 package com.example.vlabs;
 
-import android.app.ListFragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class Menu extends ListFragment{
+public class Menu extends Fragment{
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,28 +35,19 @@ public class Menu extends ListFragment{
 		}
 	}
 	
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onActivityCreated(savedInstanceState);
-		//ListView mylist = (ListView) getActivity().findViewById(R.id.listView1);
-		putText();
-		ArrayAdapter<TextView> adapter = new ArrayAdapter<TextView>(getActivity(),android.R.layout.simple_list_item_1,TextViewSet);
-		setListAdapter(adapter);
-		
 	
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		//super.onCreateView(inflater, container, savedInstanceState);
+		View view = inflater.inflate(R.layout.menu, container, false);
+		ImageButton img1 = (ImageButton) view.findViewById(R.id.ImageButton01);
+		return view;
 	}
 
-	@Override
-	public void onListItemClick(ListView l, View v, int position, long id) {
-		// TODO Auto-generated method stub
-		super.onListItemClick(l, v, position, id);
-		Content content_frag = (Content) getFragmentManager().findFragmentById(R.id.content);
-		if(content_frag != null && content_frag.isInLayout()){
-			content_frag.updateText(data[position]);
-		}
-		getListView().setItemChecked(position, true);
-	}
+	
 
 	
 	
