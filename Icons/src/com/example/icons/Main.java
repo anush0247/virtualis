@@ -14,7 +14,7 @@ public class Main extends FragmentActivity implements Menu.OnIconClick  {
 	@Override
 	public void changeView(int id) {
 		// TODO Auto-generated method stub
-		Content Content = (Content) getSupportFragmentManager().findFragmentById(R.id.content);
-		Content.changeText(id);
+		Content content = (Content) getSupportFragmentManager().findFragmentById(R.id.content);
+		content.changeText(id);
 	}
 }

@@ -3,7 +3,7 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="289" key="DIALOG_WIDTH"/>
 		<item value="98" key="DIALOG_Y_ORIGIN"/>
-		<item value="404" key="DIALOG_HEIGHT"/>
+		<item value="460" key="DIALOG_HEIGHT"/>
 		<item value="516" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
@@ -13,14 +13,22 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="Content" key="selection"/>
+		<item value="Activity" key="selection"/>
 		<list key="findhistory">
+			<item value="Activity1"/>
+			<item value="buttonClicked(v,Id)"/>
+			<item value="setBackgroundColor(Color.BLUE);"/>
+			<item value="buttonClicked(v);"/>
 			<item value="TextFragment"/>
 			<item value="id.Button"/>
 			<item value="ImageButton"/>
 			<item value="android:src"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Activity"/>
+			<item value="buttonClicked(Id)"/>
+			<item value="setBackgroundColor(mycolor);"/>
+			<item value="buttonClicked(v,Id);"/>
 			<item value="Content"/>
 			<item value="id.ImageButton"/>
 			<item value="Button"/>

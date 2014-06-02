@@ -1107,6 +1107,7 @@ containing a value of this type.
         public static final int middle=0x7f050012;
         public static final int mytext=0x7f05003f;
         public static final int mytitle=0x7f05003e;
+        public static final int mytitle_theory=0x7f050046;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
@@ -1196,6 +1197,7 @@ containing a value of this type.
         public static final int content=0x7f030019;
         public static final int menu=0x7f03001a;
         public static final int support_simple_spinner_dropdown_item=0x7f03001b;
+        public static final int theory=0x7f03001c;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 

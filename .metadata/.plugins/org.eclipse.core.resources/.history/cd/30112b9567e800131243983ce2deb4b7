@@ -1,7 +1,0 @@
-package com.example.icons;
-
-import android.support.v4.app.Fragment;
-
-public class Content extends Fragment{
-
-}

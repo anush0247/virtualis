@@ -4,8 +4,9 @@
     android:layout_height="match_parent"
     android:baselineAligned="false"
     android:orientation="horizontal"
-    android:weightSum="12"
-    tools:context=".Main" >
+  	android:weightSum="12"
+  	tools:context=".Main" >
+  	
     <fragment
         android:id="@+id/menu"
         android:name="com.example.icons.Menu"
@@ -13,12 +14,13 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         tools:layout="@layout/menu" />
-
-    <fragment
+    
+	<fragment
         android:id="@+id/content"
         android:name="com.example.icons.Content"
         android:layout_width="0dp"
         android:layout_weight="11"
         android:layout_height="wrap_content"
         tools:layout="@layout/content" />
+
 </LinearLayout>

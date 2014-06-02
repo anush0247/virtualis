@@ -4,21 +4,21 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 public class Menu extends Fragment{
-	
-	
-	
+
 	int Id,flag=0;
 	OnIconClick icon;
 	
 	int mycolor = Color.BLACK;
 	private Button theory,procedure,videos,simulation,quiz,resources;
 	private Button prev = null;
+	int prev_ind = -1;
 	
 	interface OnIconClick{
 		public void changeView(int id);
@@ -45,11 +45,13 @@ public class Menu extends Fragment{
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		//super.onCreateView(inflater, container, savedInstanceState);
+		
 		View view  = inflater.inflate(R.layout.menu, container, false);
 		
 		theory = (Button) view.findViewById(R.id.theory);
 		theory.setBackgroundColor(mycolor);
 		prev = theory;
+		prev_ind = 0;
 		theory.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -59,16 +61,12 @@ public class Menu extends Fragment{
 				}catch(Exception e){
 					
 				}
-				Id = 0;
-				buttonClicked(Id);
+				buttonClicked(0);
 				theory.setBackgroundColor(mycolor);
 				prev = theory;
-				
+				prev_ind = 0;
 			}			
 		});
-		
-		//firstView(container);
-		//firstView();
 		
 		procedure = (Button) view.findViewById(R.id.procedure);
 		procedure.setBackgroundColor(Color.TRANSPARENT);
@@ -81,11 +79,10 @@ public class Menu extends Fragment{
 				}catch(Exception e){
 					
 				}
-				Id = 1;
-				buttonClicked(Id);
+				buttonClicked(1);
 				procedure.setBackgroundColor(mycolor);
 				prev = procedure;
-				
+				prev_ind = 1;
 			}			
 		});
 		
@@ -100,10 +97,10 @@ public class Menu extends Fragment{
 				}catch(Exception e){
 					
 				}
-				Id = 2;
-				buttonClicked(Id);
+				buttonClicked(2);
 				videos.setBackgroundColor(mycolor);
 				prev = videos;
+				prev_ind = 2;
 			}			
 		});
 		
@@ -118,10 +115,10 @@ public class Menu extends Fragment{
 				}catch(Exception e){
 					
 				}
-				Id = 3;
-				buttonClicked(Id);
+				buttonClicked(3);
 				simulation.setBackgroundColor(mycolor);
 				prev = simulation;
+				prev_ind = 3;
 			}			
 		});
 		
@@ -136,10 +133,10 @@ public class Menu extends Fragment{
 				}catch(Exception e){
 					
 				}
-				Id = 4;
-				buttonClicked(Id);
+				buttonClicked(4);
 				quiz.setBackgroundColor(mycolor);
 				prev = quiz;
+				prev_ind = 4;
 			}			
 		});
 		
@@ -154,13 +151,13 @@ public class Menu extends Fragment{
 				}catch(Exception e){
 					
 				}
-				Id = 5;
-				buttonClicked(Id);
+				buttonClicked(5);
 				resources.setBackgroundColor(mycolor);
 				prev = resources;
+				prev_ind = 5;
 			}			
 		});
-		
+		//Log.w("text", "I am at create view");
 		return view;
 	}
 
