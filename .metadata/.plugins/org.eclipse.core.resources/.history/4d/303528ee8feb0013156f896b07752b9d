@@ -1,0 +1,19 @@
+package com.example.video;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.VideoView;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		VideoView video = (VideoView)findViewById(R.id.videoView);
+		// URL or local path here
+		video.setVideoPath("http://download.itcuties.com/teaser/itcuties-teaser-480.mp4");
+		video.start();
+		
+	}
+}

@@ -1,0 +1,18 @@
+package com.example.vtabs;
+import android.app.Activity;
+import android.os.Bundle;
+import android.webkit.WebView;
+import android.widget.TextView;
+
+public class Procedure extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.procedure);
+		WebView myWebView = (WebView) findViewById(R.id.webview);
+		myWebView.loadUrl("http://www.cse.iitb.ac.in/~aneesh14/html/theory.html");
+
+	}
+}

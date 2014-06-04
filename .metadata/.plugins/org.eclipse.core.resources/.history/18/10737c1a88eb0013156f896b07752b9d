@@ -1,0 +1,155 @@
+package com.example.vtabs;
+
+import android.annotation.SuppressLint;
+import android.app.TabActivity;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.Html;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TabHost;
+import android.widget.TextView;
+import android.widget.TabHost.TabSpec;
+
+public class Main extends TabActivity  {
+
+	Button theory,procedure,videos,simulation,quiz,resources;
+	TabHost tabHost;
+	int mycolor = Color.BLACK;//Color.rgb(51, 204, 255);//33CCFF
+	TextView mytitle;
+	
+	String class_no;
+	String subject;
+	String exp_name;
+	String exp_no;
+	
+	@SuppressLint("NewApi")
+	@SuppressWarnings("deprecation")
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		
+		class_no = getIntent().getExtras().getString("class_no");
+		subject = getIntent().getExtras().getString("subject");
+		exp_name = getIntent().getExtras().getString("exp_name");
+		exp_no = getIntent().getExtras().getString("exp_no");
+		
+		mytitle = (TextView) findViewById(R.id.mytitle);
+		mytitle.setText(Html.fromHtml("<b> Class "+class_no+" - "+subject+" - "+exp_no+"."+exp_name+"</b>"));
+		mytitle.setBackground(getResources().getDrawable(R.drawable.border_black));
+		
+		theory = (Button) findViewById(R.id.theory);
+		procedure = (Button) findViewById(R.id.procedure);
+		videos = (Button) findViewById(R.id.videos);
+		simulation = (Button) findViewById(R.id.simulation);
+		quiz = (Button) findViewById(R.id.quiz);
+		resources = (Button) findViewById(R.id.resources);
+		
+		procedure.setBackground(getResources().getDrawable(R.drawable.border_black2));
+		
+		tabHost = getTabHost();
+		
+		// Tab for Tab1
+		TabSpec tab1 = tabHost.newTabSpec("theory");
+		// setting Title and Icon for the Tab
+		tab1.setIndicator("theory");
+		Intent intent1 = new Intent(this, Theory.class);
+		tab1.setContent(intent1);
+		
+		// Tab for Tab2
+		TabSpec tab2 = tabHost.newTabSpec("procedure");
+		tab2.setIndicator("procedure");
+		Intent intent2 = new Intent(this, Procedure.class);
+		tab2.setContent(intent2);
+
+		// Tab for Tab3
+		TabSpec tab3 = tabHost.newTabSpec("videos");
+		tab3.setIndicator("videos");
+		Intent intent3 = new Intent(this, Videos.class);
+		tab3.setContent(intent3);
+		
+		
+		// Tab for tab4
+		TabSpec tab4 = tabHost.newTabSpec("simulation");
+		// setting Title and Icon for the Tab
+		tab4.setIndicator("simulation");
+		Intent intent4 = new Intent(this, Simulation.class);
+		tab4.setContent(intent4);
+		
+		// Tab for tab5
+		TabSpec tab5 = tabHost.newTabSpec("quiz");
+		tab5.setIndicator("quiz");
+		Intent intent5 = new Intent(this, Quiz.class);
+		tab5.setContent(intent5);
+
+		// Tab for tab6
+		TabSpec tab6 = tabHost.newTabSpec("resources");
+		tab6.setIndicator("resources");
+		Intent intent6 = new Intent(this, Resources.class);
+		tab6.setContent(intent6);
+		
+		
+		// Adding all TabSpec to TabHost
+		tabHost.addTab(tab1); // Adding tab1 tab
+		tabHost.addTab(tab2); // Adding tab2 tab
+		tabHost.addTab(tab3); // Adding tab3 tab
+		tabHost.addTab(tab4); // Adding tab4 tab
+		tabHost.addTab(tab5); // Adding tab5 tab
+		tabHost.addTab(tab6); // Adding tab6 tab
+		
+		
+	
+		tabHost.setCurrentTab(0);
+		makeTransperent();
+		theory.setBackgroundColor(mycolor);
+	}
+	
+	public void makeTransperent(){
+		theory.setBackgroundColor(Color.TRANSPARENT);
+		procedure.setBackgroundColor(Color.TRANSPARENT);
+		videos.setBackgroundColor(Color.TRANSPARENT);
+		simulation.setBackgroundColor(Color.TRANSPARENT);
+		quiz.setBackgroundColor(Color.TRANSPARENT);
+		resources.setBackgroundColor(Color.TRANSPARENT);
+	}
+	public void tabHandler(View target) {
+		
+		theory.setSelected(false);
+		procedure.setSelected(false);
+		videos.setSelected(false);
+		simulation.setSelected(false);
+		quiz.setSelected(false);
+		resources.setSelected(false);
+
+		makeTransperent();
+		
+		if (target.getId() == R.id.theory) {
+			tabHost.setCurrentTab(0);
+			theory.setSelected(true);
+			theory.setBackgroundColor(mycolor);
+		} else if (target.getId() == R.id.procedure) {
+			tabHost.setCurrentTab(1);
+			procedure.setSelected(true);
+			procedure.setBackgroundColor(mycolor);
+		} else if (target.getId() == R.id.videos) {
+			tabHost.setCurrentTab(2);
+			videos.setSelected(true);
+			videos.setBackgroundColor(mycolor);
+		} else if (target.getId() == R.id.simulation) {
+			tabHost.setCurrentTab(3);
+			simulation.setSelected(true);
+			simulation.setBackgroundColor(mycolor);
+		} else if (target.getId() == R.id.quiz) {
+			tabHost.setCurrentTab(4);
+			quiz.setSelected(true);
+			quiz.setBackgroundColor(mycolor);
+		} else if (target.getId() == R.id.resources) {
+			tabHost.setCurrentTab(5);
+			resources.setSelected(true);
+			resources.setBackgroundColor(mycolor);
+		}
+	};
+	
+}

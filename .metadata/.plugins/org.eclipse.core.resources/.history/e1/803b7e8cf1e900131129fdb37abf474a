@@ -1,0 +1,20 @@
+package com.example.vtabs;
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class Theory extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.theory);
+		
+		TextView mytitle = (TextView) findViewById(R.id.mytitle);
+		TextView mytext = (TextView) findViewById(R.id.theory_title);
+		
+		mytext.setText("This is Theory/procedure tab");
+
+	}
+}

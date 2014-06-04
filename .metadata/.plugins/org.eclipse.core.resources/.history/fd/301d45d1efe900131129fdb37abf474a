@@ -1,0 +1,7 @@
+package snippet;
+
+public class Snippet {
+	mytitle.setText(myclasses[id]);
+			mytitle.setBackground(getResources().getDrawable(R.drawable.abc_cab_background_top_holo_light));
+}
+
