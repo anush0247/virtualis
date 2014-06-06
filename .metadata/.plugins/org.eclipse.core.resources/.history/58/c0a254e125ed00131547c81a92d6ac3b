@@ -1,0 +1,160 @@
+package swip.view.example;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.ViewFlipper;
+
+public class MainActivity extends Activity {
+	
+	int cardRest;
+	String userRest;
+	String[] name;
+	Integer[] card;
+	
+	private static final int SWIPE_MIN_DISTANCE = 120;
+	private static final int SWIPE_MAX_OFF_PATH = 250;
+	private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+	
+	private GestureDetector gestureDetector;
+	View.OnTouchListener gestureListener;
+	
+	private ViewFlipper viewFlipper;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		ArrayList<VideoItem> VideoItem_data = new ArrayList<VideoItem>();
+		// fill hard coded data VideoItem type in array list
+		VideoItem_data.add(new VideoItem(R.drawable.ic_launcher, "Ashish"));
+		VideoItem_data.add(new VideoItem(R.drawable.ic_launcher, "Avinash"));
+		VideoItem_data.add(new VideoItem(R.drawable.ic_launcher, "Ben"));
+		VideoItem_data.add(new VideoItem(R.drawable.ic_launcher, "Champ"));
+		
+		name = new String[VideoItem_data.size()];
+		card = new Integer[VideoItem_data.size()];
+		for (int i = 0; i < VideoItem_data.size(); i++) {
+		
+			name[i] = VideoItem_data.get(i).title;
+			card[i] = VideoItem_data.get(i).icon;
+		}
+
+		viewFlipper = (ViewFlipper) findViewById(R.id.flipper);
+		for (int j = 0; j < VideoItem_data.size(); j++) {
+			
+			TextView label = new TextView(this);
+			TextView value = new TextView(this);
+			ImageView imge = new ImageView(this);
+			WebView web = new WebView(this);
+			Button btn = new Button(this);
+			
+			label.setText("Get your  world here!");
+			value.setText(name[j]);
+			imge.setImageResource(card[j]);
+			imge.setLayoutParams(new LinearLayout.LayoutParams(70, 70));
+			web.loadUrl("http://www.google.co.in/");
+			web.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, 200));
+			btn.setText("Go To Facebook!");
+			btn.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+			LayoutParams.WRAP_CONTENT));
+			
+			
+			LinearLayout mLinearLayout = new LinearLayout(this);
+			mLinearLayout.setLayoutParams(new LayoutParams(
+			LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+			mLinearLayout.setOrientation(1);
+			LinearLayout mLinearLayout2 = new LinearLayout(this);
+			
+			mLinearLayout2.setOrientation(0);
+			mLinearLayout.addView(mLinearLayout2);
+			mLinearLayout2.addView(imge);
+			LinearLayout mLinearLayout3 = new LinearLayout(this);
+			
+			mLinearLayout3.setOrientation(1);
+			mLinearLayout2.addView(mLinearLayout3);
+			mLinearLayout3.addView(value);
+			mLinearLayout3.addView(label);
+			mLinearLayout.addView(web);
+			mLinearLayout.addView(btn);
+			viewFlipper.addView(mLinearLayout);
+	
+			gestureDetector = new GestureDetector(new MyGestureDetector());
+			gestureListener = new View.OnTouchListener() {
+				public boolean onTouch(View v, MotionEvent event) {
+						if (gestureDetector.onTouchEvent(event)) {
+							return true;
+						}
+					return false;
+					}
+				};
+			
+		}
+}
+
+class MyGestureDetector extends SimpleOnGestureListener {
+	
+	@Override
+	public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+		float velocityY) {
+			try {
+				if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH)
+					return false;
+				// right to left swipe
+				if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
+						&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+					viewFlipper.setInAnimation(MainActivity.this, R.animator.in_from_right);
+                    viewFlipper.setOutAnimation(MainActivity.this, R.animator.out_to_left);
+					viewFlipper.showNext();
+				} else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
+						&& Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+					viewFlipper.setInAnimation(MainActivity.this, R.animator.in_from_left);
+                    viewFlipper.setOutAnimation(MainActivity.this, R.animator.out_to_right);
+					viewFlipper.showPrevious();
+				}
+			} catch (Exception e) {}
+			return false;
+		}
+	}
+
+	// It is necessary to return true from onDown for the onFling event to
+	// register
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		if (gestureDetector.onTouchEvent(event))
+			return true;
+		else
+			return false;
+	}
+}
+
+class VideoItem {
+	
+	public int icon;
+    public String title;
+    
+    public VideoItem(){
+        super();
+    }
+    
+    public VideoItem(int icon, String title, String url) {
+        super();
+        this.icon = icon;
+        this.title = title;
+    }
+}
+

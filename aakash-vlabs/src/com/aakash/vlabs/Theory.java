@@ -3,6 +3,8 @@ package com.aakash.vlabs;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -16,7 +18,7 @@ public class Theory extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.theory);
 		WebView mWebView = (WebView) findViewById(R.id.webview);
-		final ProgressDialog pd = ProgressDialog.show(this, "", "Loading...",true);        
+		final ProgressDialog pd = ProgressDialog.show(this, "", "Theory is Loading...",true);        
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setSupportZoom(true);  
         mWebView.getSettings().setBuiltInZoomControls(true);
@@ -28,6 +30,15 @@ public class Theory extends Activity {
                     pd.dismiss();
                 }
             }
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if(url.contains("aasdaksldjflkasdjklfj")) {
+                  view.loadUrl(url);
+                } else {
+                  Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                  startActivity(i);
+                }
+                return true;
+              }
         });
 		mWebView.loadUrl("http://www.cse.iitb.ac.in/~aneesh14/html/theory.html");
 		

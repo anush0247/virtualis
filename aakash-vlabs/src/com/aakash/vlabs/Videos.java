@@ -19,11 +19,10 @@ public class Videos extends Activity {
 
 	    VideoView video=(VideoView)findViewById(R.id.videoView1);
 	    video.setVideoURI(uri);
-	    //video.setVideoPath(path1);
-	    //video.setFocusable(true);
-	    //video.start();
 	    MediaController mc = new MediaController(this);
 	    video.setMediaController(mc);
+		
+		
 
 	}
 }
