@@ -7,6 +7,16 @@
 <fullyQualifiedTypeName name="com.example.flipper1.R.animator"/>
 <fullyQualifiedTypeName name="swip.view.example.R.anim"/>
 <fullyQualifiedTypeName name="swip.view.example.R.animator"/>
+<fullyQualifiedTypeName name="android.text.Html"/>
+<fullyQualifiedTypeName name="swip.view.example.R.id"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="swip.view.example.MainActivity"/>
 <fullyQualifiedTypeName name="android.view.ViewGroup.LayoutParams"/>
+<fullyQualifiedTypeName name="android.widget.VideoView"/>
+<fullyQualifiedTypeName name="com.aakash.vlabs.ShowExp"/>
+<fullyQualifiedTypeName name="com.aakash.vlabs.R.id"/>
+<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
+<fullyQualifiedTypeName name="com.aakash.vlabs.Videos"/>
+<fullyQualifiedTypeName name="com.aakash.vlabs.Videos.MyGestureDetector"/>
+<fullyQualifiedTypeName name="android.view.GestureDetector"/>
 </qualifiedTypeNameHistroy>

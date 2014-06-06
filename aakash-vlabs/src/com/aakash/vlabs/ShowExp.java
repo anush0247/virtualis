@@ -3,12 +3,16 @@ package com.aakash.vlabs;
 
 
 
+import com.aakash.vlabs.Videos.MyGestureDetector;
+
 import android.annotation.SuppressLint;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -30,6 +34,7 @@ public class ShowExp extends TabActivity {
 	String exp_name;
 	String exp_no;
 	
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -42,8 +47,8 @@ public class ShowExp extends TabActivity {
 		exp_name = getIntent().getExtras().getString("exp_name");
 		exp_no = getIntent().getExtras().getString("exp_no");
 		
-		mytitle = (TextView) findViewById(R.id.mytitle);
-		mytitle.setText(Html.fromHtml("<b> Class "+class_no+" - "+subject+" - "+exp_no+"."+exp_name+"</b>"));
+		//mytitle = (TextView) findViewById(R.id.mytitle);
+		this.setTitle(Html.fromHtml("<b> Class "+class_no+" - "+subject+" - "+exp_no+"."+exp_name+"</b>"));
 		
 		
 		theory = (Button) findViewById(R.id.theory);

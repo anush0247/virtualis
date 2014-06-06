@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"  ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+	
+	<ViewFlipper 
+	    android:id="@+id/flipper"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content" >
+	</ViewFlipper>   
+	<LinearLayout 
+	    android:layout_height="wrap_content"
+	    android:layout_width="wrap_content"
+	    android:orientation="horizontal"
+	    android:id="@+id/controllers" >
+	    <Button 
+	        android:layout_width="00dp"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/prev_btn"
+	        android:text="Prev video"
+	        android:layout_gravity="left"/>
+	    <Button 
+	        android:layout_width="100dp"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/next_btn"
+	        android:text="Next video"
+	        android:layout_gravity="right"/>
+	</LinearLayout>
+</LinearLayout>
