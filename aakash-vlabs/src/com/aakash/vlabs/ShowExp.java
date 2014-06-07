@@ -1,25 +1,18 @@
 package com.aakash.vlabs;
 
-
-
-
-import com.aakash.vlabs.Videos.MyGestureDetector;
-
 import android.annotation.SuppressLint;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TabHost;
-import android.widget.TextView;
 import android.widget.TabHost.TabSpec;
+import android.widget.TextView;
+import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class ShowExp extends TabActivity {
@@ -49,7 +42,21 @@ public class ShowExp extends TabActivity {
 		
 		//mytitle = (TextView) findViewById(R.id.mytitle);
 		this.setTitle(Html.fromHtml("<b> Class "+class_no+" - "+subject+" - "+exp_no+"."+exp_name+"</b>"));
+		GetExpData myExpData = null;
+		try {
+			myExpData = new GetExpData(subject, class_no, exp_no);
+			if(!myExpData.getData()){
+				Log.d("Error :","No Internet Connection ");
+			}
+			Log.d("Theory",myExpData.getTheoryUrl());
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Log.d("I am exception", "i am here");
+			e.printStackTrace();
+		}
 		
+		Log.d("Theory","this is out of the box");
 		
 		theory = (Button) findViewById(R.id.theory);
 		procedure = (Button) findViewById(R.id.procedure);
