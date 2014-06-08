@@ -10,12 +10,14 @@ import android.webkit.WebViewClient;
 
 public class Procedure extends Activity {
 
+	String ProcedureUrl;
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.procedure);
+		ProcedureUrl = getIntent().getExtras().getString("procedure_url");
 		WebView mWebView = (WebView) findViewById(R.id.webview_procedure);
 		final ProgressDialog pd = ProgressDialog.show(this, "", "Procedure is Loading...",true);        
         mWebView.getSettings().setJavaScriptEnabled(true);
@@ -39,7 +41,8 @@ public class Procedure extends Activity {
                 return true;
               }
         });
-		mWebView.loadUrl("http://www.cse.iitb.ac.in/~aneesh14/html/procedure.html");
+		mWebView.loadUrl(ProcedureUrl);
+        //mWebView.loadUrl("http://askdjfalk");
 
 	}
 }

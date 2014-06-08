@@ -11,10 +11,17 @@ import android.widget.Button;
 
 public class ExpandExp extends Activity {
 
-	String class_no = "9";
-	String subject = "Physics";
-	String exp_name = "Chemical Reaction";
-	String exp_no = "2";
+	String 	class_no = "9",
+			subject = "Physics",
+			exp_name = "Chemical Reaction",
+			exp_no = "2",
+			TheoryUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/theory.html",
+			ExpDesc = "my first Experiment",
+			ProcedureUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/procedure.html",
+			ResourceUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/resourcecs.html",
+			SimulatinUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/simulation.html",
+			QuizUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/quiz.html",
+			VideoUrls = "http://www.cse.iitb.ac.in/~aneesh14/html/video1.mp4,http://www.cse.iitb.ac.in/~aneesh14/html/video2.mp4," ;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,13 @@ public class ExpandExp extends Activity {
 				intent.putExtra("subject", subject);
 				intent.putExtra("exp_name", exp_name);
 				intent.putExtra("exp_no", exp_no);
+				intent.putExtra("theory_url",TheoryUrl);
+				intent.putExtra("exp_desc",ExpDesc);
+				intent.putExtra("procedure_url",ProcedureUrl );
+				intent.putExtra("simulation_url", SimulatinUrl);
+				intent.putExtra("quiz_url", QuizUrl);
+				intent.putExtra("resource_url", ResourceUrl);
+				intent.putExtra("video_urls",VideoUrls);
 				startActivity(intent);
 			}
 		});

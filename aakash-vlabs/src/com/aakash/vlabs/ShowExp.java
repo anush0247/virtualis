@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TabHost;
@@ -26,7 +25,8 @@ public class ShowExp extends TabActivity {
 	String subject;
 	String exp_name;
 	String exp_no;
-	
+	String TheoryUrl,ProcedureUrl,ResourceUrl,SimulatinUrl,QuizUrl,ExpDesc, VideoUrls;
+	int no_vid = 0;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,23 +40,22 @@ public class ShowExp extends TabActivity {
 		exp_name = getIntent().getExtras().getString("exp_name");
 		exp_no = getIntent().getExtras().getString("exp_no");
 		
+		
+		
+		TheoryUrl = getIntent().getExtras().getString("theory_url");
+		ExpDesc = getIntent().getExtras().getString("exp_desc");
+		ProcedureUrl = getIntent().getExtras().getString("procedure_url");
+		ResourceUrl = getIntent().getExtras().getString("resource_url");
+		//SimulatinUrl = getIntent().getExtras().getString("simulation_url");
+		//QuizUrl = getIntent().getExtras().getString("quiz_url");
+	
+		VideoUrls = getIntent().getExtras().getString("video_urls");
+		
 		//mytitle = (TextView) findViewById(R.id.mytitle);
 		this.setTitle(Html.fromHtml("<b> Class "+class_no+" - "+subject+" - "+exp_no+"."+exp_name+"</b>"));
-		GetExpData myExpData = null;
-		try {
-			myExpData = new GetExpData(subject, class_no, exp_no);
-			if(!myExpData.getData()){
-				Log.d("Error :","No Internet Connection ");
-			}
-			Log.d("Theory",myExpData.getTheoryUrl());
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			Log.d("I am exception", "i am here");
-			e.printStackTrace();
-		}
 		
-		Log.d("Theory","this is out of the box");
+		//Toast.makeText(getApplicationContext(), no_vid,Toast.LENGTH_LONG ).show();
+		
 		
 		theory = (Button) findViewById(R.id.theory);
 		procedure = (Button) findViewById(R.id.procedure);
@@ -74,18 +73,22 @@ public class ShowExp extends TabActivity {
 		// setting Title and Icon for the Tab
 		tab1.setIndicator("theory");
 		Intent intent1 = new Intent(this, Theory.class);
+		intent1.putExtra("exp_desc",ExpDesc );
+		intent1.putExtra("theroy_url",TheoryUrl );
 		tab1.setContent(intent1);
 		
 		// Tab for Tab2
 		TabSpec tab2 = tabHost.newTabSpec("procedure");
 		tab2.setIndicator("procedure");
 		Intent intent2 = new Intent(this, Procedure.class);
+		intent2.putExtra("procedure_url",ProcedureUrl );
 		tab2.setContent(intent2);
 
 		// Tab for Tab3
 		TabSpec tab3 = tabHost.newTabSpec("videos");
 		tab3.setIndicator("videos");
 		Intent intent3 = new Intent(this, Videos.class);
+		intent3.putExtra("video_urls",VideoUrls );
 		tab3.setContent(intent3);
 		
 		
@@ -106,6 +109,7 @@ public class ShowExp extends TabActivity {
 		TabSpec tab6 = tabHost.newTabSpec("resources");
 		tab6.setIndicator("resources");
 		Intent intent6 = new Intent(this, Resources.class);
+		intent6.putExtra("resource_url",ResourceUrl );
 		tab6.setContent(intent6);
 		
 		

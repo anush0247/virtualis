@@ -12,13 +12,14 @@ import android.webkit.WebViewClient;
 public class Resources extends Activity {
 
 	boolean loadUrlExternally = true;
-	
+	String ResourceUrl;
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.resources);
+		ResourceUrl = getIntent().getExtras().getString("resource_url");
 		WebView mWebView = (WebView) findViewById(R.id.webview_resources);
 		final ProgressDialog pd = ProgressDialog.show(this, "", "Resources is Loading...",true);        
         mWebView.getSettings().setJavaScriptEnabled(true);
@@ -42,8 +43,8 @@ public class Resources extends Activity {
                 return true;
               }
         });
-        mWebView.loadUrl("http://www.cse.iitb.ac.in/~aneesh14/html/resources.html");
-        
+       mWebView.loadUrl(ResourceUrl);
+        //mWebView.loadUrl("http://askdjfalk");
         
         
 	}

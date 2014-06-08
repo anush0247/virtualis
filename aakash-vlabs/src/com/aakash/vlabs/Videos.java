@@ -1,11 +1,6 @@
 package com.aakash.vlabs;
 
-import java.util.ArrayList;
-
-import com.aakash.vlabs.Videos.MyGestureDetector;
-
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
@@ -26,7 +21,6 @@ public class Videos extends Activity {
 	
 	int cardRest;
 	String userRest;
-	String[] name,urls;
 	
 	private static final int SWIPE_MIN_DISTANCE = 120;
 	private static final int SWIPE_MAX_OFF_PATH = 250;
@@ -37,52 +31,34 @@ public class Videos extends Activity {
 	
 	private ViewFlipper viewFlipper;
 	private Button btn1,btn2;
+	String VideoUrls;
+	String[] Urls = null;
+	int no_vid = 0;
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.videos);
 		
-		ArrayList<VideoItem> VideoItem_data = new ArrayList<VideoItem>();
-		// fill hard coded data VideoItem type in array list
-		VideoItem_data.add(new VideoItem( "Ashish", "http://myurl/"));
-		VideoItem_data.add(new VideoItem( "Avinash", "http://myurl/"));
-		VideoItem_data.add(new VideoItem( "Ben", "http://myurl/"));
-		VideoItem_data.add(new VideoItem( "Champ", "http://myurl/"));
-		
-		name = new String[VideoItem_data.size()];
-		urls = new String[VideoItem_data.size()];
-		for (int i = 0; i < VideoItem_data.size(); i++) {
-		
-			name[i] = VideoItem_data.get(i).title;
-			urls[i] = VideoItem_data.get(i).url;
-		}
-
-		AlertDialog alertDialog = new AlertDialog.Builder(Videos.this).create();
-		alertDialog.setTitle("Use swipes to get more Videos");
-		alertDialog.setIcon(R.drawable.tick);
-		alertDialog.show();
+		VideoUrls = getIntent().getExtras().getString("video_urls");
+		Urls = VideoUrls.split(",");
 		
 		viewFlipper = (ViewFlipper) findViewById(R.id.flipper);
 		
-		for (int j = 0; j < VideoItem_data.size(); j++) {
+		for (int j = 0; j < Urls.length; j++) {
 			
 			TextView label = new TextView(this);
 			
-			//WebView web = new WebView(this);
 			VideoView video = new VideoView(this);
-			Uri uri=Uri.parse(urls[j]);
+			Uri uri=Uri.parse(Urls[j]);
 		    video.setVideoURI(uri);
 		    MediaController mc = new MediaController(this);
 		    video.setMediaController(mc);
 		    video.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT  , LayoutParams.WRAP_CONTENT ));
 			
-			label.setText(Html.fromHtml("<h3>Video " + (j+1) + ". "+ name[j]+"</h3>"));
+			label.setText(Html.fromHtml("<h3>Video " + (j+1) +/* "."+ name[j]+*/"</h3>"));
 			label.setPadding(10, 10, 10, 10);
 			label.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 50));
-			//web.loadUrl(urls[j]);
-			//web.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT  , LayoutParams.WRAP_CONTENT ));
 			
 			
 			LinearLayout mLinearLayout = new LinearLayout(this);
@@ -172,17 +148,3 @@ class MyGestureDetector extends SimpleOnGestureListener {
 	}
 }
 
-class VideoItem {
-	
-    public String title, url;
-    
-    public VideoItem(){
-        super();
-    }
-    
-    public VideoItem( String title, String url) {
-        super();
-        this.title = title;
-        this.url = url;
-    }
-}
