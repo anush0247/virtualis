@@ -1,5 +1,10 @@
 package com.aakash.vlabs;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,6 +49,8 @@ public class ExpandExp extends Activity {
 				intent.putExtra("subject", subject);
 				intent.putExtra("exp_name", exp_name);
 				intent.putExtra("exp_no", exp_no);
+				intent.putExtra("view_mode", "offline");
+				intent.putExtra("saved_status", "yes");
 				intent.putExtra("theory_url",TheoryUrl);
 				intent.putExtra("exp_desc",ExpDesc);
 				intent.putExtra("procedure_url",ProcedureUrl );
@@ -55,4 +62,6 @@ public class ExpandExp extends Activity {
 			}
 		});
 	}
+	
+	
 }

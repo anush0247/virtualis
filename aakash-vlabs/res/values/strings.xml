@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name" value="aakash-vlabs"/>
 
+    <string name="app_name" value="aakash-vlabs" />
+    <string name="action_settings" value="Save Experiment" />
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

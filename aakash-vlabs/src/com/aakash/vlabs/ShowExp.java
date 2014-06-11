@@ -1,11 +1,20 @@
 package com.aakash.vlabs;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import android.annotation.SuppressLint;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.Html;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TabHost;
@@ -21,13 +30,19 @@ public class ShowExp extends TabActivity {
 	int mycolor = Color.BLACK;//Color.rgb(51, 204, 255);//33CCFF
 	TextView mytitle;
 	
-	String class_no;
-	String subject;
-	String exp_name;
-	String exp_no;
+	String class_no,subject,exp_name,exp_no, view_mode,saved_status;
 	String TheoryUrl,ProcedureUrl,ResourceUrl,SimulatinUrl,QuizUrl,ExpDesc, VideoUrls;
 	int no_vid = 0;
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    // Inflate the menu items for use in the action bar
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.optionmeu, menu);
+	    return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -39,11 +54,16 @@ public class ShowExp extends TabActivity {
 		subject = getIntent().getExtras().getString("subject");
 		exp_name = getIntent().getExtras().getString("exp_name");
 		exp_no = getIntent().getExtras().getString("exp_no");
+		ExpDesc = getIntent().getExtras().getString("exp_desc");
 		
-		
+		view_mode = getIntent().getExtras().getString("view_mode");
+		saved_status = getIntent().getExtras().getString("saved_status");
+		if(view_mode.equals("offline")){
+			
+			Toast.makeText(getApplicationContext(), "You are now in offline mode", Toast.LENGTH_LONG).show();
+		}
 		
 		TheoryUrl = getIntent().getExtras().getString("theory_url");
-		ExpDesc = getIntent().getExtras().getString("exp_desc");
 		ProcedureUrl = getIntent().getExtras().getString("procedure_url");
 		ResourceUrl = getIntent().getExtras().getString("resource_url");
 		//SimulatinUrl = getIntent().getExtras().getString("simulation_url");
@@ -137,7 +157,7 @@ public class ShowExp extends TabActivity {
 		resources.setBackgroundColor(Color.TRANSPARENT);
 	}
 	
-public void tabHandler(View target) {
+	public void tabHandler(View target) {
 		
 		theory.setSelected(false);
 		procedure.setSelected(false);
@@ -175,4 +195,62 @@ public void tabHandler(View target) {
 		}
 	};
 	
+	public  void writeToFile(String fileName, String body)
+    {
+        FileOutputStream fos = null;
+
+        try {
+            final File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/aakash-vlabs/" );
+
+            if (!dir.exists())
+            {
+                dir.mkdirs(); 
+            }
+
+            final File myFile = new File(dir, fileName + ".txt");
+
+            if (!myFile.exists()) 
+            {    
+                myFile.createNewFile();
+            } 
+
+            fos = new FileOutputStream(myFile);
+
+            fos.write(body.getBytes());
+            fos.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+	
+	public String readFile(String path){
+		
+		String str = "";
+		File mytext = new File(path);
+		try {
+			FileInputStream input = new FileInputStream(mytext) ;
+			StringBuffer buf = new StringBuffer();
+			int i = 0;
+			while((i = input.read()) != -1){
+				buf.append((char)i);
+			}
+			str = new String(buf);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return str;
+	}
+	
+	public boolean isExternalStorageWritable() {
+	    String state = Environment.getExternalStorageState();
+	    if (Environment.MEDIA_MOUNTED.equals(state)) {
+	        return true;
+	    }
+	    return false;
+	}
 }
