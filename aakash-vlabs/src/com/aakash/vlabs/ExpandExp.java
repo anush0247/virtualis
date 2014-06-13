@@ -19,13 +19,13 @@ public class ExpandExp extends Activity {
 	String 	class_no = "9",
 			subject = "physics",
 			exp_name = "Chemical Reaction",
-			exp_no = "2",exp_icon = "http://www.cse.iitb.ac.in/~aneesh14/myicon.ico",
+			exp_no = "2",exp_icon = "http://aakashlabs.org/static/images/favicon.ico",
 			TheoryUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/theory.html",
 			ExpDesc = "my first Experiment",
 			ProcedureUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/procedure.html",
 			ResourceUrl = "http://www.rgukt.in/pdftnp/Advertisement_ONGC.pdf",
 			SimulatinUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/simulation.html",
-			QuizUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/quiz.html",
+			QuizUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/procedure.html",
 			VideoUrls = "http://www.cse.iitb.ac.in/~aneesh14/html/video1.mp4,http://www.cse.iitb.ac.in/~aneesh14/html/video2.mp4," ;
 
 	@Override
