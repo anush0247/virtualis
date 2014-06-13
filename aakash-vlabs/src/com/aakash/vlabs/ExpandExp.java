@@ -19,7 +19,7 @@ public class ExpandExp extends Activity {
 	String 	class_no = "9",
 			subject = "physics",
 			exp_name = "Chemical Reaction",
-			exp_no = "2",exp_icon = "http://aakashlabs.org/static/images/favicon.ico",
+			exp_no = "2",exp_icon = "http://www.cse.iitb.ac.in/~aneesh14/android.png",
 			TheoryUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/theory.html",
 			ExpDesc = "my first Experiment",
 			ProcedureUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/procedure.html",

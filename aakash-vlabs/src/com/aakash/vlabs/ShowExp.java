@@ -13,11 +13,13 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -60,8 +62,6 @@ public class ShowExp extends TabActivity {
     int total_files = 3, completed = 0;
     String exp_message = "Offline Experiment Files Saved";
     
-
-	 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    // Inflate the menu items for use in the action bar
@@ -119,12 +119,35 @@ public class ShowExp extends TabActivity {
 		subject = getIntent().getExtras().getString("subject");
 		exp_name = getIntent().getExtras().getString("exp_name");
 		exp_no = getIntent().getExtras().getString("exp_no");
-		exp_icon = getIntent().getExtras().getString("exp_icon");
 		ExpDesc = getIntent().getExtras().getString("exp_desc");
+		
+		exp_icon = getIntent().getExtras().getString("exp_icon");
 		
 		view_mode = getIntent().getExtras().getString("view_mode");
 		saved_status = getIntent().getExtras().getString("saved_status");
 		
+		/*if(view_mode.equals("online")){
+			
+			URL myUrl;
+			InputStream inputStream = null;
+			try {
+				myUrl = new URL(exp_icon);
+				inputStream = (InputStream)myUrl.getContent();
+			} catch (MalformedURLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			Drawable drawable = Drawable.createFromStream(inputStream, null);
+			
+			ActionBar actionbar = getActionBar();
+			actionbar.setIcon(drawable);
+			//logo.setImageDrawable(drawable);
+			
+		}*/
 		TheoryUrl = getIntent().getExtras().getString("theory_url");
 		ProcedureUrl = getIntent().getExtras().getString("procedure_url");
 		ResourceUrl = getIntent().getExtras().getString("resource_url");
@@ -297,8 +320,6 @@ public class ShowExp extends TabActivity {
 		}
 		
 		if(cont){
-			// create a expData.json
-			
 			
 			Thread t = new Thread(){
         		public void run(){
@@ -312,9 +333,6 @@ public class ShowExp extends TabActivity {
         	if(completed == 0) {
         		new DownloadFileFromURL().execute(exp_icon);
         	}
-        	
-        	
-        	//Toast.makeText(getApplicationContext(), "Experiment Saved", Toast.LENGTH_LONG).show();
 			
 		}
 		return false;
@@ -459,6 +477,8 @@ public class ShowExp extends TabActivity {
 							+ "'exp_name' : '"+exp_name+"', "
 							+ "'exp_no' : '"+exp_no+"','exp_desc' : '"+ExpDesc+"', "
 							+ "'thumb' : '"+icon_fileName+"', 'simulation' : '"+simulation_fileName+"', "
+							+ "'resources' : '"+ResourceUrl+"','videos' : '"+VideoUrls+"', "
+							+ "'theory' : '"+TheoryUrl+"', 'procedure' : '"+ProcedureUrl+"', "
 							+ "'gift' : '"+quiz_fileName+"',},]";
 					byte[] buf = mydata.getBytes();
 					expJson.write(buf);
@@ -478,8 +498,5 @@ public class ShowExp extends TabActivity {
 			}
 		}
 	}
-	
-
-
 
 }
