@@ -2,7 +2,6 @@ package com.aakash.vlabs;
 
 import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,13 +12,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
-import android.app.backup.FullBackupDataOutput;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -58,7 +54,59 @@ public class ShowExp extends TabActivity {
 	public static final int DIALOG_DOWNLOAD_PROGRESS = 0;
     private ProgressDialog pDialog;
     
+    Menu menu;
+    MenuItem saved_btn; 
+    
     int total_files = 3, completed = 0;
+    String exp_message = "Offline Experiment Files Saved";
+    
+
+	 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    // Inflate the menu items for use in the action bar
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.optionmeu, menu);
+	    super.onCreateOptionsMenu(menu);
+	    
+	    this.menu = menu;
+		this.saved_btn = menu.findItem(R.id.saveExp);
+		
+		if(view_mode.equals("offline")){
+			saved_btn.setTitle("Offline Exp");
+			Toast.makeText(getApplicationContext(), "You are now in offline mode", Toast.LENGTH_LONG).show();
+		}
+		else if(view_mode.equals("online") && saved_status.equals("no")){
+			saved_btn.setTitle("Save Exp");
+			exp_message = "Offline Experiment Files Saved";
+			Toast.makeText(getApplicationContext(), "You are in online mode", Toast.LENGTH_LONG).show();
+		}
+		else if(view_mode.equals("online") && saved_status.equals("yes")){
+			saved_btn.setTitle("Update Exp");
+			exp_message = "Offline Experiment Files Updated";
+			Toast.makeText(getApplicationContext(), "You are viewing saved experimnet in online mode", Toast.LENGTH_LONG).show();
+		}
+		
+	    return true;
+	}
+	
+	
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		 switch (item.getItemId()) {
+	        case R.id.saveExp:
+	        	if(saved_status.equals("offline")) return true;
+	        	else return saveExp();
+	            //return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+
+	}
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -76,13 +124,11 @@ public class ShowExp extends TabActivity {
 		
 		view_mode = getIntent().getExtras().getString("view_mode");
 		saved_status = getIntent().getExtras().getString("saved_status");
-		if(view_mode.equals("offline")){
-			Toast.makeText(getApplicationContext(), "You are now in offline mode", Toast.LENGTH_LONG).show();
-		}
 		
 		TheoryUrl = getIntent().getExtras().getString("theory_url");
 		ProcedureUrl = getIntent().getExtras().getString("procedure_url");
 		ResourceUrl = getIntent().getExtras().getString("resource_url");
+		
 		SimulatinUrl = getIntent().getExtras().getString("simulation_url");
 		QuizUrl = getIntent().getExtras().getString("quiz_url");
 	
@@ -226,29 +272,6 @@ public class ShowExp extends TabActivity {
 	}
 	
 	
-	 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-	    // Inflate the menu items for use in the action bar
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.optionmeu, menu);
-	    return super.onCreateOptionsMenu(menu);
-	}
-	
-	
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
-		 switch (item.getItemId()) {
-	        case R.id.saveExp:
-	            return saveExp();
-	            //return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
-
-	}
 
 	public boolean saveExp(){
 		
@@ -286,7 +309,9 @@ public class ShowExp extends TabActivity {
         	};
         	
         	//t.start();
-        	new DownloadFileFromURL().execute(exp_icon);
+        	if(completed == 0) {
+        		new DownloadFileFromURL().execute(exp_icon);
+        	}
         	
         	
         	//Toast.makeText(getApplicationContext(), "Experiment Saved", Toast.LENGTH_LONG).show();
@@ -411,6 +436,7 @@ public class ShowExp extends TabActivity {
 			completed++;
 			
 			if(completed != total_files){
+				
 				if(completed == 1){
 					new DownloadFileFromURL().execute(QuizUrl);
 				}
@@ -445,7 +471,10 @@ public class ShowExp extends TabActivity {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				Toast.makeText(getApplicationContext(), "Experiment Files Saved", Toast.LENGTH_LONG).show();
+				
+				saved_btn.setTitle("Update Exp");
+				completed = 0;
+				Toast.makeText(getApplicationContext(), exp_message , Toast.LENGTH_LONG).show();
 			}
 		}
 	}

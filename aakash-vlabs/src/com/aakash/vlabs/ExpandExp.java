@@ -50,7 +50,7 @@ public class ExpandExp extends Activity {
 				intent.putExtra("exp_name", exp_name);
 				intent.putExtra("exp_no", exp_no);
 				intent.putExtra("exp_icon", exp_icon);
-				intent.putExtra("view_mode", "offline");
+				intent.putExtra("view_mode", "online");
 				intent.putExtra("saved_status", "yes");
 				
 				intent.putExtra("theory_url",TheoryUrl);
