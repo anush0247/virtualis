@@ -58,7 +58,7 @@ public class ShowExp extends TabActivity {
 	public static final int DIALOG_DOWNLOAD_PROGRESS = 0;
     private ProgressDialog pDialog;
     
-    int total_files = 2, completed = 0;
+    int total_files = 3, completed = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -414,6 +414,9 @@ public class ShowExp extends TabActivity {
 				if(completed == 1){
 					new DownloadFileFromURL().execute(QuizUrl);
 				}
+				else if(completed == 2){
+					new DownloadFileFromURL().execute(SimulatinUrl);
+				}
 					
 			}
 			else {
@@ -421,13 +424,16 @@ public class ShowExp extends TabActivity {
 				icon_fileName = myExpFilesDir.getAbsolutePath() + File.separator + icon_fileName ;
 				String quiz_fileName = QuizUrl.substring( QuizUrl.lastIndexOf('/')+1, QuizUrl.length() );
 				quiz_fileName = myExpFilesDir.getAbsolutePath() + File.separator + quiz_fileName ;
+				String simulation_fileName = SimulatinUrl.substring( SimulatinUrl.lastIndexOf('/')+1, SimulatinUrl.length() );
+				simulation_fileName = myExpFilesDir.getAbsolutePath() + File.separator +simulation_fileName ;
 				try {
 					FileOutputStream expJson = new FileOutputStream(myExpFilesDir.getAbsolutePath() + File.separator + "expData.json");
 					String mydata= "[{ "
 							+ " 'class_no' : '"+class_no+"', 'subject' : '"+subject+"', "
 							+ "'exp_name' : '"+exp_name+"', "
 							+ "'exp_no' : '"+exp_no+"','exp_desc' : '"+ExpDesc+"', "
-							+ "'thumb' : '"+icon_fileName+"', 'gift' : '"+quiz_fileName+"',},]";
+							+ "'thumb' : '"+icon_fileName+"', 'simulation' : '"+simulation_fileName+"', "
+							+ "'gift' : '"+quiz_fileName+"',},]";
 					byte[] buf = mydata.getBytes();
 					expJson.write(buf);
 					expJson.close();

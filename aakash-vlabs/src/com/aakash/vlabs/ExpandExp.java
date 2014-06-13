@@ -24,7 +24,7 @@ public class ExpandExp extends Activity {
 			ExpDesc = "my first Experiment",
 			ProcedureUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/procedure.html",
 			ResourceUrl = "http://www.rgukt.in/pdftnp/Advertisement_ONGC.pdf",
-			SimulatinUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/simulation.html",
+			SimulatinUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/theory.html",
 			QuizUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/procedure.html",
 			VideoUrls = "http://www.cse.iitb.ac.in/~aneesh14/html/video1.mp4,http://www.cse.iitb.ac.in/~aneesh14/html/video2.mp4," ;
 
