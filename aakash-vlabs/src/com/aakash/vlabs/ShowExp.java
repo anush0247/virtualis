@@ -5,23 +5,31 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
-
 @SuppressLint("NewApi")
 public class ShowExp extends TabActivity {
 	
@@ -30,18 +38,22 @@ public class ShowExp extends TabActivity {
 	int mycolor = Color.BLACK;//Color.rgb(51, 204, 255);//33CCFF
 	TextView mytitle;
 	
-	String class_no,subject,exp_name,exp_no, view_mode,saved_status;
+	String class_no,subject,exp_name,exp_no,exp_icon, view_mode,saved_status;
 	String TheoryUrl,ProcedureUrl,ResourceUrl,SimulatinUrl,QuizUrl,ExpDesc, VideoUrls;
 	int no_vid = 0;
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-	    // Inflate the menu items for use in the action bar
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.optionmeu, menu);
-	    return super.onCreateOptionsMenu(menu);
-	}
+	boolean err = false;
+	String err_msg = "";
 	
+	File extStorageAppBasePath,extStorageAppExpPath,myExpFilesDir;
+	File externalStorageDir = Environment.getExternalStorageDirectory();
+
+	
+	public static final int DIALOG_DOWNLOAD_PROGRESS = 0;
+    private Button startBtn;
+    private ProgressDialog mProgressDialog;
+    
+   
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,20 +66,20 @@ public class ShowExp extends TabActivity {
 		subject = getIntent().getExtras().getString("subject");
 		exp_name = getIntent().getExtras().getString("exp_name");
 		exp_no = getIntent().getExtras().getString("exp_no");
+		exp_icon = getIntent().getExtras().getString("exp_icon");
 		ExpDesc = getIntent().getExtras().getString("exp_desc");
 		
 		view_mode = getIntent().getExtras().getString("view_mode");
 		saved_status = getIntent().getExtras().getString("saved_status");
 		if(view_mode.equals("offline")){
-			
 			Toast.makeText(getApplicationContext(), "You are now in offline mode", Toast.LENGTH_LONG).show();
 		}
 		
 		TheoryUrl = getIntent().getExtras().getString("theory_url");
 		ProcedureUrl = getIntent().getExtras().getString("procedure_url");
 		ResourceUrl = getIntent().getExtras().getString("resource_url");
-		//SimulatinUrl = getIntent().getExtras().getString("simulation_url");
-		//QuizUrl = getIntent().getExtras().getString("quiz_url");
+		SimulatinUrl = getIntent().getExtras().getString("simulation_url");
+		QuizUrl = getIntent().getExtras().getString("quiz_url");
 	
 		VideoUrls = getIntent().getExtras().getString("video_urls");
 		
@@ -195,62 +207,125 @@ public class ShowExp extends TabActivity {
 		}
 	};
 	
-	public  void writeToFile(String fileName, String body)
-    {
-        FileOutputStream fos = null;
-
-        try {
-            final File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/aakash-vlabs/" );
-
-            if (!dir.exists())
-            {
-                dir.mkdirs(); 
-            }
-
-            final File myFile = new File(dir, fileName + ".txt");
-
-            if (!myFile.exists()) 
-            {    
-                myFile.createNewFile();
-            } 
-
-            fos = new FileOutputStream(myFile);
-
-            fos.write(body.getBytes());
-            fos.close();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-	
-	public String readFile(String path){
+	 
+		@Override
+		public boolean onCreateOptionsMenu(Menu menu) {
+		    // Inflate the menu items for use in the action bar
+		    MenuInflater inflater = getMenuInflater();
+		    inflater.inflate(R.menu.optionmeu, menu);
+		    return super.onCreateOptionsMenu(menu);
+		}
 		
-		String str = "";
-		File mytext = new File(path);
-		try {
-			FileInputStream input = new FileInputStream(mytext) ;
-			StringBuffer buf = new StringBuffer();
-			int i = 0;
-			while((i = input.read()) != -1){
-				buf.append((char)i);
+		
+		
+		@Override
+		public boolean onOptionsItemSelected(MenuItem item) {
+			// TODO Auto-generated method stub
+			 switch (item.getItemId()) {
+		        case R.id.saveExp:
+		            return saveExp();
+		            //return true;
+		        default:
+		            return super.onOptionsItemSelected(item);
+		    }
+
+		}
+
+
+
+	
+	public boolean saveExp(){
+		
+		extStorageAppBasePath = new File(externalStorageDir.getAbsolutePath() +
+				File.separator + "Android" + File.separator + "data" +
+				File.separator + getPackageName() + File.separator + "ExPdaTA");
+		
+		myExpFilesDir = new File(extStorageAppBasePath.getAbsolutePath()
+				+ File.separator  + class_no + File.separator 
+				+ File.separator  + subject + File.separator
+				+ File.separator  + exp_no + File.separator);
+		
+		boolean cont = true;
+		if(!myExpFilesDir.exists()){
+			if(myExpFilesDir.mkdirs()){
+				Log.d("Sub directories ---", "created");
+				cont = true;
 			}
-			str = new String(buf);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			else {
+				err = true;
+				cont = false;
+			}
+		}
+		
+		if(cont){
+			// create a expData.json
+			try {
+				FileOutputStream expJson = new FileOutputStream(myExpFilesDir.getAbsolutePath() + File.separator + "expData.json");
+				
+				String mydata= "[{  'class_no' : '"+class_no+"', 'subject' : '"+subject+"', 'exp_name' : '"+exp_name+"', 'exp_no' : '"+exp_no+"','exp_desc' : '"+ExpDesc+"', 'thumb' : '"+exp_icon+"', 'gift' : '"+QuizUrl+"',},]";
+				byte[] buf = mydata.getBytes();
+				expJson.write(buf);
+				expJson.close();
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			Thread t = new Thread(){
+        		public void run(){
+        			String url = "http://www.rgukt.in/pdftnp/Advertisement_ONGC.pdf";
+        			DownloadFile(url);
+        			DownloadFile("http://aakashlabs.org/static/images/favicon.ico");
+        		}
+        	};
+        	
+        	t.start();
+        	Toast.makeText(getApplicationContext(), "Experiment Saved", Toast.LENGTH_LONG).show();
+			
+		}
+		return false;
+	}
+	
+
+
+	public void DownloadFile(String path){
+		try {
+			URL url = new URL(path);
+			
+			String fileName = path.substring( path.lastIndexOf('/')+1, path.length() );
+			String fileNameWithoutExtn = fileName.substring(0, fileName.lastIndexOf('.'));
+
+			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+			urlConnection.setRequestMethod("GET");
+			urlConnection.setDoOutput(true);
+			urlConnection.connect();
+			File SDCardRoot = Environment.getExternalStorageDirectory();
+			File file = new File(myExpFilesDir,fileName);
+			FileOutputStream fileOutput = new FileOutputStream(file);
+			InputStream inputStream = urlConnection.getInputStream();
+			int totalSize = urlConnection.getContentLength();
+			int downloadedSize = 0;
+			byte[] buffer = new byte[1024];
+			int bufferLength = 0;
+			
+			while ( (bufferLength = inputStream.read(buffer)) > 0 ) {
+				fileOutput.write(buffer, 0, bufferLength);
+				downloadedSize += bufferLength;
+			}
+			fileOutput.close();
+	
+		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return str;
 	}
 	
-	public boolean isExternalStorageWritable() {
-	    String state = Environment.getExternalStorageState();
-	    if (Environment.MEDIA_MOUNTED.equals(state)) {
-	        return true;
-	    }
-	    return false;
-	}
+
+
+
 }

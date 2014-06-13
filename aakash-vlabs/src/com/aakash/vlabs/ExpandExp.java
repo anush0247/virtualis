@@ -17,13 +17,13 @@ import android.widget.Button;
 public class ExpandExp extends Activity {
 
 	String 	class_no = "9",
-			subject = "Physics",
+			subject = "physics",
 			exp_name = "Chemical Reaction",
-			exp_no = "2",
+			exp_no = "2",exp_icon = "http://www.cse.iitb.ac.in/~aneesh14/myicon.ico",
 			TheoryUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/theory.html",
 			ExpDesc = "my first Experiment",
 			ProcedureUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/procedure.html",
-			ResourceUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/resourcecs.html",
+			ResourceUrl = "http://www.rgukt.in/pdftnp/Advertisement_ONGC.pdf",
 			SimulatinUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/simulation.html",
 			QuizUrl = "http://www.cse.iitb.ac.in/~aneesh14/html/quiz.html",
 			VideoUrls = "http://www.cse.iitb.ac.in/~aneesh14/html/video1.mp4,http://www.cse.iitb.ac.in/~aneesh14/html/video2.mp4," ;
@@ -49,8 +49,10 @@ public class ExpandExp extends Activity {
 				intent.putExtra("subject", subject);
 				intent.putExtra("exp_name", exp_name);
 				intent.putExtra("exp_no", exp_no);
+				intent.putExtra("exp_icon", exp_icon);
 				intent.putExtra("view_mode", "offline");
 				intent.putExtra("saved_status", "yes");
+				
 				intent.putExtra("theory_url",TheoryUrl);
 				intent.putExtra("exp_desc",ExpDesc);
 				intent.putExtra("procedure_url",ProcedureUrl );

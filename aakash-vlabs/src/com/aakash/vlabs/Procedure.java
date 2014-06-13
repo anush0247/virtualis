@@ -1,4 +1,6 @@
 package com.aakash.vlabs;
+import java.io.File;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -23,6 +25,9 @@ public class Procedure extends Activity {
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setSupportZoom(true);  
         mWebView.getSettings().setBuiltInZoomControls(true);
+        mWebView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+		mWebView.setScrollbarFadingEnabled(true);
+		mWebView.getSettings().setLoadsImagesAutomatically(true);
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
@@ -44,5 +49,12 @@ public class Procedure extends Activity {
 		mWebView.loadUrl(ProcedureUrl);
         //mWebView.loadUrl("http://askdjfalk");
 
+	}
+	
+	@Override
+	public File getCacheDir(){
+		// NOTE: this method is used in Android 2.1
+		
+		return getApplicationContext().getCacheDir();
 	}
 }
