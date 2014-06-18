@@ -52,6 +52,7 @@
 	var mySel; // my selction
 	var mySelColor = '#CC0000'; // selction border & color
 	var mySelWidth = 1;
+	var TO_RADIANS = Math.PI/180;
 	
 	var offsetx, offsety; // offset for mouse click
 	var stylePaddingLeft, stylePaddingTop, styleBorderLeft, styleBorderTop;
@@ -125,7 +126,11 @@
 		  var base_image = new Image();
 		  base_image.src = shape.url;
 		  base_image.onload = function(){
+			//ctx.save();
+			//ctx.rotate(30*TO_RADIANS);
 		    ctx.drawImage(base_image, shape.x, shape.y);
+		    //ctx.restore();
+		    
 		  }
 	}
 	
@@ -160,7 +165,7 @@
 	  clear(ctx);
 	  invalidate();
 	}
-
+	
 	function myUp(){
 	  isDrag = false;
 	  canvas.onmousemove = null;
@@ -200,6 +205,30 @@
 		}
 		image.src = url;
 	}
+	
+	function rotateMe(angle){
+		  
+		  var l = MyObj.length;
+		  for (var i = 0; i < l; i++) {
+		    if (rotate(i)) {
+		      
+		      ctx.save();
+		      ctx.rotateMe(angle);
+		      ctx.restore();
+		      invalidate();
+		      clear(ctx);
+		      return;
+		    }
+		  }
+		  mySel = null;
+		  clear(ctx);
+		  invalidate();
+		}
+	
+	function rotate(i){
+		if(i == 2) return true;
+		else return false;
+	}
 	</script>
 </head>
 <body onload="init();">
@@ -212,8 +241,8 @@
   				<h5 style="padding-left:8px;margin-top:-5px;border-bottom:2px solid #eee;">Tool bar</h5>
   				<button onclick="addItem('jar.png');">Add Jar</button><br>
   				<button onclick="addItem('beaker.png');">Add Beaker</button><br>
-  				<button onclick="addItem('beaker-3.png');">Add Beaker-3</button>
-  				
+  				<button onclick="addItem('beaker-3.png');">Add Beaker-3</button><br>
+  				<button onclick="rotateItem();">rotate</button>
   			</td>
   		</tr>
   		

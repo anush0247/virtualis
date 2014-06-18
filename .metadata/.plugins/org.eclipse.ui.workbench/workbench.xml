@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="33" version="2.0">
+<workbench progressCount="37" version="2.0">
 <workbenchAdvisor/>
 <window height="743" maximized="true" width="1018" x="103" y="24">
 <fastViewData fastViewLocation="1024">
@@ -30,7 +30,7 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="232" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.html.core.htmlsource.source" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jst.pagedesigner.PageDesignerEditor" itemType="typePlaceholder" x="336" y="30"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
@@ -43,34 +43,13 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
-</presentation>
-</folder>
-</info>
-<info part="org.eclipse.ui.internal.EditorStack@15eb360" ratio="0.51141554" ratioLeft="672" ratioRight="642" relationship="2" relative="DefaultEditorWorkbook">
-<folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.wst.html.core.htmlsource.source" name="example.html" partName="example.html" title="example.html" tooltip="/home/node1/canvas/example.html" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/node1/canvas/example.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2592" selectionTopPixel="1527"/>
-</editor>
-<editor id="org.eclipse.wst.html.core.htmlsource.source" name="index.html" partName="index.html" title="index.html" tooltip="/home/node1/canvas/index.html" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.wst.html.core.htmlsource.source" name="index.html" partName="index.html" title="index.html" tooltip="/home/node1/canvas/index.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/node1/canvas/index.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="103" selectionOffset="911" selectionTopPixel="610"/>
-</editor>
-<editor id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="boxes.js" partName="boxes.js" title="boxes.js" tooltip="/home/node1/canvas/boxes.js" workbook="org.eclipse.ui.internal.EditorStack@15eb360">
-<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/node1/canvas/boxes.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5221" selectionTopPixel="2756"/>
-</editor>
-<editor focus="true" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="shapes.js" partName="shapes.js" title="shapes.js" tooltip="/home/node1/canvas/shapes.js" workbook="org.eclipse.ui.internal.EditorStack@15eb360">
-<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/node1/canvas/shapes.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="292" selectionOffset="956" selectionTopPixel="1591"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="737" selectionTopPixel="538"/>
 </editor>
 </editors>
 <views>
@@ -222,8 +201,8 @@
 <hide_toolbar_item_id id="org.eclipse.jst.j2ee.internal.actions.NewJavaEEArtifact"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.eclipse.dltk.tcl.ui.navigate.open.type"/>
-<hide_toolbar_item_id id="org.eclipse.dltk.tcl.ui.debug.consoleActionSet"/>
 <hide_toolbar_item_id id="org.eclipse.jst.j2ee.J2eeMainActionSet"/>
+<hide_toolbar_item_id id="org.eclipse.dltk.tcl.ui.debug.consoleActionSet"/>
 <hide_toolbar_item_id id="org.eclipse.debug.internal.ui.actions.RunDropDownAction"/>
 <fastViewBars/>
 <layout>
@@ -281,28 +260,8 @@
 <editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" uri="file:/home/node1/canvas/boxes.js"/>
 <editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" uri="file:/home/node1/canvas/index.html"/>
 <editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" uri="file:/home/node1/canvas/shapes.js"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" uri="file:/home/node1/canvas/index.html"/>
 </editors>
-<item historyLabel="example.html" index="1">
-<position info="not_deleted" x="2556" y="0"/>
-</item>
-<item historyLabel="boxes.js" index="0">
-<position info="not_deleted" x="563" y="17"/>
-</item>
-<item historyLabel="example.html" index="1">
-<position info="not_deleted" x="2529" y="0"/>
-</item>
-<item historyLabel="index.html" index="2">
-<position info="not_deleted" x="1463" y="12"/>
-</item>
-<item historyLabel="example.html" index="1">
-<position info="not_deleted" x="2586" y="0"/>
-</item>
-<item historyLabel="index.html" index="2">
-<position info="not_deleted" x="1463" y="12"/>
-</item>
-<item historyLabel="example.html" index="1">
-<position info="not_deleted" x="2586" y="0"/>
-</item>
 <item historyLabel="index.html" index="2">
 <position info="not_deleted" x="463" y="270"/>
 </item>
@@ -429,8 +388,29 @@
 <item historyLabel="shapes.js" index="5">
 <position info="not_deleted" x="956" y="292"/>
 </item>
-<item active="true" historyLabel="example.html" index="1">
-<position info="not_deleted" x="717" y="0"/>
+<item historyLabel="example.html" index="1">
+<position/>
+</item>
+<item historyLabel="index.html" index="6">
+<position info="not_deleted" x="858" y="0"/>
+</item>
+<item historyLabel="example.html" index="1">
+<position info="not_deleted" x="4879" y="0"/>
+</item>
+<item historyLabel="index.html" index="6">
+<position info="not_deleted" x="737" y="0"/>
+</item>
+<item historyLabel="example.html" index="1">
+<position info="not_deleted" x="4879" y="0"/>
+</item>
+<item historyLabel="index.html" index="6">
+<position info="not_deleted" x="737" y="0"/>
+</item>
+<item historyLabel="example.html" index="1">
+<position info="not_deleted" x="5281" y="0"/>
+</item>
+<item active="true" historyLabel="index.html" index="6">
+<position info="not_deleted" x="737" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
