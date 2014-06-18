@@ -16,8 +16,6 @@
 		this.fill = "#444444";
 		this.id = -1;
 		this.contains= function(mx, my) {
-		  // All we have to do is make sure the Mouse X,Y fall in the area between
-		  // the shape's X and (X + Height) and its Y and (Y + Height)
 		  return  (this.x <= mx) && (this.x + this.w >= mx) &&
 		          (this.y <= my) && (this.y + this.h >= my);
 		}
@@ -38,15 +36,8 @@
 		myObj.id = count;
 		MyObj.push(myObj);
 		invalidate();
-		var jaffa = "";
-		for(var y = 0; y< count; y++){
-			jaffa += " " + MyObj[y].url;
-		}
-		//alert(jaffa);
 		count++;
 	}
-	
-	
 	
 	var canvas; // basic vars
 	var ctx;
@@ -56,32 +47,20 @@
 	
 	var isDrag = false;
 	var mx, my; // mouse coordinates
-	
 	var canvasValid = false;
 	
 	var mySel; // my selction
-	
 	var mySelColor = '#CC0000'; // selction border & color
 	var mySelWidth = 1;
 	
-	var ghostcanvas; // dummy canvas
-	var gctx;
-	
 	var offsetx, offsety; // offset for mouse click
-	
 	var stylePaddingLeft, stylePaddingTop, styleBorderLeft, styleBorderTop;
 	
 	function init(){
-		
 		canvas = document.getElementById('canvas');
 		HEIGHT = canvas.height;
 		WIDTH = canvas.width;
 		ctx = canvas.getContext('2d');
-		//ghostcanvas = document.createElement('canvas');
-		//ghostcanvas.height = HEIGHT;
-		//ghostcanvas.width = WIDTH;
-		//gctx = ghostcanvas.getContext('2d');
-		
 		canvas.onselectstart = function () { return false; }
 		
 		if (document.defaultView && document.defaultView.getComputedStyle) {
@@ -91,18 +70,13 @@
 		    styleBorderTop   = parseInt(document.defaultView.getComputedStyle(canvas, null)['borderTopWidth'], 10)   || 0;
 		  }
 		
-		
-		
 		setInterval(draw, INTERVAL);
 		
 		canvas.onmousedown = myDown;
 		canvas.onmouseup = myUp;
 		//canvas.ondblclick = myDblClick;
 		 
-		//drawGrid();
-		addObj("beaker.png",10,10,100,100,0,"#eee");
-		
-		
+		//addItem('beaker.png');
 	}
 	
 	function drawGrid(){
@@ -136,7 +110,6 @@
 		    
 		    if (mySel != null) {
 		      ctx.strokeStyle = mySelColor;
-		      //ctx.lineWidth = mySelWidth;
 		      ctx.strokeRect(mySel.x,mySel.y,mySel.w,mySel.h);
 		    }
 		    
@@ -146,56 +119,30 @@
 	}
 	
 	function drawObj(context, shape) {
-		  
 		  if (shape.x > WIDTH || shape.y > HEIGHT) return; 
 		  if (shape.x + shape.w < 0 || shape.y + shape.h < 0) return;
 		  
-		  
-		  //console.log("")
 		  var base_image = new Image();
-		 // base_image.src = ""; 
 		  base_image.src = shape.url;
 		  base_image.onload = function(){
-			 // alert("Drawing - " + base_image.src + " -- " + shape.url);
 		    ctx.drawImage(base_image, shape.x, shape.y);
 		  }
-		  
-		  //context.fillRect(shape.x,shape.y,100,100);
 	}
 	
 	function myMove(e){
-		  //alert(mx+my);
 		  if (isDrag){
 		    getMouse(e);
-		    
 		    mySel.x = mx - offsetx;
 		    mySel.y = my - offsety;   
-		    
 		    invalidate();
 		  }
 	}
 	
-	// Happens when the mouse is clicked in the canvas
 	function myDown(e){
 	  getMouse(e);
-	  //clear(gctx);
 	  
 	  var l = MyObj.length;
 	  for (var i = 0; i < l; i++) {
-		  
-	    //drawObj(gctx,MyObj[i]);
-	    
-	    // get image data at the mouse x,y pixel
-	   // var imageData = gctx.getImageData(mx, my, 1, 1);
-	    //var index = (mx + my * imageData.width);// * 4;
-	    
-	    //alert(imageData.width+" " + my + " " + mx);
-	    
-	    //alert(imageData.data.length);
-	    //alert(st);
-	    // if the mouse pixel exists, select and break
-	    
-	    //alert(mx+" " + my);
 	    if (MyObj[i].contains(mx,my)) {
 	      mySel = MyObj[i];
 	      offsetx = mx - mySel.x;
@@ -208,9 +155,7 @@
 	      clear(ctx);
 	      return;
 	    }
-	    
 	  }
-	  
 	  mySel = null;
 	  clear(ctx);
 	  invalidate();
@@ -227,7 +172,7 @@
 	
 	function getMouse(e) {
 	      var element = canvas, offsetX = 0, offsetY = 0;
-
+	      
 	      if (element.offsetParent) {
 	        do {
 	          offsetX += element.offsetLeft;
@@ -243,14 +188,17 @@
 
 	      mx = e.pageX - offsetX;
 	      my = e.pageY - offsetY
-	      
-	      
 	}
 		
-	function addItem(){
-		
-		//alert(ctx);
-		addObj("jar.png",410,410,100,100,0,"#eee");
+	function addItem(url){
+		var img_x = 0 ,img_y = 0;
+		var image = new Image();
+		image.onload = function(){
+		 	img_x = this.width;
+		 	img_y = this.height;
+		 	addObj(url,Math.floor(Math.random()*(1020-img_x)),Math.floor(Math.random()*(550-img_y)),img_x,img_y,0,"#eee");
+		}
+		image.src = url;
 	}
 	</script>
 </head>
@@ -259,14 +207,18 @@
 	<h4 align="center">Virtual Lab Simulator v1.0</h4>
   	<table border="0" width="100%">
   		<tr>
-  			<td width="80%"> <canvas id="canvas" width="1020%" height="550" style="border:2px solid #eee;"></canvas> </td>
+  			<td width="80%"> <canvas id="canvas" width="1020px" height="550px" style="border:2px solid #eee;"></canvas> </td>
   			<td width="20%" valign="top" style="padding:10px;padding-left:5px;border-left:2px solid #eee;">
   				<h5 style="padding-left:8px;margin-top:-5px;border-bottom:2px solid #eee;">Tool bar</h5>
-  				<button onclick="addItem();">Add Item</button>
-  				<button onclick="clear();">Clear</button>
+  				<button onclick="addItem('jar.png');">Add Jar</button><br>
+  				<button onclick="addItem('beaker.png');">Add Beaker</button><br>
+  				<button onclick="addItem('beaker-3.png');">Add Beaker-3</button>
+  				
   			</td>
   		</tr>
   		
   	</table>
+  	
+  	
 </body>
 </html>
