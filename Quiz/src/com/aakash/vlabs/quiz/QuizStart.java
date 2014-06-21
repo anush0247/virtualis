@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class QuizStart extends Activity {
 
@@ -92,4 +93,15 @@ public class QuizStart extends Activity {
 		});
         
     }
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		//Toast.makeText(getApplicationContext(), "" + currnt_qn + "" + prev_qn + "" + next_qn, Toast.LENGTH_SHORT).show();
+		this.finish();
+		super.onBackPressed();
+		
+	}
+    
+    
 }

@@ -9,8 +9,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Question extends Fragment {
-
+	
 	int currentId = 1;
+	
+	String Gift_qn = "";
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -30,6 +32,13 @@ public class Question extends Fragment {
 	public void setId(int id){
 		this.currentId = id;
 	}
+	
+	public String[] parseQuestion(){
+		// take the question string and returns array containing string array
+		// 0 - type , 1 - title, 2 - question , 3 - answer string
+		return null;
+	}
+	
 	
 	
 
