@@ -1,0 +1,16 @@
+package com.aakash.vlabs.quiz;
+
+import android.app.Activity;
+import android.app.Fragment;
+
+public class Question extends Fragment {
+
+	@Override
+	public void onAttach(Activity activity) {
+		// TODO Auto-generated method stub
+		super.onAttach(activity);
+	}
+	
+	
+
+}
