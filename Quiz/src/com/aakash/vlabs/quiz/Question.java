@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class Question extends Fragment {
 
-	int currentId = 0;
+	int currentId = 1;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
