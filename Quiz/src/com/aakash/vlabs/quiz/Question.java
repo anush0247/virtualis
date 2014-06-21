@@ -1,7 +1,12 @@
 package com.aakash.vlabs.quiz;
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +19,7 @@ public class Question extends Fragment {
 	
 	String Gift_qn = "";
 	String[] parts = {};
+	ArrayList<McqOpts> list = new ArrayList<McqOpts>();
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -31,6 +37,15 @@ public class Question extends Fragment {
 		mytext.setPadding(10, 5, 10, 5);
 		mytext.setTextSize(18);
 		qun_layout.addView(mytext);
+		
+		if(parts[3].equals("Multiple")){
+			Log.d("I found :", parts[2]);
+			parseMCQ(parts[2]);
+			
+		}
+		for(int i = 0;i<list.size();i++){
+			Log.d(""+i,list.get(i).toString());
+		}
 		return view;
 	}
 	
@@ -103,6 +118,39 @@ public class Question extends Fragment {
 				}
 			default:
 				return "Missing_word";
+		}
+	}
+	
+	public void parseMCQ(String ans){
+		
+		Pattern p = Pattern.compile("([~=][^#]+[ ]?)#([ ]?[^~=]*)");
+		Matcher m = p.matcher(ans);
+		while(m.find()){
+			String feedback = m.group(2);
+			String[] a = m.group(1).split("%",3);
+			String value = a[0].substring(1);
+			boolean isAns = (a[0].contains("~"))?false:true;
+			int weight = (a.length == 3)?Integer.parseInt(a[3]):-1;
+			list.add(new McqOpts(weight, value, feedback, isAns));
+		}
+		
+	}
+	
+	@SuppressWarnings("unused")
+	private class McqOpts {
+		int weight;
+		String value,feedback;
+		boolean isAns;
+		
+		public McqOpts(int w, String v, String f, boolean ans){
+			this.weight = w;
+			this.value = v;
+			this.feedback = f;
+			this.isAns = ans;
+		}
+		
+		public String toString(){
+			return (this.value + (this.isAns == true) != null?"1":"0" + this.feedback + this.weight);
 		}
 	}
 
