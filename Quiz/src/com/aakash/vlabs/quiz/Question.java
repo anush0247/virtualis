@@ -13,6 +13,7 @@ public class Question extends Fragment {
 	int currentId = 1;
 	
 	String Gift_qn = "";
+	String[] parts = {};
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -22,9 +23,13 @@ public class Question extends Fragment {
 		View view = inflater.inflate(R.layout.question, container, false);
 		LinearLayout qun_layout = (LinearLayout) view.findViewById(R.id.myquestions_page);
 		TextView mytext = new TextView(view.getContext());
-		mytext.setText("Welcome to Question No. "+ currentId);
-		mytext.setPadding(20, 20, 20, 20);
-		mytext.setTextSize(20);
+		makeparts();
+		mytext.setText("Question "+ currentId + ". "+parts[0] +"\n" 
+				+ parts[1] + "\n"
+				+ parts[2] + "\n"
+				+ parts[3] + "\n");
+		mytext.setPadding(10, 5, 10, 5);
+		mytext.setTextSize(18);
 		qun_layout.addView(mytext);
 		return view;
 	}
@@ -33,14 +38,73 @@ public class Question extends Fragment {
 		this.currentId = id;
 	}
 	
-	public String[] parseQuestion(){
-		// take the question string and returns array containing string array
-		// 0 - type , 1 - title, 2 - question , 3 - answer string
-		return null;
+	public void setGift_qn(String str){
+		this.Gift_qn = str;
 	}
 	
-	
-	
+
+	public void makeparts() {
+		String s = this.Gift_qn;
+		int v = s.indexOf('{');
+		int v1 = s.indexOf('}');
+		int v2 = s.indexOf(':', 2);
+		String title = "";
+		String question = (String) s.subSequence(0, v);
+		String answerpart = (String) s.subSequence(v + 1, v1);
+		if (s.startsWith("::")) {
+			title = (String) s.subSequence(2, v2);
+			v2 = v2 + 2;
+			question = (String) s.subSequence(v2, v);
+		}
+		v1++;
+		if (v1 != s.length() && s.charAt(v1) != '.') {
+			question += "__________";
+			question += s.subSequence(v1, s.length());
+		}
+		parts = new String[4];
+		parts[0] = title;
+		parts[1] = question;
+		parts[2] = answerpart.replaceAll("^[ \t]+", "") ;
+		parts[3] = getType(parts[2]);
+		
+	}
+
+	private String getType(String q) {
+		// TODO Auto-generated method stub
+		char v2 = q.charAt(0);
+		switch (v2) {
+			case '#':
+				return "Numeric";
+			case '~':
+				if (q.contains("=")) {
+					return "Multiple";
+				} else {
+					return "Multiple_many";
+				}
+			case '}':
+				return "Essay";
+			case 't':
+			case 'T':
+			case 'F':
+			case 'f':
+				return "True_false";
+			case '=':
+			case '\n':
+				if (q.contains("~")) {
+					if (q.contains("=")) {
+						return "Multiple";
+					} else {
+						return "Multiple_many";
+					}
+				} else if (q.contains("->")) {
+					return "Matching";
+				} else {
+					return "Short_Answer";
+				}
+			default:
+				return "Missing_word";
+		}
+	}
 
 
 }

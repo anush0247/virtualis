@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <LinearLayout
+        android:id="@+id/quiz_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8.5"
+        android:orientation="horizontal"
+        android:background="#f98342">
+        
+        <FrameLayout 
+            android:id="@+id/frag_question"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/quiz_bottombar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:padding="10dp"
+        android:baselineAligned="false" >
+        
+        	<LinearLayout
+	           android:id="@+id/quiz_bottombar_buttons"
+	           android:layout_width="0dp"
+	           android:layout_weight="1"
+	           android:layout_height="wrap_content">
+        
+        
+                <Button 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:id="@+id/quiz_qn_prev"
+		            android:text="Prev"/>
+                
+         
+    	  	</LinearLayout>
+           
+           <LinearLayout
+	           android:id="@+id/quiz_bottombar_text"
+	           android:layout_width="0dp"
+	           android:layout_weight="8"
+	           android:layout_height="wrap_content"
+	           android:orientation="horizontal" >
+       
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:id="@+id/quiz_qno_total"
+		            android:text="Quiz Question : 1 / 10"
+		            android:textStyle="bold|italic"
+		            android:textSize="20sp"
+		            android:layout_gravity="center_horizontal"/>
+        	
+        	</LinearLayout>
+
+           <LinearLayout
+               android:id="@+id/quiz_bottombar_buttons"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1" >
+
+               <Button
+                   android:id="@+id/quiz_qn_next"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Next" />
+           </LinearLayout>
+        
+        </LinearLayout>
+        
+  
+    
+</LinearLayout>

@@ -41,10 +41,9 @@ public class QuizPreStart extends Activity {
 	protected Dialog onCreateDialog(int id) {
 		
 		pDialog = new ProgressDialog(this);
-		pDialog.setMessage("Download GIFT file Please wait...");
+		pDialog.setMessage("Downloading GIFT file Please wait...");
 		pDialog.setIndeterminate(false);
 		pDialog.setMax(100);
-		//pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 		pDialog.setCancelable(false);
 		pDialog.show();
 		return pDialog;
@@ -77,8 +76,12 @@ public class QuizPreStart extends Activity {
 		
 		// parse the file and return the segments of the questions 
 		Questions = gift_content.split("\n\n");
+		
 		for(int i = 0;i<Questions.length;i++){
-			gift_qns.add(Questions[i]);
+			
+			if(Questions[i].length() != 0){
+				gift_qns.add(Questions[i].replaceAll("\n", ""));
+			}
 		}
 	}
 	
