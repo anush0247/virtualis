@@ -20,18 +20,11 @@ public class Question extends Fragment {
 	String Gift_qn = "";
 	String[] parts = {};
 	
-	public void setId(int id){
-		this.currentId = id;
-	}
-	
-	public void setGift_qn(String str){
-		this.Gift_qn = str;
-	}
-	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		//return super.onCreateView(inflater, container, savedInstanceState);
 		
 		View view = inflater.inflate(R.layout.question, container, false);
 		LinearLayout qun_layout = (LinearLayout) view.findViewById(R.id.myquestions_page);
@@ -76,6 +69,14 @@ public class Question extends Fragment {
 		}
 		
 		return view;
+	}
+	
+	public void setId(int id){
+		this.currentId = id;
+	}
+	
+	public void setGift_qn(String str){
+		this.Gift_qn = str;
 	}
 	
 	public void makeparts() {

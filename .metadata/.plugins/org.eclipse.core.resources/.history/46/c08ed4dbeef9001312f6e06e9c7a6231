@@ -20,18 +20,11 @@ public class Question extends Fragment {
 	String Gift_qn = "";
 	String[] parts = {};
 	
-	public void setId(int id){
-		this.currentId = id;
-	}
-	
-	public void setGift_qn(String str){
-		this.Gift_qn = str;
-	}
-	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		//return super.onCreateView(inflater, container, savedInstanceState);
 		
 		View view = inflater.inflate(R.layout.question, container, false);
 		LinearLayout qun_layout = (LinearLayout) view.findViewById(R.id.myquestions_page);
@@ -65,17 +58,32 @@ public class Question extends Fragment {
 			for(int i = 0;i<numList.size();i++){
 				Log.d("Numeric : ", "Num : "+numList.get(i)[0]+" +/- " + numList.get(i)[1] + " Weight : " + numList.get(i)[2]);
 			}
-			// send this numList to draw layout
+			// send this numList to draw layout or create here itself
 		}
 		else if(parts[3].equals("Matching")){
 			ArrayList<String[]> matchingList = parseMatching(parts[2]);
 			for(int i = 0;i<matchingList.size();i++){
 				Log.d("Matching : " + i, "Question : "+matchingList.get(i)[0]+" +---+ " + matchingList.get(i)[1] );
 			}
-			// send this matchingList to draw layout
+			// send this numList to draw layout or create here itself
 		}
 		
 		return view;
+	}
+	
+	private ArrayList<String[]> parseMatching(String matchStr) {
+		// TODO Auto-generated method stub
+		ArrayList<String[]> matchingList = new ArrayList<String[]>();
+		
+		return matchingList;
+	}
+
+	public void setId(int id){
+		this.currentId = id;
+	}
+	
+	public void setGift_qn(String str){
+		this.Gift_qn = str;
 	}
 	
 	public void makeparts() {
@@ -269,19 +277,4 @@ public class Question extends Fragment {
 		return numList;
 	}
 
-	/* matching ... parsing */
-	private ArrayList<String[]> parseMatching(String matchStr) {
-		// TODO Auto-generated method stub
-		ArrayList<String[]> matchingList = new ArrayList<String[]>();
-		Pattern p = Pattern.compile("[ ]*=(\\w+)[ ]*->[ ]*(\\w+)[ ]*");
-		Matcher m = p.matcher(matchStr);
-		while(m.find()){
-			String[] subqns = new String[2];
-			subqns[0] = m.group(1);
-			subqns[1] = m.group(2);
-			matchingList.add(subqns);
-			//System.out.println("Found : "+ m.group(2));
-		}
-		return matchingList;
-	}
 }
