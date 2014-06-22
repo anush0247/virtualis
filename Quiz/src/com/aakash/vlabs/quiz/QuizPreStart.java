@@ -8,12 +8,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -31,6 +30,7 @@ import android.widget.Toast;
 public class QuizPreStart extends Activity {
 	
 	String online_url = "http://www.cse.iitb.ac.in/~aneesh14/GIFT-examples.txt";
+	@SuppressLint("SdCardPath")
 	String offline_url = "/sdcard/Android/data/com.aakash.vlabs/ExPdaTA/9/physics/2/GIFT-examples.txt";
 	String view_mode = "offline"; // offline | online
 	

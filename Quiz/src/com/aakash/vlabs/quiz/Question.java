@@ -44,8 +44,22 @@ public class Question extends Fragment {
 			for(int i = 0;i<list.size();i++){
 				Log.d(""+i,list.get(i).toString());
 			}
+			// send this list to draw layout
 		}
-		
+		else if(parts[3].equals("True_false")){
+			String trueAns = "";
+			if(parts[2].charAt(0) == 'T' || parts[2].charAt(0) == 't' ) trueAns = "True";
+			else trueAns = "False";
+			Log.d("True / False ",trueAns);
+			// send this trueAns to draw layout or create here itself
+		}
+		else if(parts[3].equals("Numeric")){
+			ArrayList<float[]> numList = parseNumeric(parts[2]);
+			for(int i = 0;i<numList.size();i++){
+				Log.d("Numeric : ", "Num : "+numList.get(i)[0]+" +/- " + numList.get(i)[1] + " Weight : " + numList.get(i)[2]);
+			}
+			// send this numList to draw layout or create here itself
+		}
 		
 		return view;
 	}
@@ -58,7 +72,6 @@ public class Question extends Fragment {
 		this.Gift_qn = str;
 	}
 	
-
 	public void makeparts() {
 		String s = this.Gift_qn;
 		int v = s.indexOf('{');
@@ -129,15 +142,12 @@ public class Question extends Fragment {
 		Matcher m = p.matcher(ans);
 		while(m.find()){
 
-			
 			boolean isAns = (m.group(0).contains("~"))?false:true;
 			int weight = 100;
 			String feedback = "";
 			String value = "";
 			
 			String[] a = m.group(0).split("%",3);
-			//Log.d("Option ",a.length);
-
 			if(a.length == 1){
 				String[] b = a[0].split("#");
 				value = b[0].substring(1);
@@ -145,8 +155,6 @@ public class Question extends Fragment {
 				else feedback = "No Feedback Provided.";
 			}
 			else {
-				
-				
 				weight = Integer.parseInt(a[1]);
 				String[] b = a[2].split("#");
 				value = b[0].substring(1);
@@ -156,15 +164,9 @@ public class Question extends Fragment {
 				else feedback = "No Feedback Provided.";
 			}
 			list.add(new McqOpts(weight, value, feedback, isAns));
-			//Log.d("Option ","Found : "+ m.group(0));
-			//Log.d("Option ","Feedback : " + feedback + " |  Weight :"+ weight + " Value : " + value);
-			//Log.d("Option "," ---------------------------------------------------------------------");
-			
 		}
 		return list;
-		
 	}
-	
 	
 	@SuppressWarnings("unused")
 	private class McqOpts {
@@ -183,6 +185,82 @@ public class Question extends Fragment {
 			return ("Option : "+ this.value + " Feedback : "+this.feedback + " Weight :"+this.weight);
 		}
 	}
-
+	
+	/* end of mcq */
+	
+	// parsing numeric in gift
+	public ArrayList<float[]> parseNumeric(String strnum){
+		float num = -1,offset = 0,weight = 100;
+		ArrayList<float[]> numList = new ArrayList<float[]>();
+		if(strnum.indexOf("=") != -1){
+			String[] numArr = strnum.split("=");
+			for(int i = 0 ; i<numArr.length;i++){
+				if(numArr[i].contains("#")){
+					continue;
+				}
+				if(numArr[i].indexOf("..") != -1){
+					String[] numArr1 = numArr[i].split("\\.\\.");
+					String[] numArr2 = numArr1[0].split("%");
+					if(numArr2.length != 1){
+						weight = Float.parseFloat(numArr2[1]);
+						num = (Float.parseFloat(numArr2[2]) + Float.parseFloat(numArr1[1]))/2;
+					}
+					else{
+						num = (Float.parseFloat(numArr2[0]) + Float.parseFloat(numArr1[1]))/2;
+					}
+					offset = Float.parseFloat(numArr1[1]) - num; 
+					float[] floAr = new float[3];
+					floAr[0] = num; floAr[1] = offset; floAr[2] = weight;
+					numList.add(floAr);
+				}
+				else {
+					String[] numArr1 = numArr[i].split(":");
+					String[] numArr2 = numArr1[0].split("%");
+					if(numArr2.length != 1){
+						weight = Float.parseFloat(numArr2[1]);
+						num = Float.parseFloat(numArr2[2]);
+					}
+					else {
+						num = Float.parseFloat(numArr2[0]);
+					}
+					if(numArr1.length != 1) offset = Float.parseFloat(numArr1[1]);
+					float[] floAr = new float[3];
+					floAr[0] = num; floAr[1] = offset; floAr[2] = weight;
+					numList.add(floAr);
+				}
+			}
+		}
+		else if(strnum.indexOf("..") != -1){
+			String[] numArr = strnum.split("\\.\\.");
+			String[] numArr2 = numArr[0].substring(1).split("%");
+			if(numArr2.length != 1){
+				weight = Float.parseFloat(numArr2[1]);
+				num = (Float.parseFloat(numArr2[2]) + Float.parseFloat(numArr[1]))/2;
+			}
+			else {
+				num = (Float.parseFloat(numArr[0].substring(1)) + Float.parseFloat(numArr[1]))/2;
+			}
+			offset = Float.parseFloat(numArr[1]) - num; 
+			float[] floAr = new float[3];
+			floAr[0] = num; floAr[1] = offset; floAr[2] = weight;
+			numList.add(floAr);
+		}
+		else {
+			String[] numArr = strnum.split(":");
+			String[] numArr2 = numArr[0].substring(1).split("%");
+			if(numArr2.length != 1){
+				weight = Float.parseFloat(numArr2[1]);
+				num = Float.parseFloat(numArr2[2]);
+			}
+			else {
+				num = Float.parseFloat(numArr[0].substring(1));
+			}
+			if(numArr.length != 1) offset = Float.parseFloat(numArr[1]);
+			float[] floAr = new float[3];
+			floAr[0] = num; floAr[1] = offset; floAr[2] = weight;
+			numList.add(floAr);
+		}
+		return numList;
+	}
 
 }
