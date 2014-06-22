@@ -29,9 +29,9 @@ public class QuizStart extends Activity {
         setContentView(R.layout.quiz_start);
         
         Qns = getIntent().getStringArrayListExtra("qn_array");
-       for(int i = 0; i<Qns.size();i++){
-        	Log.d("Received Question "+i, Qns.get(i));
-        }
+       //for(int i = 0; i<Qns.size();i++){
+        //	Log.d("Received Question "+i, Qns.get(i));
+        //}
         
         total_qn = Qns.size();
         qn_status = (TextView) findViewById(R.id.quiz_qno_total);

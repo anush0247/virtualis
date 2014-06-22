@@ -19,7 +19,7 @@ public class Question extends Fragment {
 	
 	String Gift_qn = "";
 	String[] parts = {};
-	ArrayList<McqOpts> list = new ArrayList<McqOpts>();
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -40,12 +40,13 @@ public class Question extends Fragment {
 		
 		if(parts[3].equals("Multiple")){
 			Log.d("I found :", parts[2]);
-			parseMCQ(parts[2]);
-			
+			ArrayList<McqOpts> list = parseMCQ(parts[2]); 
+			for(int i = 0;i<list.size();i++){
+				Log.d(""+i,list.get(i).toString());
+			}
 		}
-		for(int i = 0;i<list.size();i++){
-			Log.d(""+i,list.get(i).toString());
-		}
+		
+		
 		return view;
 	}
 	
@@ -121,20 +122,49 @@ public class Question extends Fragment {
 		}
 	}
 	
-	public void parseMCQ(String ans){
+	public ArrayList<McqOpts> parseMCQ(String ans){
 		
-		Pattern p = Pattern.compile("([~=][^#]+[ ]?)#([ ]?[^~=]*)");
+		ArrayList<McqOpts> list = new ArrayList<McqOpts>(); 
+		Pattern p = Pattern.compile("([~=][^~=]+)");
 		Matcher m = p.matcher(ans);
 		while(m.find()){
-			String feedback = m.group(2);
-			String[] a = m.group(1).split("%",3);
-			String value = a[0].substring(1);
-			boolean isAns = (a[0].contains("~"))?false:true;
-			int weight = (a.length == 3)?Integer.parseInt(a[3]):-1;
+
+			
+			boolean isAns = (m.group(0).contains("~"))?false:true;
+			int weight = 100;
+			String feedback = "";
+			String value = "";
+			
+			String[] a = m.group(0).split("%",3);
+			//Log.d("Option ",a.length);
+
+			if(a.length == 1){
+				String[] b = a[0].split("#");
+				value = b[0].substring(1);
+				if(b.length != 1)feedback = b[1];
+				else feedback = "No Feedback Provided.";
+			}
+			else {
+				
+				
+				weight = Integer.parseInt(a[1]);
+				String[] b = a[2].split("#");
+				value = b[0].substring(1);
+				if(b.length != 1){
+					feedback = b[1];
+				}
+				else feedback = "No Feedback Provided.";
+			}
 			list.add(new McqOpts(weight, value, feedback, isAns));
+			//Log.d("Option ","Found : "+ m.group(0));
+			//Log.d("Option ","Feedback : " + feedback + " |  Weight :"+ weight + " Value : " + value);
+			//Log.d("Option "," ---------------------------------------------------------------------");
+			
 		}
+		return list;
 		
 	}
+	
 	
 	@SuppressWarnings("unused")
 	private class McqOpts {
@@ -150,7 +180,7 @@ public class Question extends Fragment {
 		}
 		
 		public String toString(){
-			return (this.value + (this.isAns == true) != null?"1":"0" + this.feedback + this.weight);
+			return ("Option : "+ this.value + " Feedback : "+this.feedback + " Weight :"+this.weight);
 		}
 	}
 
