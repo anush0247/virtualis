@@ -1,12 +1,13 @@
 package com.aakash.vlabs.quiz;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
-import javax.xml.namespace.QName;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -25,17 +26,21 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class QuizPreStart extends Activity {
-
-	Button quiz_btn;
-	String url = "http://www.cse.iitb.ac.in/~aneesh14/GIFT-examples.txt";
+	
+	String online_url = "http://www.cse.iitb.ac.in/~aneesh14/GIFT-examples.txt";
+	String offline_url = "/sdcard/Android/data/com.aakash.vlabs/ExPdaTA/9/physics/2/GIFT-examples.txt";
+	String view_mode = "offline"; // offline | online
+	
 	String[] Questions = {}; 
 	String gift_content = "";
 
 	ArrayList<String> gift_qns = new ArrayList<String>();
 	
 	private ProgressDialog pDialog;
+	Button quiz_btn;
 	
 	@Override
 	protected Dialog onCreateDialog(int id) {
@@ -54,22 +59,54 @@ public class QuizPreStart extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.quiz_pre_start);
 		
-		new HttpAsyncTask().execute(url);
-		
+		if(view_mode.equals("online")){
+			new HttpAsyncTask().execute(online_url);
+		}
+		else {
+			gift_content = readFile(offline_url);
+			gift_content = gift_content.replaceAll("\\/\\/.*", "");
+			
+		}
 		quiz_btn = (Button) findViewById(R.id.star_quiz);
 		quiz_btn.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				parseGIFT();
-				Intent quiz_start= new Intent(getApplicationContext(),
-						QuizStart.class);
-				quiz_start.putStringArrayListExtra("qn_array", gift_qns);
-				startActivity(quiz_start);
+				
+				//Toast.makeText(getApplicationContext(), gift_content, Toast.LENGTH_LONG).show();
+				if( (view_mode.equals("online") && isConnected() ) || view_mode.equals("offline") ){
+					parseGIFT();
+					Intent quiz_start= new Intent(getApplicationContext(),
+							QuizStart.class);
+					quiz_start.putStringArrayListExtra("qn_array", gift_qns);
+					startActivity(quiz_start);
+				}
+				else{
+					Toast.makeText(getApplicationContext(), "No Network Connection", Toast.LENGTH_LONG).show();
+				}
 				
 			}
 		});
+	}
+	
+	public String readFile(String path){
+
+		String str = "";
+		File mytext = new File(path);
+		try {
+			FileInputStream input = new FileInputStream(mytext) ;
+			str = convertInputStreamToString(input);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Log.d("Exception",e.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Log.d("Exception",e.toString());
+		}
+		return str;
 	}
 	
 	public void parseGIFT(){

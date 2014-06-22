@@ -38,7 +38,7 @@ public class Question extends Fragment {
 		mytext.setTextSize(18);
 		qun_layout.addView(mytext);
 		
-		if(parts[3].equals("Multiple")){
+		if(parts[3].equals("Multiple") || parts[3].equals("Multiple_many")){
 			Log.d("I found :", parts[2]);
 			ArrayList<McqOpts> list = parseMCQ(parts[2]); 
 			for(int i = 0;i<list.size();i++){

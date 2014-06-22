@@ -1,6 +1,5 @@
-INDEX VERSION 1.126+/home/node1/quiz/.metadata/.plugins/org.eclipse.jdt.core
-1649953239.index
-1270315800.index
-1567415948.index
-2698495352.index
-3076724933.index
+INDEX VERSION 1.126+C:\Users\Aneesh\Downloads\quiz-vlabs-master\quiz-new\quiz-vlabs\.metadata\.plugins\org.eclipse.jdt.core
+1284074322.index
+13676008.index
+3400383276.index
+514154343.index
