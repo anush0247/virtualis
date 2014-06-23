@@ -54,15 +54,11 @@ public class Question extends Fragment {
 			// send this list to draw layout
 		}
 		else if(parts[3].equals("True_false")){
-			String trueAns = "", feedback = "No Feedback Provided";
+			String trueAns = "";
 			if(parts[2].charAt(0) == 'T' || parts[2].charAt(0) == 't' ) trueAns = "True";
 			else trueAns = "False";
-			String[] ansArr = parts[2].split("#");
-			if(ansArr.length != 1){
-				feedback = ansArr[1];
-			}
 			Log.d("True / False ",trueAns);
-			// send this trueAns, feedback to draw layout or create here itself
+			// send this trueAns to draw layout or create here itself
 		}
 		else if(parts[3].equals("Numeric")){
 			ArrayList<float[]> numList = parseNumeric(parts[2]);
@@ -163,9 +159,6 @@ public class Question extends Fragment {
 				value = b[0].substring(1);
 				if(b.length != 1)feedback = b[1];
 				else feedback = "No Feedback Provided.";
-				
-				if(isAns) weight = 100;
-				else weight = 0;
 			}
 			else {
 				weight = Integer.parseInt(a[1]);
