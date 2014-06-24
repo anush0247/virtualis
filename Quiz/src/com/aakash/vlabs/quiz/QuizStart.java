@@ -58,7 +58,7 @@ public class QuizStart extends Activity implements OnAnswered{
         	else if(AllAns[i].getQnType().equals("Multiple_many") || AllAns[i].getQnType().equals("Short_Answer")){
         		ArrayList<String> tmpStrAry = new ArrayList<String>();
         		ArrayList<String> tmpFeedback = new ArrayList<String>();
-        		ArrayList<String> tmpSubAry = new ArrayList<String>();
+        		
         		ArrayList<McqOpts> mcq = pAns.parseMCQ();
         		for(int i1 = 0;i1<mcq.size();i1++){
         			if(mcq.get(i1).isAns){
@@ -66,7 +66,13 @@ public class QuizStart extends Activity implements OnAnswered{
         				tmpFeedback.add(mcq.get(i1).feedback);
         			}
         		}
-        		AllAns[i].setSubmulManyAns(tmpSubAry);
+        		if(AllAns[i].getQnType().equals("Short_Answer")){
+        			AllAns[i].setSubShortAns("");
+        		}else {
+        			ArrayList<String> tmpSubAry = new ArrayList<String>();
+            		AllAns[i].setSubmulManyAns(tmpSubAry);
+        		}
+        		
         		AllAns[i].setTruemulManyAns(tmpStrAry);
         		AllAns[i].setMulFeedback(tmpFeedback);
         	}
@@ -200,6 +206,10 @@ public class QuizStart extends Activity implements OnAnswered{
 					num++;
 			}
 			Toast.makeText(getApplicationContext(), num + " Answers Correct", Toast.LENGTH_SHORT).show();
+		}
+		else if(AllAns[QnNo].getQnType().equals("Short_Answer")){
+			Log.d("Updating Short Ans ..", QnNo +" -- "+AllAns[QnNo].getSubShortAns());
+			Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubShortAns(), Toast.LENGTH_SHORT).show();
 		}
 		
 	}

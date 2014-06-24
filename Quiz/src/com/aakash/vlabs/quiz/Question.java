@@ -7,16 +7,22 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 import com.aakash.vlabs.quiz.ParseAnswer.McqOpts;
 
@@ -39,6 +45,7 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 	String submitedMulAns ="";
 	
 	RadioGroup tfGroup,mulGroup;
+	EditText shortAns,numeric;
 	
 	public interface OnAnswered{
 		public void updateAns(int QnNo, MyAns ans);
@@ -122,6 +129,33 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 					chkLay.addView(checkBox);
 				}
 				qun_layout.addView(chkLay);
+			}
+			else if(parts[3].equals("Short_Answer")){
+				shortAns = new EditText(view.getContext());
+				shortAns.setHint("Enter your answer ");
+				shortAns.setText(savedAns.getSubShortAns());
+				//shortAns.setInputType(Text);
+				shortAns.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+				shortAns.setOnEditorActionListener(new OnEditorActionListener() {
+					
+					@Override
+					public boolean onEditorAction(TextView shortTxt, int actionId, KeyEvent event) {
+						// TODO Auto-generated method stub
+						boolean handled = false;
+				        if (actionId == EditorInfo.IME_ACTION_DONE) {
+				        	
+				        	submitedAns = shortTxt.getText().toString();
+							tmpAns = savedAns;
+							tmpAns.setSubShortAns(submitedAns);
+							mySavedAns.updateAns(currentId-1, tmpAns);
+				            handled = true;
+				           
+				        }
+				        return handled;
+					}
+				});
+				
+				qun_layout.addView(shortAns);
 			}
 			
 		}

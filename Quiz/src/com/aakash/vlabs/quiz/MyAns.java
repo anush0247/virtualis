@@ -20,6 +20,7 @@ public class MyAns {
 	
 	// Case : Multiple Many Choice & Short Answer
 	private ArrayList<String> truemulManyAns,submulManyAns,mulFeedback;
+	private String subShortAns;
 	
 	// Case : Numeric
 	private ArrayList<float[]> trueNumeric;
@@ -171,6 +172,14 @@ public class MyAns {
 
 	public void setSubMatch(ArrayList<String[]> subMatch) {
 		this.subMatch = subMatch;
+	}
+
+	public String getSubShortAns() {
+		return subShortAns;
+	}
+
+	public void setSubShortAns(String subShortAns) {
+		this.subShortAns = subShortAns;
 	}
 	
 	
