@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8.75"
-        android:orientation="horizontal"
-        android:background="#f98342">
+        android:orientation="horizontal">
         
         <FrameLayout 
             android:id="@+id/frag_question"

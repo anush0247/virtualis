@@ -1,0 +1,22 @@
+package com.aakash.vlabs.quiz;
+
+public class Ans {
+
+	// Question Identity
+	String Qn;
+	int QnNo;
+	
+	// Case : True / False
+	String trueAns;
+	String subAns;
+	
+	// Case : Multiple Choice
+	String truemulOptAns;
+	String submulOptAns;
+	
+	// Case : Multiple Many Choice & Short Ans
+	String[] truemulManyAns;
+	String[] submulManyAns;
+	
+	// Case : 
+}

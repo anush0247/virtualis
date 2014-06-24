@@ -1,0 +1,38 @@
+package com.aakash.vlabs.quiz;
+
+public class parseQuestion {
+	
+	String parts[] = new String[4];
+	String gift_qn = null;
+	
+	public parseQuestion(String gift_qn){
+		this.gift_qn = gift_qn;
+	}
+	
+	public void makeparts() {
+		String s = this.Gift_qn;
+		int v = s.indexOf('{');
+		int v1 = s.indexOf('}');
+		int v2 = s.indexOf(':', 2);
+		String title = "";
+		String question = (String) s.subSequence(0, v);
+		String answerpart = (String) s.subSequence(v + 1, v1);
+		if (s.startsWith("::")) {
+			title = (String) s.subSequence(2, v2);
+			v2 = v2 + 2;
+			question = (String) s.subSequence(v2, v);
+		}
+		v1++;
+		if (v1 != s.length() && s.charAt(v1) != '.') {
+			question += "__________";
+			question += s.subSequence(v1, s.length());
+		}
+		parts = new String[4];
+		parts[0] = title;
+		parts[1] = question;
+		parts[2] = answerpart.replaceAll("^[ \t]+", "") ;
+		parts[3] = getType(parts[2]);
+		
+	}
+
+}

@@ -1,0 +1,7 @@
+package com.aakash.vlabs.quiz;
+
+public class parseQuestion {
+	
+	String parts[] = new String[4];
+
+}

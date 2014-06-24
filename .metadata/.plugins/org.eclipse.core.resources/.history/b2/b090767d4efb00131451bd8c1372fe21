@@ -1,0 +1,26 @@
+package com.aakash.vlabs.quiz;
+
+public class MyAns {
+
+	// Data of a Single Question 
+	String Qn,QnType;
+	int QnNo;
+	float scoredWeight;
+	boolean isAnswred;
+	
+	// Case : True / False
+	String trueAns,subAns;
+	
+	// Case : Multiple Choice
+	String truemulOptAns,submulOptAns;
+	
+	// Case : Multiple Many Choice & Short Answer
+	String[] truemulManyAns,submulManyAns;
+	
+	// Case : Numeric
+	float trueNumeric, trueOffset, subNumeric;
+	
+	// Case : Matching
+	String[] trueMatch,subMatch;
+	
+}

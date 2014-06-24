@@ -1,0 +1,13 @@
+package com.aakash.vlabs.quiz;
+
+public class parseAnswer {
+	
+	String AnsString = null;
+	
+	public parseAnswer(String ansString){
+		this.AnsString = ansString;
+	}
+	
+	
+
+}

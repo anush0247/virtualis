@@ -1,0 +1,14 @@
+package com.aakash.vlabs.quiz;
+
+import android.view.View;
+import android.widget.LinearLayout;
+
+public class DrawLayout {
+	
+	// input : Parsed Question String array 
+	// output : parse the Answer String and return a view and validation conditions 
+	
+	public void drawTF(LinearLayout layout, View v, String trueAns, String feedback){
+		
+	}
+}

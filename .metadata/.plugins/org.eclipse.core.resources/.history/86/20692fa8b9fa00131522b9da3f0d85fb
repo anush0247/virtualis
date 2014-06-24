@@ -1,0 +1,175 @@
+//validating mcq
+{
+ArrayList<String> answers = new ArrayList<String>();
+for (int i = 0; i < list.size(); i++) {
+	if(list.get(i).isans){
+		answers.add(list.get(i));
+	}
+}
+if (rg.getCheckedRadioButtonId() != -1) {
+	RadioButton selectRadio = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
+	String opinion = selectRadio.getText().toString();
+int cnt=0;
+for(int i=0;i<answers.size();i++){
+	if (answers.get(i).value.isequals(opinion)) {
+		Toast.makeText(getBaseContext(),"Your answer is correct"+"weight="+answers.get(i).weight+"feedback="+answers.get(i).feedback, Toast.LENGTH_LONG).show();
+cnt++;
+		break;
+		} 
+}
+if(cnt==0)Toast.makeText(getBaseContext(),"Your answer is wrong", Toast.LENGTH_LONG).show();}
+else {
+					Toast.makeText(getBaseContext(), "choose your answer",Toast.LENGTH_LONG).show();
+					onCreate(null);
+}
+}
+
+
+//validating missing
+{
+String opinion=ip.getText().toString();//entered answer
+if (opinion.length != 0) {
+int cnt=0;
+for(int i=0;i<list.size();i++){
+	if (list.get(i).value.isequals(opinion)) {
+		Toast.makeText(getBaseContext(),"Your answer is correct"+"weight="+answers.get(i).weight+"feedback="+answers.get(i).feedback, Toast.LENGTH_LONG).show();
+cnt++;
+		break;
+		} 
+}
+if(cnt==0)Toast.makeText(getBaseContext(),"Your answer is wrong", Toast.LENGTH_LONG).show();}
+else {
+					Toast.makeText(getBaseContext(), "Enter the answer",Toast.LENGTH_LONG).show();
+					onCreate(null);
+}
+}
+
+//validating mutiple answers
+{
+ArrayList<String> answers = new ArrayList<String>();
+ArrayList<String> not_answers = new ArrayList<String>();
+for (int i = 0; i < list.size(); i++) {
+	if(list.get(i).weight>0){
+		answers.add(list.get(i));
+	}
+	else
+		not_answers.add(list.get(i));
+}
+
+	if (numChecked > 0) {
+					for (int i = 0; i < num; i++) {
+						CheckBox c = (CheckBox) findViewById(i);
+						int cnt=0;
+						if (c.isChecked()) {
+								
+								for(int i=0;i<not_answers.size();i++){
+									if (not_answers.get(i).value.isequals(c.getText)) {
+											Toast.makeText(getBaseContext(),"Your answer is wrong", Toast.LENGTH_LONG).show();
+											cnt++;
+											break;
+									} 
+								}
+								for(int i=0;i<answers.size();i++){
+									if (answers.get(i).value.isequals(c.getText)) {
+											total_weight+=answers.get(i).weight;
+											
+									} 
+								}
+							
+							
+						}
+					if (cnt == 0) {
+						Toast.makeText(getBaseContext(),
+								"Your answer is correct"+"weight="+Total_weight, Toast.LENGTH_LONG)
+								.show();
+					}
+					}
+	
+					 
+					 
+					finish();
+				} else {
+					Toast.makeText(getBaseContext(), "choose your answer",
+							Toast.LENGTH_LONG).show();
+					onCreate(null);
+				}
+
+}
+//Validating True/false
+{
+String Answer=trueAns;
+if (rgOpinion.getCheckedRadioButtonId() != -1) {
+					RadioButton selectRadio = (RadioButton) findViewById(rgOpinion
+							.getCheckedRadioButtonId());
+					String opinion = selectRadio.getText().toString();
+					if (opinion.equals(Answer)) {
+						Toast.makeText(getBaseContext(),
+								"Your answer is correct" + feedback,
+								Toast.LENGTH_LONG).show();
+					} else {
+						Toast.makeText(getBaseContext(),
+								"Your answer is wrong", Toast.LENGTH_LONG)
+								.show();
+					}
+					finish();
+				} else {
+					Toast.makeText(getBaseContext(), "choose your answer",
+							Toast.LENGTH_LONG).show();
+					onCreate(null);
+				}
+}
+
+
+//validating numeric
+{
+String opinion=ip.getText().toString();//entered answer
+float answer=Float.parseFloat(opinion)
+if (opinion.length != 0) {
+int cnt=0;
+for (int i = 0; i < numList.size(); i++) {
+				float low,high;
+				low=numList.get(i)[0]-numList.get(i)[1];
+				high=numList.get(i)[0]+numList.get(i)[1];
+				if((low<=answer) && (answer<=heigh))
+							{
+							cnt++;
+							Toast.makeText(getBaseContext(), "answer is correct"+"weight="+numList.get(i)[2],
+							Toast.LENGTH_LONG).show();
+							}
+			}
+if(cnt==0)Toast.makeText(getBaseContext(),"Your answer is wrong", Toast.LENGTH_LONG).show();}
+
+}
+else {
+					Toast.makeText(getBaseContext(), "Enter your answer answer",
+							Toast.LENGTH_LONG).show();
+					onCreate(null);
+}
+}
+
+//validating Matching
+
+//done by u
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+package com.aakash.vlabs.quiz;
+
+public class parseQuestion {
+	
+	String parts[] = new String[4];
+	String gift_qn = null;
+	
+	public parseQuestion(String gift_qn){
+		this.gift_qn = gift_qn;
+	}
+	
+	
+
+}
