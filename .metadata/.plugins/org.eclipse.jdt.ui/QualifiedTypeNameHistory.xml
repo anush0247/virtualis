@@ -20,14 +20,9 @@
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="java.lang.Float"/>
 <fullyQualifiedTypeName name="android.widget.RadioGroup"/>
-<fullyQualifiedTypeName name="android.widget.RadioButton"/>
-<fullyQualifiedTypeName name="android.widget.CompoundButton.OnCheckedChangeListener"/>
-<fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.DrawLayout"/>
 <fullyQualifiedTypeName name="android.widget.LinearLayout"/>
-<fullyQualifiedTypeName name="android.view.ViewGroup.LayoutParams"/>
 <fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
-<fullyQualifiedTypeName name="android.widget.RadioGroup.OnCheckedChangeListener"/>
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.Question.OnAnswered"/>
 <fullyQualifiedTypeName name="org.apache.http.impl.entity.StrictContentLengthStrategy"/>
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.parseQuestion"/>
@@ -35,8 +30,18 @@
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.parseAnswer.McqOpts"/>
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.ParseAnswer"/>
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.ParseQuestion"/>
-<fullyQualifiedTypeName name="com.aakash.vlabs.quiz.ParseAnswer.McqOpts"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="android.widget.RadioButton"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="android.widget.RadioGroup.OnCheckedChangeListener"/>
+<fullyQualifiedTypeName name="com.aakash.vlabs.quiz.ParseAnswer.McqOpts"/>
+<fullyQualifiedTypeName name="android.widget.Checkable"/>
+<fullyQualifiedTypeName name="android.widget.CompoundButton.OnCheckedChangeListener"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="android.widget.EditText"/>
+<fullyQualifiedTypeName name="android.widget.TextView.OnEditorActionListener"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Text"/>
+<fullyQualifiedTypeName name="android.provider.ContactsContract.CommonDataKinds.Email"/>
+<fullyQualifiedTypeName name="android.view.ViewGroup.LayoutParams"/>
 </qualifiedTypeNameHistroy>

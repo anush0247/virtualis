@@ -211,10 +211,6 @@ public class QuizStart extends Activity implements OnAnswered{
 			Log.d("Updating Short Ans ..", QnNo +" -- "+AllAns[QnNo].getSubShortAns());
 			Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubShortAns(), Toast.LENGTH_SHORT).show();
 		}
-		else if(AllAns[QnNo].getQnType().equals("Numeric")){
-			Log.d("Updating Numeric Ans ..", QnNo +" -- "+AllAns[QnNo].getSubNumeric());
-			Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubNumeric(), Toast.LENGTH_SHORT).show();
-		}
 		
 	}
 

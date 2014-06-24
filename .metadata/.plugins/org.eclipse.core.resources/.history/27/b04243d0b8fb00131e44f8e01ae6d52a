@@ -46,7 +46,6 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 	
 	RadioGroup tfGroup,mulGroup;
 	EditText shortAns,numeric;
-	View tmpView = null;
 	
 	public interface OnAnswered{
 		public void updateAns(int QnNo, MyAns ans);
@@ -59,7 +58,6 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 		// TODO Auto-generated method stub
 		
 		View view = inflater.inflate(R.layout.question, container, false);
-		tmpView = view;
 		LinearLayout qun_layout = (LinearLayout) view.findViewById(R.id.myquestions_page);
 		TextView mytext = new TextView(view.getContext());
 		
@@ -221,12 +219,12 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 			        if (actionId == EditorInfo.IME_ACTION_DONE) {
 			        	
 			        	submitedAns = shortTxt.getText().toString();
-			        	float tmpFloat = 0;
+			        	float tmpFloat;
 			        	try{
 			        		tmpFloat = Float.parseFloat(submitedAns);
 			        	}
 			        	catch(Exception e){
-			        		Toast.makeText(tmpView.getContext(), "Enter a Numeric", Toast.LENGTH_SHORT).show();
+			        		Toast.makeText(view.getContext(), "Enter a Numeric", Toast.LENGTH_SHORT).show();
 			        	}
 						tmpAns = savedAns;
 						tmpAns.setSubNumeric(tmpFloat);
@@ -237,7 +235,6 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 			        return handled;
 				}
 			});
-			qun_layout.addView(numeric);
 			// send this numList to draw layout
 		}
 		else if(parts[3].equals("Matching")){

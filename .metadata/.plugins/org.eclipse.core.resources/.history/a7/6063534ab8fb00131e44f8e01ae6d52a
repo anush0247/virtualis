@@ -22,7 +22,6 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import android.widget.Toast;
 
 import com.aakash.vlabs.quiz.ParseAnswer.McqOpts;
 
@@ -46,7 +45,6 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 	
 	RadioGroup tfGroup,mulGroup;
 	EditText shortAns,numeric;
-	View tmpView = null;
 	
 	public interface OnAnswered{
 		public void updateAns(int QnNo, MyAns ans);
@@ -59,7 +57,6 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 		// TODO Auto-generated method stub
 		
 		View view = inflater.inflate(R.layout.question, container, false);
-		tmpView = view;
 		LinearLayout qun_layout = (LinearLayout) view.findViewById(R.id.myquestions_page);
 		TextView mytext = new TextView(view.getContext());
 		
@@ -207,37 +204,6 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 			for(int i = 0;i<numList.size();i++){
 				Log.d("Numeric : ", "Num : "+numList.get(i)[0]+" +/- " + numList.get(i)[1] + " Weight : " + numList.get(i)[2]);
 			}
-			numeric = new EditText(view.getContext());
-			numeric.setHint("Enter your answer ");
-			numeric.setText(""+savedAns.getSubNumeric());
-			//numeric.setInputType(Text);
-			numeric.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
-			numeric.setOnEditorActionListener(new OnEditorActionListener() {
-				
-				@Override
-				public boolean onEditorAction(TextView shortTxt, int actionId, KeyEvent event) {
-					// TODO Auto-generated method stub
-					boolean handled = false;
-			        if (actionId == EditorInfo.IME_ACTION_DONE) {
-			        	
-			        	submitedAns = shortTxt.getText().toString();
-			        	float tmpFloat = 0;
-			        	try{
-			        		tmpFloat = Float.parseFloat(submitedAns);
-			        	}
-			        	catch(Exception e){
-			        		Toast.makeText(tmpView.getContext(), "Enter a Numeric", Toast.LENGTH_SHORT).show();
-			        	}
-						tmpAns = savedAns;
-						tmpAns.setSubNumeric(tmpFloat);
-						mySavedAns.updateAns(currentId-1, tmpAns);
-			            handled = true;
-			           
-			        }
-			        return handled;
-				}
-			});
-			qun_layout.addView(numeric);
 			// send this numList to draw layout
 		}
 		else if(parts[3].equals("Matching")){

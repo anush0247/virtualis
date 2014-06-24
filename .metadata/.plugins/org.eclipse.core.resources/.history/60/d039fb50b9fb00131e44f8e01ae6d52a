@@ -237,7 +237,7 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 			        return handled;
 				}
 			});
-			qun_layout.addView(numeric);
+			
 			// send this numList to draw layout
 		}
 		else if(parts[3].equals("Matching")){
