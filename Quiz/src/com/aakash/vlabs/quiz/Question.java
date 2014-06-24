@@ -30,7 +30,12 @@ public class Question extends Fragment  {
 	
 	//true or false 
 	String trueAns,feedback,submitedAns = "";
-	RadioGroup tfGroup;
+	
+	//mcq options
+	ArrayList<McqOpts> list = null;
+	String submitedMulAns ="";
+	
+	RadioGroup tfGroup,mulGroup;
 	
 	public interface OnAnswered{
 		public void updateAns(int QnNo, MyAns ans);
@@ -62,11 +67,42 @@ public class Question extends Fragment  {
 		if(parts[3].equals("Multiple") || parts[3].equals("Multiple_many") || parts[3].equals("Short_Answer")){
 			Log.d("I found :", parts[2]);
 			
-			ArrayList<McqOpts> list = pAns.parseMCQ(); 
-			for(int i = 0;i<list.size();i++){
+			list = pAns.parseMCQ(); 
+			/*for(int i = 0;i<list.size();i++){
 				Log.d(""+i,list.get(i).toString());
-			}
+			}*/
 			// send this list to draw layout
+			
+			if(parts[3].equals("Multiple")){
+				
+				mulGroup = new RadioGroup(view.getContext());
+				for(int i = 0;i<list.size();i++){
+					RadioButton mulOpt = new RadioButton(view.getContext());
+					mulOpt.setText(list.get(i).value);
+					mulOpt.setTag(list.get(i).value);
+					mulOpt.setId(i);
+					if(savedAns.getSubmulOptAns().equals(list.get(i).value)){
+						mulOpt.setChecked(true);
+					}
+					mulGroup.addView(mulOpt);
+				}
+				
+				mulGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+					
+					@Override
+					public void onCheckedChanged(RadioGroup rg, int index) {
+						// TODO Auto-generated method stub
+						Log.d("Index",""+rg.getChildAt(index).getId());
+						submitedMulAns = list.get(rg.getChildAt(index).getId()).value;
+						tmpAns = savedAns;
+						tmpAns.setSubmulOptAns(submitedMulAns);
+						mySavedAns.updateAns(currentId-1, tmpAns);
+					}
+				});
+				
+				qun_layout.addView(mulGroup);
+			}
+			
 		}
 		else if(parts[3].equals("True_false")){
 			

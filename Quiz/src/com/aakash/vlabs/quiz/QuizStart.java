@@ -46,6 +46,7 @@ public class QuizStart extends Activity implements OnAnswered{
         	
         	ParseAnswer pAns = new ParseAnswer(pQuestion.parts[2]);
         	if(AllAns[i].getQnType().equals("Multiple")){
+        		AllAns[i].setSubmulOptAns("");
         		ArrayList<McqOpts> mcq = pAns.parseMCQ();
         		for(int i1 = 0;i1<mcq.size();i1++){
         			if(mcq.get(i1).isAns){
@@ -57,6 +58,7 @@ public class QuizStart extends Activity implements OnAnswered{
         	else if(AllAns[i].getQnType().equals("Multiple_many") || AllAns[i].getQnType().equals("Short_Answer")){
         		ArrayList<String> tmpStrAry = new ArrayList<String>();
         		ArrayList<String> tmpFeedback = new ArrayList<String>();
+        		ArrayList<String> tmpSubAry = new ArrayList<String>();
         		ArrayList<McqOpts> mcq = pAns.parseMCQ();
         		for(int i1 = 0;i1<mcq.size();i1++){
         			if(mcq.get(i1).isAns){
@@ -64,6 +66,7 @@ public class QuizStart extends Activity implements OnAnswered{
         				tmpFeedback.add(mcq.get(i1).feedback);
         			}
         		}
+        		AllAns[i].setSubmulManyAns(tmpSubAry);
         		AllAns[i].setTruemulManyAns(tmpStrAry);
         		AllAns[i].setMulFeedback(tmpFeedback);
         	}
@@ -174,15 +177,23 @@ public class QuizStart extends Activity implements OnAnswered{
 	public void updateAns(int QnNo, MyAns ans) {
 		// TODO Auto-generated method stub
 		AllAns[QnNo] = ans;
-		Log.d("Updating ...", ""+QnNo+""+AllAns[QnNo].getSubAns());
-		String msg = "Your Answer is ";
-		if(AllAns[QnNo].getTrueAns().equals(AllAns[QnNo].getSubAns())){
-			msg += "Correct";
+		
+		if(AllAns[QnNo].getQnType().equals("True_false")){
+			Log.d("Updating ...", ""+QnNo+""+AllAns[QnNo].getSubAns());
+			String msg = "Your Answer is ";
+			if(AllAns[QnNo].getTrueAns().equals(AllAns[QnNo].getSubAns()))msg += "Correct";
+			else msg += "Wrong";
+			Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 		}
-		else {
-			msg += "Wrong";
+		else if(AllAns[QnNo].getQnType().equals("Multiple")){
+			Log.d("Updating ...", ""+QnNo+""+AllAns[QnNo].getSubmulOptAns());
+			String msg = "Your Answer is ";
+			if(AllAns[QnNo].getTruemulOptAns().equals(AllAns[QnNo].getSubmulOptAns()))msg += "Correct";
+			else msg += "Wrong";
+			Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 		}
-		Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+		
+		
 	}
 
     
