@@ -1133,6 +1133,7 @@ containing a value of this type.
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
+        public static final int spinnerTarget=0x7f050046;
         public static final int split_action_bar=0x7f05001e;
         public static final int star_quiz=0x7f05003d;
         public static final int submit_area=0x7f050039;
@@ -1196,7 +1197,8 @@ containing a value of this type.
         public static final int question=0x7f030018;
         public static final int quiz_pre_start=0x7f030019;
         public static final int quiz_start=0x7f03001a;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001b;
+        public static final int spinner_layout=0x7f03001b;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001c;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 

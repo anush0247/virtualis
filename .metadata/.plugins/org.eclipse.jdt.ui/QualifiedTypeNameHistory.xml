@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="android.app.Fragment"/>
-<fullyQualifiedTypeName name="com.aakash.vlabs.quiz.R.layout"/>
 <fullyQualifiedTypeName name="android.webkit.WebView.FindListener"/>
 <fullyQualifiedTypeName name="android.widget.TextView"/>
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.QuizStart"/>
@@ -12,7 +11,6 @@
 <fullyQualifiedTypeName name="android.R.id"/>
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.Question"/>
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.R.id"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
 <fullyQualifiedTypeName name="javax.xml.namespace.QName"/>
 <fullyQualifiedTypeName name="android.R.bool"/>
@@ -21,7 +19,6 @@
 <fullyQualifiedTypeName name="java.lang.Float"/>
 <fullyQualifiedTypeName name="android.widget.RadioGroup"/>
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.DrawLayout"/>
-<fullyQualifiedTypeName name="android.widget.LinearLayout"/>
 <fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.Question.OnAnswered"/>
 <fullyQualifiedTypeName name="org.apache.http.impl.entity.StrictContentLengthStrategy"/>
@@ -31,17 +28,22 @@
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.ParseAnswer"/>
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.ParseQuestion"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
-<fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="android.widget.RadioButton"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="android.widget.RadioGroup.OnCheckedChangeListener"/>
 <fullyQualifiedTypeName name="com.aakash.vlabs.quiz.ParseAnswer.McqOpts"/>
 <fullyQualifiedTypeName name="android.widget.Checkable"/>
 <fullyQualifiedTypeName name="android.widget.CompoundButton.OnCheckedChangeListener"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="android.widget.EditText"/>
 <fullyQualifiedTypeName name="android.widget.TextView.OnEditorActionListener"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Text"/>
 <fullyQualifiedTypeName name="android.provider.ContactsContract.CommonDataKinds.Email"/>
 <fullyQualifiedTypeName name="android.view.ViewGroup.LayoutParams"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="android.widget.LinearLayout"/>
+<fullyQualifiedTypeName name="android.widget.ScrollView"/>
+<fullyQualifiedTypeName name="com.aakash.vlabs.quiz.R.layout"/>
+<fullyQualifiedTypeName name="android.widget.AdapterView.OnItemSelectedListener"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

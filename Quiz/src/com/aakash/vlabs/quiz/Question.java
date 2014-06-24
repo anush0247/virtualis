@@ -1,6 +1,8 @@
 package com.aakash.vlabs.quiz;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -13,6 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -20,6 +25,8 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
@@ -42,11 +49,12 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 	//mcq options
 	ArrayList<McqOpts> list = null;
 	ArrayList<String> tmpOptions = new ArrayList<String>();
+	ArrayList<String> tmpMatArr = new ArrayList<String>();
 	String submitedMulAns ="";
 	
 	RadioGroup tfGroup,mulGroup;
 	EditText shortAns,numeric;
-	View tmpView = null;
+	View tmpView;
 	
 	public interface OnAnswered{
 		public void updateAns(int QnNo, MyAns ans);
@@ -166,7 +174,7 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 			tfGroup = new RadioGroup(view.getContext());
 			tfGroup.setTag("RadioGroup"+currentId);
 			
-			RadioButton trueBtn = new RadioButton(view.getContext());
+			RadioButton trueBtn = new RadioButton(view.getContext()); 
 			trueBtn.setText("True");
 			trueBtn.setTag("True");
 			trueBtn.setId(0);
@@ -242,9 +250,83 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 		}
 		else if(parts[3].equals("Matching")){
 			ArrayList<String[]> matchingList = pAns.parseMatching();
-			for(int i = 0;i<matchingList.size();i++){
-				Log.d("Matching : " + i, "Question : "+matchingList.get(i)[0]+" +---+ " + matchingList.get(i)[1] );
+//			for(int i = 0;i<matchingList.size();i++){
+//				Log.d("Matching : " + i, "Question : "+matchingList.get(i)[0]+" +---+ " + matchingList.get(i)[1] );
+//			}
+			
+			ScrollView scroll = new ScrollView(view.getContext());
+			
+			LinearLayout matLayoutParent = new LinearLayout(view.getContext());
+			matLayoutParent.setPadding(10, 10, 10, 10);
+			matLayoutParent.setOrientation(1);
+			matLayoutParent.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+			
+			tmpMatArr = new ArrayList<String>();
+			//tmpMatArr.add("");
+			for(int i = 0;i < matchingList.size();i++){
+				tmpMatArr.add(matchingList.get(i)[1]);
 			}
+			
+			long seed = System.nanoTime();
+			Collections.shuffle(tmpMatArr, new Random(seed));
+			Collections.shuffle(tmpMatArr, new Random(seed));
+			tmpMatArr.add(0,"Select a Match");
+			//tmpMatArr;
+			
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),
+					android.R.layout.simple_list_item_1, tmpMatArr);
+			adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+			
+			for(int i = 0;i<matchingList.size();i++){
+				LinearLayout matLayout = new LinearLayout(view.getContext());
+				matLayout.setOrientation(0);
+				matLayout.setId(20+i);
+				matLayout.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+				
+				TextView matOption = new TextView(view.getContext());
+				matOption.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+				matOption.setText((i+1)+". "+matchingList.get(i)[0]);
+				matOption.setTextSize(18);
+				matOption.setId(10+i);
+				matLayout.addView(matOption);
+				
+				Spinner matOptSpinner = new Spinner(view.getContext());
+				matOptSpinner.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+				matOptSpinner.setId(i);
+				matOptSpinner.setAdapter(adapter);
+				int mypos = 0;
+				
+				for(int k=0;k<tmpMatArr.size();k++){
+					if(tmpMatArr.get(k).equals(savedAns.getSubMatch().get(i)[1])){
+						mypos = k;
+					}
+				}
+				matOptSpinner.setSelection(mypos);
+				matOptSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+					@Override
+					public void onItemSelected(AdapterView<?> parent, View v,
+							int pos, long id) {
+						// TODO Auto-generated method stub
+						tmpAns = savedAns;
+						tmpAns.getSubMatch().get(parent.getId())[1] = tmpMatArr.get(pos);
+						mySavedAns.updateAns(currentId-1, tmpAns);
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> parent) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
+				matOptSpinner.setPadding(0, 0, 0, 0);
+				
+				matLayout.addView(matOptSpinner);
+				matLayoutParent.addView(matLayout);
+			}
+			
+			scroll.addView(matLayoutParent);
+			qun_layout.addView(scroll);
 			// send this matchingList to draw layout
 		}
 		

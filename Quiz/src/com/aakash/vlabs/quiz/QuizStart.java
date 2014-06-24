@@ -88,6 +88,14 @@ public class QuizStart extends Activity implements OnAnswered{
         	}
         	else if(AllAns[i].getQnType().equals("Matching")){
         		ArrayList<String[]> tmpStringAry = pAns.parseMatching();
+        		ArrayList<String[]> tmpSubStrAry = new ArrayList<String[]>();
+        		for(int i1 = 0;i1<tmpStringAry.size();i1++){
+        			String[] tmpAr = new String[2];
+        			tmpAr[0] = tmpStringAry.get(i1)[0];
+        			tmpAr[1] = "Select a Match";
+        			tmpSubStrAry.add(tmpAr);
+        		}
+        		AllAns[i].setSubMatch(tmpSubStrAry);
         		AllAns[i].setTrueMatch(tmpStringAry);
         	}
         	else {
@@ -214,6 +222,14 @@ public class QuizStart extends Activity implements OnAnswered{
 		else if(AllAns[QnNo].getQnType().equals("Numeric")){
 			Log.d("Updating Numeric Ans ..", QnNo +" -- "+AllAns[QnNo].getSubNumeric());
 			Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubNumeric(), Toast.LENGTH_SHORT).show();
+		}
+		else if(AllAns[QnNo].getQnType().equals("Matching")){
+			String ab = "";
+			for(int i = 0;i<AllAns[QnNo].getSubMatch().size();i++){
+				ab += "Opt : "+ AllAns[QnNo].getSubMatch().get(i)[0] +" :--- " + AllAns[QnNo].getSubMatch().get(i)[1] + "\n";
+			}
+			Log.d("Updating Matching Ans ..", QnNo +" -- " + ab);
+			Toast.makeText(getApplicationContext(), "You have selected " + ab, Toast.LENGTH_SHORT).show();
 		}
 		
 	}
