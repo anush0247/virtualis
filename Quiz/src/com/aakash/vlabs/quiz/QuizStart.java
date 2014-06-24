@@ -192,7 +192,15 @@ public class QuizStart extends Activity implements OnAnswered{
 			else msg += "Wrong";
 			Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 		}
-		
+		else if(AllAns[QnNo].getQnType().equals("Multiple_many")){
+			Log.d("Updating Multiple Ans ..", QnNo +" -- "+AllAns[QnNo].getSubmulManyAns().size());
+			int num = 0;
+			for(int i = 0;i<AllAns[QnNo].getTruemulManyAns().size();i++){
+				if(AllAns[QnNo].getSubmulManyAns().contains(AllAns[QnNo].getTruemulManyAns().get(i)))
+					num++;
+			}
+			Toast.makeText(getApplicationContext(), num + " Answers Correct", Toast.LENGTH_SHORT).show();
+		}
 		
 	}
 

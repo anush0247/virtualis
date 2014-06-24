@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -18,7 +20,7 @@ import android.widget.TextView;
 
 import com.aakash.vlabs.quiz.ParseAnswer.McqOpts;
 
-public class Question extends Fragment  {
+public class Question extends Fragment implements android.widget.CompoundButton.OnCheckedChangeListener {
 	
 	OnAnswered mySavedAns;
 	
@@ -33,6 +35,7 @@ public class Question extends Fragment  {
 	
 	//mcq options
 	ArrayList<McqOpts> list = null;
+	ArrayList<String> tmpOptions = new ArrayList<String>();
 	String submitedMulAns ="";
 	
 	RadioGroup tfGroup,mulGroup;
@@ -68,10 +71,6 @@ public class Question extends Fragment  {
 			Log.d("I found :", parts[2]);
 			
 			list = pAns.parseMCQ(); 
-			/*for(int i = 0;i<list.size();i++){
-				Log.d(""+i,list.get(i).toString());
-			}*/
-			// send this list to draw layout
 			
 			if(parts[3].equals("Multiple")){
 				
@@ -101,6 +100,28 @@ public class Question extends Fragment  {
 				});
 				
 				qun_layout.addView(mulGroup);
+			}
+			else if(parts[3].equals("Multiple_many")){
+				LinearLayout chkLay = new LinearLayout(view.getContext());
+				chkLay.setOrientation(LinearLayout.VERTICAL);
+				
+				tmpOptions = savedAns.getSubmulManyAns();
+						
+				for(int i = 0;i<list.size();i++){
+					CheckBox checkBox = new CheckBox(view.getContext());
+					checkBox.setText(list.get(i).value);
+					checkBox.setTag(list.get(i).value);
+					checkBox.setId(i);
+					
+					for(int j=0;j<savedAns.getSubmulManyAns().size();j++){
+						if(savedAns.getSubmulManyAns().get(j).equals(list.get(i).value)){
+							checkBox.setChecked(true);
+						}
+					}
+					checkBox.setOnCheckedChangeListener(this);
+					chkLay.addView(checkBox);
+				}
+				qun_layout.addView(chkLay);
 			}
 			
 		}
@@ -191,4 +212,26 @@ public class Question extends Fragment  {
                     + " must implement OnAnswered method");
         }
     }
+
+
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		// TODO Auto-generated method stub
+		Log.d("index Btn",""+buttonView.getId());
+		
+		if(isChecked){
+			tmpOptions.add(list.get(buttonView.getId()).value);
+		}
+		else {
+			
+			Log.d("Size",tmpOptions.size()+"");
+			tmpOptions.remove(list.get(buttonView.getId()).value);
+			Log.d("Size",tmpOptions.size()+"");
+			
+		}
+		
+		tmpAns = savedAns;
+		tmpAns.setSubmulManyAns(tmpOptions);
+		mySavedAns.updateAns(currentId-1, tmpAns);
+	}
 }
