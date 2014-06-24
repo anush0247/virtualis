@@ -1,8 +1,0 @@
-package com.aakash.vlabs.quiz;
-
-public class Ans {
-
-	// Case : True / False
-	String trueAns;
-	
-}

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aakash.vlabs.quiz.ParseAnswer.McqOpts;
 import com.aakash.vlabs.quiz.Question.OnAnswered;
@@ -70,6 +71,7 @@ public class QuizStart extends Activity implements OnAnswered{
         		String[] tfArr = pAns.parseTrueFalse();
         		AllAns[i].setTrueAns(tfArr[0]);
         		AllAns[i].setFeedback(tfArr[1]);
+        		AllAns[i].setSubAns("");
         	}
         	else if(AllAns[i].getQnType().equals("Numeric")){
         		ArrayList<float[]> tmpFloatAry = pAns.parseNumeric();
@@ -172,6 +174,15 @@ public class QuizStart extends Activity implements OnAnswered{
 	public void updateAns(int QnNo, MyAns ans) {
 		// TODO Auto-generated method stub
 		AllAns[QnNo] = ans;
+		Log.d("Updating ...", ""+QnNo+""+AllAns[QnNo].getSubAns());
+		String msg = "Your Answer is ";
+		if(AllAns[QnNo].getTrueAns().equals(AllAns[QnNo].getSubAns())){
+			msg += "Correct";
+		}
+		else {
+			msg += "Wrong";
+		}
+		Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 	}
 
     

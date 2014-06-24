@@ -10,11 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
 import com.aakash.vlabs.quiz.ParseAnswer.McqOpts;
@@ -53,7 +52,7 @@ public class Question extends Fragment  {
 		mytext.setText("Question "+ currentId + ". "+parts[0] +"\n" 
 				+ parts[1] + "\n"
 				+ parts[2] + "\n"
-				+ parts[3] + "\n");
+				+ parts[3] );
 		mytext.setPadding(10, 5, 10, 5);
 		mytext.setTextSize(18);
 		qun_layout.addView(mytext);
@@ -71,16 +70,6 @@ public class Question extends Fragment  {
 		}
 		else if(parts[3].equals("True_false")){
 			
-			trueAns = ""; feedback = "No Feedback Provided";
-			if(parts[2].charAt(0) == 'T' || parts[2].charAt(0) == 't' ) trueAns = "True";
-			else trueAns = "False";
-			String[] ansArr = parts[2].split("#");
-			if(ansArr.length != 1){
-				feedback = ansArr[1];
-			}
-			Log.d("True / False ",trueAns);
-			
-			
 			tfGroup = new RadioGroup(view.getContext());
 			tfGroup.setTag("RadioGroup"+currentId);
 			
@@ -88,39 +77,35 @@ public class Question extends Fragment  {
 			trueBtn.setText("True");
 			trueBtn.setTag("True");
 			trueBtn.setId(0);
+			if(savedAns.getSubAns().equals("True")){
+				trueBtn.setChecked(true);
+			}
 			
 			RadioButton falseBtn = new RadioButton(view.getContext());
 			falseBtn.setText("False");
 			falseBtn.setTag("False");
 			falseBtn.setId(1);
+			if(savedAns.getSubAns().equals("False")){
+				falseBtn.setChecked(true);
+			}
 			
 			tfGroup.addView(trueBtn);
 			tfGroup.addView(falseBtn);
 			tfGroup.setOrientation(0);
 			qun_layout.addView(tfGroup);
 			
-			Button submitBtn = new Button(view.getContext());
-			submitBtn.setText("Submit");
-			submitBtn.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-			 
-			qun_layout.addView(submitBtn);
-			 
-			/*tfGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			tfGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 				
 				@Override
 				public void onCheckedChanged(RadioGroup rg, int index) {
 					// TODO Auto-generated method stub
 					
 					submitedAns = (String) rg.getChildAt(index).getTag();
-					
 					tmpAns = savedAns;
 					tmpAns.setSubAns(submitedAns);
 					mySavedAns.updateAns(currentId-1, tmpAns);
-					
-					Toast.makeText(getActivity(), submitedAns, Toast.LENGTH_LONG).show();
-					
 				}
-			});*/
+			});
 			 
 			// send this trueAns, feedback to draw layout or create here itself
 		}
