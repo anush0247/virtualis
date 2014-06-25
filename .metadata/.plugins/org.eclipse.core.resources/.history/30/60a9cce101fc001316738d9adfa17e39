@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+  <item android:id="@+id/action_search"
+    android:title="@string/action_prev"
+    android:showAsAction="ifRoom" />
+  <item android:id="@+id/action_record"
+    android:title="@string/action_end"
+    android:showAsAction="ifRoom" />
+  <item android:id="@+id/action_save"
+    android:title="@string/action_next"
+    android:showAsAction="ifRoom" />
+</menu>

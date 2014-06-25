@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -24,12 +25,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import android.widget.Toast;
 
 import com.aakash.vlabs.quiz.ParseAnswer.McqOpts;
 
@@ -216,6 +217,8 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 				Log.d("Numeric : ", "Num : "+numList.get(i)[0]+" +/- " + numList.get(i)[1] + " Weight : " + numList.get(i)[2]);
 			}
 			numeric = new EditText(view.getContext());
+			
+			numeric.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
 			numeric.setHint("Enter your answer ");
 			numeric.setText(""+savedAns.getSubNumeric());
 			//numeric.setInputType(Text);
@@ -231,11 +234,11 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 			        	submitedAns = shortTxt.getText().toString();
 			        	float tmpFloat = 0;
 			        	try{
-			        		tmpFloat = Float.parseFloat(submitedAns);
+			        		tmpFloat =  Float.parseFloat(submitedAns);
+			        	}catch(Exception e){
+			        		Toast.makeText(tmpView.getContext(), "Enter Numeric", Toast.LENGTH_SHORT).show();
 			        	}
-			        	catch(Exception e){
-			        		Toast.makeText(tmpView.getContext(), "Enter a Numeric", Toast.LENGTH_SHORT).show();
-			        	}
+			        	
 						tmpAns = savedAns;
 						tmpAns.setSubNumeric(tmpFloat);
 						mySavedAns.updateAns(currentId-1, tmpAns);
