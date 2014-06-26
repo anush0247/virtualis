@@ -1,0 +1,100 @@
+package com.aakash.vlabs.quiz;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
+import android.webkit.WebView;
+
+public class Summary extends Activity{
+
+	MyAns[] AllAns = null;
+	WebView mWebView;
+	
+	int total = 0,correct = 0, wrong = 0, isans = 0, partial = 0, grand = 0;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.summary);
+		
+		Parcelable[] ps = getIntent().getParcelableArrayExtra("allAns");
+		AllAns = new MyAns[ps.length];
+		total = AllAns.length;
+		
+		Log.d("Received",""+AllAns.length);
+		System.arraycopy(ps, 0, AllAns, 0, ps.length);
+		
+		
+		
+		//correct = Integer.parseInt(getIntent().getStringExtra("correct"));
+		//wrong = Integer.parseInt(getIntent().getStringExtra("wrong"));
+		
+		String tmpHTML = "";
+		String tmpHTML1 = "";
+		
+		for(int i = 0;i<AllAns.length;i++){
+			Log.d("Css Recived", AllAns[i].getCssCls());
+			Log.d("isAns"+i,""+AllAns[i].getIsAnswred());
+			if(AllAns[i].getIsAnswred() == 1) {
+				
+				isans++;
+				Log.d("I am ","here"+isans);
+				if(AllAns[i].getIsCorrect() == 1) correct++;
+				else if(AllAns[i].getIsPartial() == 1) partial++;
+				else wrong++;
+			}
+			
+			if(AllAns[i].getQnType().equals("True_false")){
+				tmpHTML1 += getQnTitleHtml(AllAns[i].getQn(), (AllAns[i].getQnNo()+1), AllAns[i].getCssCls(), AllAns[i].getScoredWeight());
+				tmpHTML1 += getAnsHtml(AllAns[i].getTrueString(), AllAns[i].getSubString());
+			}
+			
+		}
+		
+		tmpHTML += genHTML(total,correct,wrong,isans,partial);
+		tmpHTML += endHtml(3);
+		tmpHTML += tmpHTML1;
+		tmpHTML += endHtml(2);
+		tmpHTML += endHtml(1);
+		
+		mWebView = (WebView) findViewById(R.id.summary_page);
+		mWebView.loadData(tmpHTML, "text/html",null);
+		//Log.d("Size Received ---", ""+ AllAns.length+ AllAns[0].getTruemulOptAns() + "--" + AllAns[0].getSubmulOptAns());
+	}
+	
+	public String genHTML(int totQns, int crtQns, int wrngQns, int isans, int partial){
+		String html = "<html><head><title>Summary of Quiz </title><style>body{font-family:'Times New Roman';}.summary td{padding:5px;}.correct {color:green;}.wrong {color:red;}.partial {color:orange;}.left{text-align:left; padding-left:5%;}.right{text-align:right; padding-right:2%;}.left-clear{text-align:left;}.center{text-align:center;} </style></head><body><br><h3 align='center' >Summary of Quiz Question</h3><table class='summary' align='center' width='90%' style='text-align:center;border:1px solid black;padding:20px;'>";
+		html += "<tr><th width='70%' class='left-clear'>Total Questions </th><td width='30%' >"+totQns+"</td></tr>";
+		html += "<tr><th class='left-clear'>Attempted Questions </th><td >"+isans+"</td> </tr>";
+		html += "<tr><th class='left-clear'>Correct Questions </th><td >"+crtQns+"</td></tr>";
+		html += "<tr><th class='left-clear'>Wrong Questions </th><td >"+wrngQns+"</td> </tr>";
+		html += "<tr><th class='left-clear'>Partial Correct Questions </th><td >"+partial+"</td></tr>";
+		html += "<tr style='padding:10px;'><th style='text-align:left;border-top:1px solid black;'>Grand Total </th><td style='border-top:1px solid black;'>900 pt</td> </tr></table><br>";
+		return html;
+	}
+	
+	public String getQnTitleHtml(String QnTitle, int No, String cls, float pts){
+		String html = "<tr ><th width='75%' class='left-clear'>Question "+No+" &raquo; <small class='"+cls+"'>"+cls+"</small></th><th width='25%' class='right'> "+pts+" pt </th></tr>";
+		html += "<td colspan='2' style='border-top:1px solid black; padding-top:15px;'>"+QnTitle+"</td></tr>";
+		return html;
+	}
+	
+	public String getAnsHtml(String trueString, String subString){
+		String html = "<tr><td><i>Correct Ans :</i> "+trueString+"</td><td class='right'> Your Ans : "+subString+"</td></tr>";
+		return html;
+	}
+	
+	public String endHtml(int type){
+		String html = "";
+		if(type == 1){
+			html += "</body></html>";
+		}else if(type == 2){
+			html += "</table>";
+		}else if(type == 3){
+			html += "<h3 align='center' >Questions and Answers</h3><table class='summary' align='center' width='90%' style='border:1px solid black;padding:20px;'>";
+		}
+		return html;
+	}
+	
+}

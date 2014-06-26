@@ -21,6 +21,7 @@ public class QuizStart extends Activity implements OnAnswered{
 
 	Button prev,next,end;
 	int currnt_qn = 1,next_qn = 2,prev_qn = 1,total_qn=10;
+	int correct = 0,wrong = 0,grand = 0;
 	
 	FragmentManager fragmentManager ;
 	FragmentTransaction fragmentTransaction;
@@ -38,12 +39,17 @@ public class QuizStart extends Activity implements OnAnswered{
         Qns = getIntent().getStringArrayListExtra("qn_array");
         
         total_qn = Qns.size();
+        wrong = total_qn;
         AllAns = new MyAns[total_qn];
         for(int i=0;i<total_qn;i++){
         	ParseQuestion pQuestion = new ParseQuestion(Qns.get(i));
         	AllAns[i] = new MyAns(i);
         	AllAns[i].setQn(pQuestion.parts[1]);
         	AllAns[i].setQnType(pQuestion.parts[3]);
+        	AllAns[i].setIsCorrect(0);
+    		AllAns[i].setIsPartial(0);
+    		AllAns[i].setIsAnswred(0);
+    		AllAns[i].setSubString("Not Answered");
         	
         	ParseAnswer pAns = new ParseAnswer(pQuestion.parts[2]);
         	if(AllAns[i].getQnType().equals("Multiple")){
@@ -82,6 +88,7 @@ public class QuizStart extends Activity implements OnAnswered{
         		AllAns[i].setTrueAns(tfArr[0]);
         		AllAns[i].setFeedback(tfArr[1]);
         		AllAns[i].setSubAns("");
+        		AllAns[i].setTrueString("<span class='correct'>"+tfArr[0] + "</span>");
         	}
         	else if(AllAns[i].getQnType().equals("Numeric")){
         		ArrayList<float[]> tmpFloatAry = pAns.parseNumeric();
@@ -183,11 +190,15 @@ public class QuizStart extends Activity implements OnAnswered{
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
+						
+						Log.d("correct&wrong",""+correct+"-"+wrong);
 						Intent quiz_summary= new Intent(getApplicationContext(),
 								Summary.class);
 						Bundle b = new Bundle();
 						b.putParcelableArray("allAns", AllAns);
 						quiz_summary.putExtras(b);
+						//quiz_summary.putExtra("correct",""+correct);
+						//quiz_summary.putExtra("wrong", ""+wrong);
 						startActivity(quiz_summary);
 					}
 				});
@@ -206,19 +217,45 @@ public class QuizStart extends Activity implements OnAnswered{
 	public void updateAns(int QnNo, MyAns ans) {
 		// TODO Auto-generated method stub
 		AllAns[QnNo] = ans;
-		
+		AllAns[QnNo].setIsAnswred(1);
 		if(AllAns[QnNo].getQnType().equals("True_false")){
 			Log.d("Updating ...", ""+QnNo+""+AllAns[QnNo].getSubAns());
 			String msg = "Your Answer is ";
-			if(AllAns[QnNo].getTrueAns().equals(AllAns[QnNo].getSubAns()))msg += "Correct";
-			else msg += "Wrong";
+			
+			if(AllAns[QnNo].getTrueAns().equals(AllAns[QnNo].getSubAns())){
+				msg += "Correct";
+				AllAns[QnNo].setIsCorrect(1);
+				AllAns[QnNo].setCssCls("correct");
+				AllAns[QnNo].setScoredWeight(100);
+				AllAns[QnNo].setSubString("Your Ans : <span class='correct'>"+AllAns[QnNo].getTrueAns()+", <br>#"+AllAns[QnNo].getFeedback()+"</span>");
+			}
+			else {
+				AllAns[QnNo].setIsCorrect(0);
+				AllAns[QnNo].setCssCls("wrong");
+				AllAns[QnNo].setScoredWeight(0);
+				msg += "Wrong";
+				AllAns[QnNo].setSubString("Your Ans : <span class='wrong'>"+AllAns[QnNo].getSubAns()+"</span>");
+			}
+			
 			Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 		}
 		else if(AllAns[QnNo].getQnType().equals("Multiple")){
 			Log.d("Updating ...", ""+QnNo+""+AllAns[QnNo].getSubmulOptAns());
 			String msg = "Your Answer is ";
-			if(AllAns[QnNo].getTruemulOptAns().equals(AllAns[QnNo].getSubmulOptAns()))msg += "Correct";
-			else msg += "Wrong";
+			if(AllAns[QnNo].getTruemulOptAns().equals(AllAns[QnNo].getSubmulOptAns())){
+				msg += "Correct";
+				AllAns[QnNo].setIsCorrect(1);
+				AllAns[QnNo].setCssCls("correct");
+				AllAns[QnNo].setScoredWeight(100);
+				AllAns[QnNo].setSubString("Your Ans : <span class='correct'>"+AllAns[QnNo].getTruemulOptAns()+", <br>#"+AllAns[QnNo].getFeedback()+"</span>");
+			}
+			else {
+				AllAns[QnNo].setIsCorrect(0);
+				AllAns[QnNo].setCssCls("wrong");
+				AllAns[QnNo].setScoredWeight(0);
+				msg += "Wrong";
+				AllAns[QnNo].setSubString("Your Ans : <span class='correct'>"+AllAns[QnNo].getTruemulOptAns()+", <br>#"+AllAns[QnNo].getFeedback()+"</span>");
+			}
 			Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 		}
 		else if(AllAns[QnNo].getQnType().equals("Multiple_many")){

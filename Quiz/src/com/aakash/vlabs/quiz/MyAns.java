@@ -14,6 +14,8 @@ public class MyAns implements Parcelable{
 	private int QnNo;
 	private float scoredWeight;
 	private int isAnswred = 0;
+	private int isCorrect = 0;
+	private int isPartial = 0;
 	
 	private String trueString = "";
 	private String subString = "";
@@ -220,6 +222,11 @@ public class MyAns implements Parcelable{
 		dest.writeList(this.subMatch);
 		dest.writeString(this.feedback);
 		dest.writeFloatArray(this.trueMulManyWeight);
+		dest.writeString(this.trueString);
+		dest.writeString(this.subString);
+		dest.writeString(this.cssCls);
+		dest.writeInt(this.isCorrect);
+		dest.writeInt(this.isPartial);
 	}
 	
 	public static final Parcelable.Creator<MyAns> CREATOR = new Creator<MyAns>() {
@@ -258,6 +265,11 @@ public class MyAns implements Parcelable{
 		this.subMatch = source.readArrayList(null);
 		this.feedback = source.readString();
 		this.trueMulManyWeight = source.createFloatArray();
+		this.trueString = source.readString();
+		this.subString = source.readString();
+		this.cssCls = source.readString();
+		this.isCorrect = source.readInt();
+		this.isPartial = source.readInt();
 	}
 
 	public float[] getTrueMulManyWeight() {
@@ -290,6 +302,22 @@ public class MyAns implements Parcelable{
 
 	public void setCssCls(String cssCls) {
 		this.cssCls = cssCls;
+	}
+
+	public int getIsCorrect() {
+		return isCorrect;
+	}
+
+	public void setIsCorrect(int isCorrect) {
+		this.isCorrect = isCorrect;
+	}
+
+	public int getIsPartial() {
+		return isPartial;
+	}
+
+	public void setIsPartial(int isPartial) {
+		this.isPartial = isPartial;
 	}
 	
 }

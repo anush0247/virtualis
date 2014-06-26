@@ -33,3 +33,5 @@
 1403676720415	Encapsulate field 'trueString'
 1403676725451	Encapsulate field 'subString'
 1403676729592	Encapsulate field 'cssCls'
+1403798249408	Encapsulate field 'isCorrect'
+1403798260439	Encapsulate field 'isPartial'
