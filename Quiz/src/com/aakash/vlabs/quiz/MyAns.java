@@ -17,6 +17,7 @@ public class MyAns implements Parcelable{
 	private int isCorrect = 0;
 	private int isPartial = 0;
 	
+	
 	private String trueString = "";
 	private String subString = "";
 	private String cssCls = "";
@@ -26,10 +27,11 @@ public class MyAns implements Parcelable{
 	
 	// Case : Multiple Choice
 	private String truemulOptAns,submulOptAns;
+	private int mulOptindex;
 	
 	// Case : Multiple Many Choice & Short Answer
 	private ArrayList<String> truemulManyAns,submulManyAns,mulFeedback;
-	private float[] trueMulManyWeight;
+	private ArrayList<float[]> trueMulWeight;
 	private String subShortAns;
 	
 	// Case : Numeric
@@ -221,12 +223,13 @@ public class MyAns implements Parcelable{
 		dest.writeList(this.trueMatch);
 		dest.writeList(this.subMatch);
 		dest.writeString(this.feedback);
-		dest.writeFloatArray(this.trueMulManyWeight);
+		dest.writeList(this.trueMulWeight);
 		dest.writeString(this.trueString);
 		dest.writeString(this.subString);
 		dest.writeString(this.cssCls);
 		dest.writeInt(this.isCorrect);
 		dest.writeInt(this.isPartial);
+		dest.writeInt(this.mulOptindex);
 	}
 	
 	public static final Parcelable.Creator<MyAns> CREATOR = new Creator<MyAns>() {
@@ -264,21 +267,15 @@ public class MyAns implements Parcelable{
 		this.trueMatch = source.readArrayList(null);
 		this.subMatch = source.readArrayList(null);
 		this.feedback = source.readString();
-		this.trueMulManyWeight = source.createFloatArray();
+		this.trueMulWeight = source.readArrayList(null);
 		this.trueString = source.readString();
 		this.subString = source.readString();
 		this.cssCls = source.readString();
 		this.isCorrect = source.readInt();
 		this.isPartial = source.readInt();
+		this.mulOptindex = source.readInt();
 	}
 
-	public float[] getTrueMulManyWeight() {
-		return trueMulManyWeight;
-	}
-
-	public void setTrueMulManyWeight(float[] trueMulManyWeight) {
-		this.trueMulManyWeight = trueMulManyWeight;
-	}
 
 	public String getTrueString() {
 		return trueString;
@@ -318,6 +315,22 @@ public class MyAns implements Parcelable{
 
 	public void setIsPartial(int isPartial) {
 		this.isPartial = isPartial;
+	}
+
+	public int getMulOptindex() {
+		return mulOptindex;
+	}
+
+	public void setMulOptindex(int mulOptindex) {
+		this.mulOptindex = mulOptindex;
+	}
+
+	public ArrayList<float[]> getTrueMulWeight() {
+		return trueMulWeight;
+	}
+
+	public void setTrueMulWeight(ArrayList<float[]> trueMulWeight) {
+		this.trueMulWeight = trueMulWeight;
 	}
 	
 }

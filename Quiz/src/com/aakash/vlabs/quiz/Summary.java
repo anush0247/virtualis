@@ -47,7 +47,7 @@ public class Summary extends Activity{
 				else wrong++;
 			}
 			
-			if(AllAns[i].getQnType().equals("True_false")){
+			if(AllAns[i].getQnType().equals("True_false") || AllAns[i].getQnType().equals("Multiple")){
 				tmpHTML1 += getQnTitleHtml(AllAns[i].getQn(), (AllAns[i].getQnNo()+1), AllAns[i].getCssCls(), AllAns[i].getScoredWeight());
 				tmpHTML1 += getAnsHtml(AllAns[i].getTrueString(), AllAns[i].getSubString());
 			}
@@ -84,7 +84,7 @@ public class Summary extends Activity{
 	}
 	
 	public String getAnsHtml(String trueString, String subString){
-		String html = "<tr><td valign='top'><i>Correct Ans :</i> "+trueString+"<br><br></td><td class='right' valign='top'>  "+subString+"<br><br></td></tr>";
+		String html = "<tr><td colspan='2'><table width='100%'><tr><td valign='top' width='50%'><i>Correct Ans :</i> "+trueString+"<br><br></td><td width='50%' class='right' valign='top'>  "+subString+"<br><br></td></tr></table></td></tr><tr>";
 		return html;
 	}
 	

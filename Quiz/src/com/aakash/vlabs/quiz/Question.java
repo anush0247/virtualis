@@ -113,6 +113,7 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 						submitedMulAns = list.get(rg.getChildAt(index).getId()).value;
 						tmpAns = savedAns;
 						tmpAns.setSubmulOptAns(submitedMulAns);
+						tmpAns.setMulOptindex(index);
 						mySavedAns.updateAns(currentId-1, tmpAns);
 					}
 				});

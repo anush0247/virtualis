@@ -35,3 +35,5 @@
 1403676729592	Encapsulate field 'cssCls'
 1403798249408	Encapsulate field 'isCorrect'
 1403798260439	Encapsulate field 'isPartial'
+1403804970495	Encapsulate field 'mulOptindex'
+1403805859355	Encapsulate field 'trueMulWeight'

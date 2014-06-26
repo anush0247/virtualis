@@ -1,5 +1,6 @@
 package com.aakash.vlabs.quiz;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import android.app.Activity;
@@ -52,35 +53,40 @@ public class QuizStart extends Activity implements OnAnswered{
     		AllAns[i].setSubString("Not Answered");
         	
         	ParseAnswer pAns = new ParseAnswer(pQuestion.parts[2]);
-        	if(AllAns[i].getQnType().equals("Multiple")){
-        		AllAns[i].setSubmulOptAns("");
-        		ArrayList<McqOpts> mcq = pAns.parseMCQ();
-        		for(int i1 = 0;i1<mcq.size();i1++){
-        			if(mcq.get(i1).isAns){
-        				AllAns[i].setTruemulOptAns(mcq.get(i1).value);
-        				AllAns[i].setFeedback(mcq.get(i1).feedback);
-        			}
-        		}
-        	}
-        	else if(AllAns[i].getQnType().equals("Multiple_many") || AllAns[i].getQnType().equals("Short_Answer")){
+        	if(AllAns[i].getQnType().equals("Multiple_many") || AllAns[i].getQnType().equals("Short_Answer") || AllAns[i].getQnType().equals("Multiple")){
         		ArrayList<String> tmpStrAry = new ArrayList<String>();
         		ArrayList<String> tmpFeedback = new ArrayList<String>();
+        		ArrayList<float[]> tmpWeigh = new ArrayList<float[]>();
         		
         		ArrayList<McqOpts> mcq = pAns.parseMCQ();
         		for(int i1 = 0;i1<mcq.size();i1++){
+        			tmpWeigh.add(new float[]{mcq.get(i1).weight});
+        			tmpFeedback.add(mcq.get(i1).feedback);
+        			
         			if(mcq.get(i1).isAns){
-        				tmpStrAry.add(mcq.get(i1).value);
-        				tmpFeedback.add(mcq.get(i1).feedback);
+        				if(AllAns[i].getQnType().equals("Multiple")){
+        					AllAns[i].setTruemulOptAns(mcq.get(i1).value);
+        					AllAns[i].setTrueString("<span class='correct'>"+mcq.get(i1).value+"</span>");
+        				}
+        				else {
+        					tmpStrAry.add(mcq.get(i1).value);
+        				}
+    					
         			}
         		}
-        		if(AllAns[i].getQnType().equals("Short_Answer")){
+        		
+        		if(AllAns[i].getQnType().equals("Multiple")){
+        			AllAns[i].setSubmulOptAns("");
+        		}
+        		else if(AllAns[i].getQnType().equals("Short_Answer")){
         			AllAns[i].setSubShortAns("");
         		}else {
         			ArrayList<String> tmpSubAry = new ArrayList<String>();
             		AllAns[i].setSubmulManyAns(tmpSubAry);
+            		AllAns[i].setTruemulManyAns(tmpStrAry);
         		}
         		
-        		AllAns[i].setTruemulManyAns(tmpStrAry);
+        		AllAns[i].setTrueMulWeight(tmpWeigh);
         		AllAns[i].setMulFeedback(tmpFeedback);
         	}
         	else if(AllAns[i].getQnType().equals("True_false")){
@@ -227,7 +233,7 @@ public class QuizStart extends Activity implements OnAnswered{
 				AllAns[QnNo].setIsCorrect(1);
 				AllAns[QnNo].setCssCls("correct");
 				AllAns[QnNo].setScoredWeight(100);
-				AllAns[QnNo].setSubString("Your Ans : <span class='correct'>"+AllAns[QnNo].getTrueAns()+", <br>#"+AllAns[QnNo].getFeedback()+"</span>");
+				AllAns[QnNo].setSubString("Your Ans : <span class='correct'>"+AllAns[QnNo].getTrueAns()+"<br>#"+AllAns[QnNo].getFeedback()+"</span>");
 			}
 			else {
 				AllAns[QnNo].setIsCorrect(0);
@@ -242,19 +248,26 @@ public class QuizStart extends Activity implements OnAnswered{
 		else if(AllAns[QnNo].getQnType().equals("Multiple")){
 			Log.d("Updating ...", ""+QnNo+""+AllAns[QnNo].getSubmulOptAns());
 			String msg = "Your Answer is ";
+			AllAns[QnNo].setScoredWeight(AllAns[QnNo].getTrueMulWeight().get(AllAns[QnNo].getMulOptindex())[0]);
 			if(AllAns[QnNo].getTruemulOptAns().equals(AllAns[QnNo].getSubmulOptAns())){
 				msg += "Correct";
 				AllAns[QnNo].setIsCorrect(1);
 				AllAns[QnNo].setCssCls("correct");
-				AllAns[QnNo].setScoredWeight(100);
-				AllAns[QnNo].setSubString("Your Ans : <span class='correct'>"+AllAns[QnNo].getTruemulOptAns()+", <br>#"+AllAns[QnNo].getFeedback()+"</span>");
+				AllAns[QnNo].setSubString("Your Ans : <span class='correct'>"+AllAns[QnNo].getTruemulOptAns()+"<br>#"+AllAns[QnNo].getMulFeedback().get(AllAns[QnNo].getMulOptindex())+"</span>");
 			}
 			else {
 				AllAns[QnNo].setIsCorrect(0);
 				AllAns[QnNo].setCssCls("wrong");
-				AllAns[QnNo].setScoredWeight(0);
-				msg += "Wrong";
-				AllAns[QnNo].setSubString("Your Ans : <span class='correct'>"+AllAns[QnNo].getTruemulOptAns()+", <br>#"+AllAns[QnNo].getFeedback()+"</span>");
+				
+				String cls = "wrong";
+				if(AllAns[QnNo].getScoredWeight()>0){
+					cls = "partial";
+					msg += "Partially Correct";
+					AllAns[QnNo].setIsPartial(1);
+					AllAns[QnNo].setCssCls("partial");
+				}
+				else msg += "Wrong";
+				AllAns[QnNo].setSubString("Your Ans : <span class='"+cls+"'>"+AllAns[QnNo].getSubmulOptAns()+"<br>#"+AllAns[QnNo].getMulFeedback().get(AllAns[QnNo].getMulOptindex())+"</span>");
 			}
 			Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 		}
