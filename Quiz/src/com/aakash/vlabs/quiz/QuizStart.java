@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
@@ -120,12 +119,20 @@ public class QuizStart extends Activity implements OnAnswered{
         	else if(AllAns[i].getQnType().equals("Matching")){
         		ArrayList<String[]> tmpStringAry = pAns.parseMatching();
         		ArrayList<String[]> tmpSubStrAry = new ArrayList<String[]>();
+        		String matStr = "<span class='correct'> <br>";//subStr = "Your Answer <br> ";
         		for(int i1 = 0;i1<tmpStringAry.size();i1++){
         			String[] tmpAr = new String[2];
         			tmpAr[0] = tmpStringAry.get(i1)[0];
         			tmpAr[1] = "Select a Match";
+        			matStr += tmpAr[0] +" &rarr; " + tmpStringAry.get(i1)[1] + "<br>" ;
+        			//subStr += "<span class='wrong'> &rarr; "+tmpAr[1] +"</span><br>";
         			tmpSubStrAry.add(tmpAr);
         		}
+        		AllAns[i].setIsCorrect(0);
+        		AllAns[i].setIsPartial(0);
+        		AllAns[i].setScoredWeight(0);
+        		AllAns[i].setTrueString(matStr);
+        		AllAns[i].setSubString("Not Answered");
         		AllAns[i].setSubMatch(tmpSubStrAry);
         		AllAns[i].setTrueMatch(tmpStringAry);
         	}
@@ -349,7 +356,7 @@ public class QuizStart extends Activity implements OnAnswered{
 					AllAns[QnNo].setCssCls("correct");
 					AllAns[QnNo].setIsCorrect(1);
 					AllAns[QnNo].setScoredWeight(AllAns[QnNo].getTrueNumeric().get(i)[2]);
-					AllAns[QnNo].setSubString(msg+"<span class='correct'>"+AllAns[QnNo].getSubNumeric()+"</span>");
+					AllAns[QnNo].setSubString(msg+"<span class='correct'>"+AllAns[QnNo].getSubNumeric()+"</span> ");
 				}
 			}
 			
@@ -358,11 +365,36 @@ public class QuizStart extends Activity implements OnAnswered{
 			//Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubNumeric(), Toast.LENGTH_SHORT).show();
 		}
 		else if(AllAns[QnNo].getQnType().equals("Matching")){
-			String ab = "";
+			String ab = "Your Answers : <br>";
+			float num = 0;
 			for(int i = 0;i<AllAns[QnNo].getSubMatch().size();i++){
-				ab += "Opt : "+ AllAns[QnNo].getSubMatch().get(i)[0] +" :--- " + AllAns[QnNo].getSubMatch().get(i)[1] + "\n";
+				if(AllAns[QnNo].getTrueMatch().get(i)[1].equals(AllAns[QnNo].getSubMatch().get(i)[1])){
+					num++;
+					ab += "<span class='correct'>"+AllAns[QnNo].getSubMatch().get(i)[1] + "</span><br>";
+				}
+				else {
+					ab += "<span class='wrong'>"+AllAns[QnNo].getSubMatch().get(i)[1] + "</span><br>";
+				}
+				
 			}
-			Log.d("Updating Matching Ans ..", QnNo +" -- " + ab);
+			
+			if(num > 0 ){
+				if(num == AllAns[QnNo].getSubMatch().size()){
+					AllAns[QnNo].setIsCorrect(1);
+					AllAns[QnNo].setCssCls("correct");
+				}
+				else {
+					AllAns[QnNo].setIsPartial(1);
+					AllAns[QnNo].setCssCls("partial");
+				}
+			}
+			else {
+				AllAns[QnNo].setIsCorrect(0);
+				AllAns[QnNo].setCssCls("wrong");
+			}
+			AllAns[QnNo].setScoredWeight(((num)*(100/AllAns[QnNo].getSubMatch().size())));
+			AllAns[QnNo].setSubString(ab);
+			//Log.d("Updating Matching Ans ..", QnNo +" -- " + ab);
 			//Toast.makeText(getApplicationContext(), "You have selected " + ab, Toast.LENGTH_SHORT).show();
 		}
 		
