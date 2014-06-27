@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="10">
+    android:weightSum="10"
+    tools:ignore="ButtonStyle" >
 
     <LinearLayout
         android:id="@+id/quiz_topbar"
@@ -54,10 +55,8 @@
 	           android:layout_width="0dp"
 	           android:layout_weight="3"
 	           android:layout_height="wrap_content"
-	           android:layout_gravity="right|center"
-	           >
+	           android:layout_gravity="right|center">
         
-        	
                 <Button 
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"

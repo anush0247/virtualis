@@ -7,7 +7,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -125,7 +124,6 @@ public class QuizStart extends Activity implements OnAnswered{
         			tmpAr[0] = tmpStringAry.get(i1)[0];
         			tmpAr[1] = "Select a Match";
         			matStr += tmpAr[0] +" &rarr; " + tmpStringAry.get(i1)[1] + "<br>" ;
-        			//subStr += "<span class='wrong'> &rarr; "+tmpAr[1] +"</span><br>";
         			tmpSubStrAry.add(tmpAr);
         		}
         		AllAns[i].setIsCorrect(0);
@@ -137,7 +135,6 @@ public class QuizStart extends Activity implements OnAnswered{
         		AllAns[i].setTrueMatch(tmpStringAry);
         	}
         	else {
-        		//Log.d("Error #"+i,"Unable to identify type of Question");
         	}
         }
         
@@ -221,14 +218,11 @@ public class QuizStart extends Activity implements OnAnswered{
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
 						
-						//Log.d("correct&wrong",""+correct+"-"+wrong);
 						Intent quiz_summary= new Intent(getApplicationContext(),
 								Summary.class);
 						Bundle b = new Bundle();
 						b.putParcelableArray("allAns", AllAns);
 						quiz_summary.putExtras(b);
-						//quiz_summary.putExtra("correct",""+correct);
-						//quiz_summary.putExtra("wrong", ""+wrong);
 						startActivity(quiz_summary);
 					}
 				});
@@ -249,9 +243,7 @@ public class QuizStart extends Activity implements OnAnswered{
 		AllAns[QnNo] = ans;
 		AllAns[QnNo].setIsAnswred(1);
 		if(AllAns[QnNo].getQnType().equals("True_false")){
-			//Log.d("Updating ...", ""+QnNo+""+AllAns[QnNo].getSubAns());
 			String msg = "Your Answer is ";
-			
 			if(AllAns[QnNo].getTrueAns().equals(AllAns[QnNo].getSubAns())){
 				msg += "Correct";
 				AllAns[QnNo].setIsCorrect(1);
@@ -266,7 +258,6 @@ public class QuizStart extends Activity implements OnAnswered{
 				msg += "Wrong";
 				AllAns[QnNo].setSubString("Your Ans : <span class='wrong'>"+AllAns[QnNo].getSubAns()+"</span>");
 			}
-			
 			Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 		}
 		else if(AllAns[QnNo].getQnType().equals("Multiple")){
@@ -333,7 +324,7 @@ public class QuizStart extends Activity implements OnAnswered{
 			AllAns[QnNo].setCssCls("wrong");
 			AllAns[QnNo].setSubString(msg+"<span class='wrong'>"+AllAns[QnNo].getSubShortAns()+"</span>");
 			for(int i = 0; i< AllAns[QnNo].getTruemulManyAns().size(); i++){
-				if(AllAns[QnNo].getSubShortAns().equals(AllAns[QnNo].getTruemulManyAns().get(i))){
+				if(AllAns[QnNo].getTruemulManyAns().get(i).contains(AllAns[QnNo].getSubShortAns())){
 					AllAns[QnNo].setCssCls("correct");
 					AllAns[QnNo].setIsCorrect(1);
 					AllAns[QnNo].setScoredWeight(AllAns[QnNo].getTrueMulWeight().get(i)[0]);
@@ -359,10 +350,6 @@ public class QuizStart extends Activity implements OnAnswered{
 					AllAns[QnNo].setSubString(msg+"<span class='correct'>"+AllAns[QnNo].getSubNumeric()+"</span> ");
 				}
 			}
-			
-			//AllAns[QnNo].setSubString("Your Answer : " + +AllAns[QnNo].getSubNumeric());
-			//Log.d("Updating Numeric Ans ..", QnNo +" -- "+AllAns[QnNo].getSubNumeric());
-			//Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubNumeric(), Toast.LENGTH_SHORT).show();
 		}
 		else if(AllAns[QnNo].getQnType().equals("Matching")){
 			String ab = "Your Answers : <br>";
@@ -370,14 +357,13 @@ public class QuizStart extends Activity implements OnAnswered{
 			for(int i = 0;i<AllAns[QnNo].getSubMatch().size();i++){
 				if(AllAns[QnNo].getTrueMatch().get(i)[1].equals(AllAns[QnNo].getSubMatch().get(i)[1])){
 					num++;
-					ab += "<span class='correct'>"+AllAns[QnNo].getSubMatch().get(i)[1] + "</span><br>";
+					ab += "<span class='correct'> &rarr; "+AllAns[QnNo].getSubMatch().get(i)[1] + "</span><br>";
 				}
 				else {
-					ab += "<span class='wrong'>"+AllAns[QnNo].getSubMatch().get(i)[1] + "</span><br>";
+					ab += "<span class='wrong'> &rarr; "+AllAns[QnNo].getSubMatch().get(i)[1] + "</span><br>";
 				}
 				
 			}
-			
 			if(num > 0 ){
 				if(num == AllAns[QnNo].getSubMatch().size()){
 					AllAns[QnNo].setIsCorrect(1);
@@ -394,11 +380,6 @@ public class QuizStart extends Activity implements OnAnswered{
 			}
 			AllAns[QnNo].setScoredWeight(((num)*(100/AllAns[QnNo].getSubMatch().size())));
 			AllAns[QnNo].setSubString(ab);
-			//Log.d("Updating Matching Ans ..", QnNo +" -- " + ab);
-			//Toast.makeText(getApplicationContext(), "You have selected " + ab, Toast.LENGTH_SHORT).show();
 		}
-		
 	}
-
-    
 }

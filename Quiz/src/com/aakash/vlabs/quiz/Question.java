@@ -29,7 +29,6 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import android.widget.Toast;
 
 import com.aakash.vlabs.quiz.ParseAnswer.McqOpts;
 
@@ -87,12 +86,8 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 		ParseAnswer pAns = new ParseAnswer(parts[2]);
 		
 		if(parts[3].equals("Multiple") || parts[3].equals("Multiple_many") || parts[3].equals("Short_Answer")){
-			//Log.d("I found :", parts[2]);
-			
 			list = pAns.parseMCQ(); 
-			
 			if(parts[3].equals("Multiple")){
-				
 				mulGroup = new RadioGroup(view.getContext());
 				for(int i = 0;i<list.size();i++){
 					RadioButton mulOpt = new RadioButton(view.getContext());
@@ -104,13 +99,11 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 					}
 					mulGroup.addView(mulOpt);
 				}
-				
 				mulGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 					
 					@Override
 					public void onCheckedChanged(RadioGroup rg, int index) {
 						// TODO Auto-generated method stub
-						//Log.d("Index",""+rg.getChildAt(index).getId());
 						submitedMulAns = list.get(rg.getChildAt(index).getId()).value;
 						tmpAns = savedAns;
 						tmpAns.setSubmulOptAns(submitedMulAns);
@@ -118,7 +111,6 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 						mySavedAns.updateAns(currentId-1, tmpAns);
 					}
 				});
-				
 				qun_layout.addView(mulGroup);
 			}
 			else if(parts[3].equals("Multiple_many")){
@@ -147,7 +139,6 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 				shortAns = new EditText(view.getContext());
 				shortAns.setHint("Enter your answer ");
 				shortAns.setText(savedAns.getSubShortAns());
-				//shortAns.setInputType(Text);
 				shortAns.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
 				shortAns.setOnEditorActionListener(new OnEditorActionListener() {
 					
@@ -217,22 +208,12 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 		}
 		else if(parts[3].equals("Numeric")){
 			ArrayList<float[]> numList = pAns.parseNumeric();
-			for(int i = 0;i<numList.size();i++){
-				//Log.d("Numeric : ", "Num : "+numList.get(i)[0]+" +/- " + numList.get(i)[1] + " Weight : " + numList.get(i)[2]);
-			}
 			numeric = new EditText(view.getContext());
-			
 			numeric.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
 			numeric.setHint("Enter your answer ");
 			numeric.setText(""+savedAns.getSubNumeric());
-			//numeric.setInputType(Text);
 			numeric.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 			numeric.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
-			
-//			InputMethodManager imm = (InputMethodManager) getSystemService(
-//				      Context.INPUT_METHOD_SERVICE);
-//				imm.hideSoftInputFromWindow(numeric.getWindowToken(), 0);
-			
 			numeric.setOnEditorActionListener(new OnEditorActionListener() {
 				
 				@Override
@@ -242,12 +223,7 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 			        if (actionId == EditorInfo.IME_ACTION_DONE) {
 			        	
 			        	submitedAns = shortTxt.getText().toString();
-			        	float tmpFloat = 0;
-			        	try{
-			        		tmpFloat =  Float.parseFloat(submitedAns);
-			        	}catch(Exception e){
-			        		Toast.makeText(tmpView.getContext(), "Enter Numeric", Toast.LENGTH_SHORT).show();
-			        	}
+			        	float tmpFloat = Float.parseFloat(submitedAns);
 			        	numeric.setInputType(0);
 			        	numeric.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 						tmpAns = savedAns;
@@ -265,19 +241,13 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 		}
 		else if(parts[3].equals("Matching")){
 			ArrayList<String[]> matchingList = pAns.parseMatching();
-//			for(int i = 0;i<matchingList.size();i++){
-//				//Log.d("Matching : " + i, "Question : "+matchingList.get(i)[0]+" +---+ " + matchingList.get(i)[1] );
-//			}
-			
 			ScrollView scroll = new ScrollView(view.getContext());
-			
 			LinearLayout matLayoutParent = new LinearLayout(view.getContext());
 			matLayoutParent.setPadding(10, 10, 10, 10);
 			matLayoutParent.setOrientation(1);
 			matLayoutParent.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
 			
 			tmpMatArr = new ArrayList<String>();
-			//tmpMatArr.add("");
 			for(int i = 0;i < matchingList.size();i++){
 				tmpMatArr.add(matchingList.get(i)[1]);
 			}
@@ -286,7 +256,6 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 			Collections.shuffle(tmpMatArr, new Random(seed));
 			Collections.shuffle(tmpMatArr, new Random(seed));
 			tmpMatArr.add(0,"Select a Match");
-			//tmpMatArr;
 			
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),
 					android.R.layout.simple_list_item_1, tmpMatArr);
@@ -381,17 +350,11 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 		// TODO Auto-generated method stub
-		//Log.d("index Btn",""+buttonView.getId());
-		
 		if(isChecked){
 			tmpOptions.add(list.get(buttonView.getId()).value);
 		}
 		else {
-			
-			//Log.d("Size",tmpOptions.size()+"");
 			tmpOptions.remove(list.get(buttonView.getId()).value);
-			//Log.d("Size",tmpOptions.size()+"");
-			
 		}
 		
 		tmpAns = savedAns;
