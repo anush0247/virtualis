@@ -158,6 +158,8 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 				        if (actionId == EditorInfo.IME_ACTION_DONE) {
 				        	
 				        	submitedAns = shortTxt.getText().toString();
+				        	shortAns.setInputType(0);
+				        	shortAns.setInputType(InputType.TYPE_CLASS_TEXT);
 							tmpAns = savedAns;
 							tmpAns.setSubShortAns(submitedAns);
 							mySavedAns.updateAns(currentId-1, tmpAns);
@@ -224,7 +226,13 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 			numeric.setHint("Enter your answer ");
 			numeric.setText(""+savedAns.getSubNumeric());
 			//numeric.setInputType(Text);
+			numeric.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 			numeric.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+			
+//			InputMethodManager imm = (InputMethodManager) getSystemService(
+//				      Context.INPUT_METHOD_SERVICE);
+//				imm.hideSoftInputFromWindow(numeric.getWindowToken(), 0);
+			
 			numeric.setOnEditorActionListener(new OnEditorActionListener() {
 				
 				@Override
@@ -240,7 +248,8 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 			        	}catch(Exception e){
 			        		Toast.makeText(tmpView.getContext(), "Enter Numeric", Toast.LENGTH_SHORT).show();
 			        	}
-			        	
+			        	numeric.setInputType(0);
+			        	numeric.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 						tmpAns = savedAns;
 						tmpAns.setSubNumeric(tmpFloat);
 						mySavedAns.updateAns(currentId-1, tmpAns);
