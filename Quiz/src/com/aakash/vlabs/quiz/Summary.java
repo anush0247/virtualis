@@ -23,7 +23,6 @@ public class Summary extends Activity{
 		AllAns = new MyAns[ps.length];
 		total = AllAns.length;
 		
-		//Log.d("Received",""+AllAns.length);
 		System.arraycopy(ps, 0, AllAns, 0, ps.length);
 		
 		String tmpHTML = "";
@@ -38,7 +37,8 @@ public class Summary extends Activity{
 				else wrong++;
 			}
 			
-			if(AllAns[i].getQnType().equals("True_false") || AllAns[i].getQnType().equals("Multiple") || AllAns[i].getQnType().equals("Multiple_many") || AllAns[i].getQnType().equals("Short_Answer") ){
+			//if(AllAns[i].getQnType().equals("True_false") || AllAns[i].getQnType().equals("Multiple") || AllAns[i].getQnType().equals("Multiple_many") || AllAns[i].getQnType().equals("Short_Answer") ){
+			if(!AllAns[i].getQnType().equals("Matching")){
 				tmpHTML1 += getQnTitleHtml(AllAns[i].getQn(), (AllAns[i].getQnNo()+1), AllAns[i].getCssCls(), AllAns[i].getScoredWeight());
 				tmpHTML1 += getAnsHtml(AllAns[i].getTrueString(), AllAns[i].getSubString());
 			}

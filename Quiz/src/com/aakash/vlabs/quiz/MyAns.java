@@ -210,26 +210,11 @@ public class MyAns implements Parcelable{
 		dest.writeInt(this.QnNo);
 		dest.writeFloat(this.scoredWeight);
 		dest.writeInt(this.isAnswred);
-		dest.writeString(this.trueAns);
-		dest.writeString(this.subAns);
-		dest.writeString(this.truemulOptAns);
-		dest.writeString(this.submulOptAns);
-		dest.writeList(this.truemulManyAns);
-		dest.writeList(this.submulManyAns);
-		dest.writeList(this.mulFeedback);
-		dest.writeString(this.subShortAns);
-		dest.writeList(this.trueNumeric);
-		dest.writeFloat(this.subNumeric);
-		dest.writeList(this.trueMatch);
-		dest.writeList(this.subMatch);
-		dest.writeString(this.feedback);
-		dest.writeList(this.trueMulWeight);
 		dest.writeString(this.trueString);
 		dest.writeString(this.subString);
 		dest.writeString(this.cssCls);
 		dest.writeInt(this.isCorrect);
 		dest.writeInt(this.isPartial);
-		dest.writeInt(this.mulOptindex);
 	}
 	
 	public static final Parcelable.Creator<MyAns> CREATOR = new Creator<MyAns>() {
@@ -247,33 +232,17 @@ public class MyAns implements Parcelable{
 		}
 	};
 
-	@SuppressWarnings("unchecked")
 	private MyAns(Parcel source){
 		this.Qn = source.readString();
 		this.QnType = source.readString();
 		this.QnNo = source.readInt();
 		this.scoredWeight = source.readFloat();
 		this.isAnswred = source.readInt();
-		this.trueAns = source.readString();
-		this.subAns = source.readString();
-		this.truemulOptAns = source.readString();
-		this.submulOptAns = source.readString();
-		this.truemulManyAns = source.readArrayList(null);
-		this.submulManyAns = source.readArrayList(null);
-		this.mulFeedback = source.readArrayList(null);
-		this.subShortAns = source.readString();
-		this.trueNumeric = source.readArrayList(null);
-		this.subNumeric = source.readFloat();
-		this.trueMatch = source.readArrayList(null);
-		this.subMatch = source.readArrayList(null);
-		this.feedback = source.readString();
-		this.trueMulWeight = source.readArrayList(null);
 		this.trueString = source.readString();
 		this.subString = source.readString();
 		this.cssCls = source.readString();
 		this.isCorrect = source.readInt();
 		this.isPartial = source.readInt();
-		this.mulOptindex = source.readInt();
 	}
 
 

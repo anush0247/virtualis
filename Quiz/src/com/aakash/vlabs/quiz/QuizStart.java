@@ -108,6 +108,12 @@ public class QuizStart extends Activity implements OnAnswered{
         	}
         	else if(AllAns[i].getQnType().equals("Numeric")){
         		ArrayList<float[]> tmpFloatAry = pAns.parseNumeric();
+        		String numStr = "<span class='correct'> <br>";
+        		for(int i1 = 0; i1< tmpFloatAry.size();i1++){
+        			numStr += tmpFloatAry.get(i1)[0] + " +/- " +  tmpFloatAry.get(i1)[1] +"<br>"; 
+        		}
+        		numStr += "</span>";
+        		AllAns[i].setTrueString(numStr);
         		AllAns[i].setTrueNumeric(tmpFloatAry);
         	}
         	else if(AllAns[i].getQnType().equals("Matching")){
@@ -317,8 +323,6 @@ public class QuizStart extends Activity implements OnAnswered{
 		else if(AllAns[QnNo].getQnType().equals("Short_Answer")){
 			String msg = "Your Answer is ";
 			AllAns[QnNo].setCssCls("wrong");
-			AllAns[QnNo].setIsCorrect(0);
-			AllAns[QnNo].setScoredWeight(0);
 			AllAns[QnNo].setSubString(msg+"<span class='wrong'>"+AllAns[QnNo].getSubShortAns()+"</span>");
 			for(int i = 0; i< AllAns[QnNo].getTruemulManyAns().size(); i++){
 				if(AllAns[QnNo].getSubShortAns().equals(AllAns[QnNo].getTruemulManyAns().get(i))){
@@ -328,10 +332,27 @@ public class QuizStart extends Activity implements OnAnswered{
 					AllAns[QnNo].setSubString(msg+"<span class='correct'>"+AllAns[QnNo].getSubShortAns()+"</span>");
 				}
 			}
-			//Log.d("Updating Short Ans ..", QnNo +" -- "+AllAns[QnNo].getSubShortAns());
-			//Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubShortAns(), Toast.LENGTH_SHORT).show();
 		}
 		else if(AllAns[QnNo].getQnType().equals("Numeric")){
+			
+			String msg = "Your Answer is ";
+			AllAns[QnNo].setCssCls("wrong");
+			AllAns[QnNo].setIsCorrect(0);
+			AllAns[QnNo].setScoredWeight(0);
+			AllAns[QnNo].setSubString(msg+"<span class='wrong'>"+AllAns[QnNo].getSubNumeric()+"</span>");
+			for(int i = 0; i< AllAns[QnNo].getTrueNumeric().size(); i++){
+				float tmp1 = AllAns[QnNo].getTrueNumeric().get(i)[0] + AllAns[QnNo].getTrueNumeric().get(i)[1]; 
+				float tmp2 = AllAns[QnNo].getTrueNumeric().get(i)[0] - AllAns[QnNo].getTrueNumeric().get(i)[1]; 
+				float tmp3 = AllAns[QnNo].getSubNumeric();
+				if(tmp3 <= tmp1 && tmp3 >= tmp2){
+					AllAns[QnNo].setCssCls("correct");
+					AllAns[QnNo].setIsCorrect(1);
+					AllAns[QnNo].setScoredWeight(AllAns[QnNo].getTrueNumeric().get(i)[2]);
+					AllAns[QnNo].setSubString(msg+"<span class='correct'>"+AllAns[QnNo].getSubNumeric()+"</span>");
+				}
+			}
+			
+			//AllAns[QnNo].setSubString("Your Answer : " + +AllAns[QnNo].getSubNumeric());
 			//Log.d("Updating Numeric Ans ..", QnNo +" -- "+AllAns[QnNo].getSubNumeric());
 			//Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubNumeric(), Toast.LENGTH_SHORT).show();
 		}
