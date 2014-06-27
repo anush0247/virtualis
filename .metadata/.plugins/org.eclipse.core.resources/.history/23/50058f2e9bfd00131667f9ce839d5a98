@@ -162,7 +162,7 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 							tmpAns.setSubShortAns(submitedAns);
 							mySavedAns.updateAns(currentId-1, tmpAns);
 				            handled = true;
-				            return handled;
+				           
 				        }
 				        return handled;
 					}

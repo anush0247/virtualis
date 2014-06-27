@@ -162,6 +162,8 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 							tmpAns.setSubShortAns(submitedAns);
 							mySavedAns.updateAns(currentId-1, tmpAns);
 				            handled = true;
+				            InputMethodManager imm= (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+				            imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
 				            return handled;
 				        }
 				        return handled;

@@ -26,19 +26,27 @@ public class Summary extends Activity{
 		//Log.d("Received",""+AllAns.length);
 		System.arraycopy(ps, 0, AllAns, 0, ps.length);
 		
+		
+		
+		//correct = Integer.parseInt(getIntent().getStringExtra("correct"));
+		//wrong = Integer.parseInt(getIntent().getStringExtra("wrong"));
+		
 		String tmpHTML = "";
 		String tmpHTML1 = "";
 		
 		for(int i = 0;i<AllAns.length;i++){
+			//Log.d("Css Recived", AllAns[i].getCssCls());
+			//Log.d("isAns"+i,""+AllAns[i].getIsAnswred());
 			if(AllAns[i].getIsAnswred() == 1) {
 				grand += AllAns[i].getScoredWeight();
 				isans++;
+				//Log.d("I am ","here"+isans);
 				if(AllAns[i].getIsCorrect() == 1) correct++;
 				else if(AllAns[i].getIsPartial() == 1) partial++;
 				else wrong++;
 			}
 			
-			if(AllAns[i].getQnType().equals("True_false") || AllAns[i].getQnType().equals("Multiple") || AllAns[i].getQnType().equals("Multiple_many") || AllAns[i].getQnType().equals("Short_Answer") ){
+			if(AllAns[i].getQnType().equals("True_false") || AllAns[i].getQnType().equals("Multiple") || AllAns[i].getQnType().equals("Multiple_many") ){
 				tmpHTML1 += getQnTitleHtml(AllAns[i].getQn(), (AllAns[i].getQnNo()+1), AllAns[i].getCssCls(), AllAns[i].getScoredWeight());
 				tmpHTML1 += getAnsHtml(AllAns[i].getTrueString(), AllAns[i].getSubString());
 			}
@@ -54,6 +62,7 @@ public class Summary extends Activity{
 		
 		mWebView = (WebView) findViewById(R.id.summary_page);
 		mWebView.loadData(tmpHTML, "text/html",null);
+		////Log.d("Size Received ---", ""+ AllAns.length+ AllAns[0].getTruemulOptAns() + "--" + AllAns[0].getSubmulOptAns());
 	}
 	
 	public String genHTML(int totQns, int crtQns, int wrngQns, int isans, int partial, float grand){

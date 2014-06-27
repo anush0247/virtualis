@@ -88,7 +88,6 @@ public class QuizStart extends Activity implements OnAnswered{
         		else if(AllAns[i].getQnType().equals("Short_Answer")){
         			AllAns[i].setTrueString(trueStr);
         			AllAns[i].setSubShortAns("");
-        			AllAns[i].setTruemulManyAns(tmpStrAry);
         		}else {
         			AllAns[i].setTrueString(trueStr);
         			ArrayList<String> tmpSubAry = new ArrayList<String>();
@@ -315,19 +314,6 @@ public class QuizStart extends Activity implements OnAnswered{
 			Toast.makeText(getApplicationContext(), num + " Answers Correct", Toast.LENGTH_SHORT).show();
 		}
 		else if(AllAns[QnNo].getQnType().equals("Short_Answer")){
-			String msg = "Your Answer is ";
-			AllAns[QnNo].setCssCls("wrong");
-			AllAns[QnNo].setIsCorrect(0);
-			AllAns[QnNo].setScoredWeight(0);
-			AllAns[QnNo].setSubString(msg+"<span class='wrong'>"+AllAns[QnNo].getSubShortAns()+"</span>");
-			for(int i = 0; i< AllAns[QnNo].getTruemulManyAns().size(); i++){
-				if(AllAns[QnNo].getSubShortAns().equals(AllAns[QnNo].getTruemulManyAns().get(i))){
-					AllAns[QnNo].setCssCls("correct");
-					AllAns[QnNo].setIsCorrect(1);
-					AllAns[QnNo].setScoredWeight(AllAns[QnNo].getTrueMulWeight().get(i)[0]);
-					AllAns[QnNo].setSubString(msg+"<span class='correct'>"+AllAns[QnNo].getSubShortAns()+"</span>");
-				}
-			}
 			//Log.d("Updating Short Ans ..", QnNo +" -- "+AllAns[QnNo].getSubShortAns());
 			//Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubShortAns(), Toast.LENGTH_SHORT).show();
 		}

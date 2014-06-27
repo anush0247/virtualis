@@ -88,7 +88,6 @@ public class QuizStart extends Activity implements OnAnswered{
         		else if(AllAns[i].getQnType().equals("Short_Answer")){
         			AllAns[i].setTrueString(trueStr);
         			AllAns[i].setSubShortAns("");
-        			AllAns[i].setTruemulManyAns(tmpStrAry);
         		}else {
         			AllAns[i].setTrueString(trueStr);
         			ArrayList<String> tmpSubAry = new ArrayList<String>();

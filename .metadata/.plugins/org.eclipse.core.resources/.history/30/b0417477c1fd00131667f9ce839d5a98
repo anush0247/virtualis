@@ -88,7 +88,6 @@ public class QuizStart extends Activity implements OnAnswered{
         		else if(AllAns[i].getQnType().equals("Short_Answer")){
         			AllAns[i].setTrueString(trueStr);
         			AllAns[i].setSubShortAns("");
-        			AllAns[i].setTruemulManyAns(tmpStrAry);
         		}else {
         			AllAns[i].setTrueString(trueStr);
         			ArrayList<String> tmpSubAry = new ArrayList<String>();
@@ -319,13 +318,12 @@ public class QuizStart extends Activity implements OnAnswered{
 			AllAns[QnNo].setCssCls("wrong");
 			AllAns[QnNo].setIsCorrect(0);
 			AllAns[QnNo].setScoredWeight(0);
-			AllAns[QnNo].setSubString(msg+"<span class='wrong'>"+AllAns[QnNo].getSubShortAns()+"</span>");
+			AllAns[QnNo].setSubString("<span class='wrong'>"+msg+":"+AllAns[QnNo].getSubShortAns()+"</span>");
 			for(int i = 0; i< AllAns[QnNo].getTruemulManyAns().size(); i++){
 				if(AllAns[QnNo].getSubShortAns().equals(AllAns[QnNo].getTruemulManyAns().get(i))){
 					AllAns[QnNo].setCssCls("correct");
 					AllAns[QnNo].setIsCorrect(1);
 					AllAns[QnNo].setScoredWeight(AllAns[QnNo].getTrueMulWeight().get(i)[0]);
-					AllAns[QnNo].setSubString(msg+"<span class='correct'>"+AllAns[QnNo].getSubShortAns()+"</span>");
 				}
 			}
 			//Log.d("Updating Short Ans ..", QnNo +" -- "+AllAns[QnNo].getSubShortAns());
