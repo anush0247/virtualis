@@ -1,6 +1,5 @@
 package com.aakash.vlabs.quiz;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import android.app.Activity;
@@ -51,36 +50,46 @@ public class QuizStart extends Activity implements OnAnswered{
     		AllAns[i].setIsPartial(0);
     		AllAns[i].setIsAnswred(0);
     		AllAns[i].setSubString("Not Answered");
+    		AllAns[i].setScoredWeight(0);
         	
         	ParseAnswer pAns = new ParseAnswer(pQuestion.parts[2]);
         	if(AllAns[i].getQnType().equals("Multiple_many") || AllAns[i].getQnType().equals("Short_Answer") || AllAns[i].getQnType().equals("Multiple")){
         		ArrayList<String> tmpStrAry = new ArrayList<String>();
         		ArrayList<String> tmpFeedback = new ArrayList<String>();
         		ArrayList<float[]> tmpWeigh = new ArrayList<float[]>();
-        		
-        		ArrayList<McqOpts> mcq = pAns.parseMCQ();
+        		String trueStr = "<span class='correct'><br>";
+        		ArrayList<McqOpts> mcq = pAns.parseMCQ();int num = 0;
         		for(int i1 = 0;i1<mcq.size();i1++){
         			tmpWeigh.add(new float[]{mcq.get(i1).weight});
         			tmpFeedback.add(mcq.get(i1).feedback);
         			
+        			if(AllAns[i].getQnType().equals("Multiple_many")){
+    					if(mcq.get(i1).weight > 0) trueStr += (++num)+". "+mcq.get(i1).value+"<br>";
+    					tmpStrAry.add(mcq.get(i1).value);
+        			}
+					
         			if(mcq.get(i1).isAns){
         				if(AllAns[i].getQnType().equals("Multiple")){
         					AllAns[i].setTruemulOptAns(mcq.get(i1).value);
         					AllAns[i].setTrueString("<span class='correct'>"+mcq.get(i1).value+"</span>");
         				}
         				else {
+        					trueStr += mcq.get(i1).value+"<br>";
         					tmpStrAry.add(mcq.get(i1).value);
         				}
-    					
         			}
         		}
+        		
+        		trueStr += "</span>";
         		
         		if(AllAns[i].getQnType().equals("Multiple")){
         			AllAns[i].setSubmulOptAns("");
         		}
         		else if(AllAns[i].getQnType().equals("Short_Answer")){
+        			AllAns[i].setTrueString(trueStr);
         			AllAns[i].setSubShortAns("");
         		}else {
+        			AllAns[i].setTrueString(trueStr);
         			ArrayList<String> tmpSubAry = new ArrayList<String>();
             		AllAns[i].setSubmulManyAns(tmpSubAry);
             		AllAns[i].setTruemulManyAns(tmpStrAry);
@@ -113,7 +122,7 @@ public class QuizStart extends Activity implements OnAnswered{
         		AllAns[i].setTrueMatch(tmpStringAry);
         	}
         	else {
-        		Log.d("Error #"+i,"Unable to identify type of Question");
+        		//Log.d("Error #"+i,"Unable to identify type of Question");
         	}
         }
         
@@ -197,7 +206,7 @@ public class QuizStart extends Activity implements OnAnswered{
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
 						
-						Log.d("correct&wrong",""+correct+"-"+wrong);
+						//Log.d("correct&wrong",""+correct+"-"+wrong);
 						Intent quiz_summary= new Intent(getApplicationContext(),
 								Summary.class);
 						Bundle b = new Bundle();
@@ -225,7 +234,7 @@ public class QuizStart extends Activity implements OnAnswered{
 		AllAns[QnNo] = ans;
 		AllAns[QnNo].setIsAnswred(1);
 		if(AllAns[QnNo].getQnType().equals("True_false")){
-			Log.d("Updating ...", ""+QnNo+""+AllAns[QnNo].getSubAns());
+			//Log.d("Updating ...", ""+QnNo+""+AllAns[QnNo].getSubAns());
 			String msg = "Your Answer is ";
 			
 			if(AllAns[QnNo].getTrueAns().equals(AllAns[QnNo].getSubAns())){
@@ -246,7 +255,6 @@ public class QuizStart extends Activity implements OnAnswered{
 			Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 		}
 		else if(AllAns[QnNo].getQnType().equals("Multiple")){
-			Log.d("Updating ...", ""+QnNo+""+AllAns[QnNo].getSubmulOptAns());
 			String msg = "Your Answer is ";
 			AllAns[QnNo].setScoredWeight(AllAns[QnNo].getTrueMulWeight().get(AllAns[QnNo].getMulOptindex())[0]);
 			if(AllAns[QnNo].getTruemulOptAns().equals(AllAns[QnNo].getSubmulOptAns())){
@@ -272,21 +280,46 @@ public class QuizStart extends Activity implements OnAnswered{
 			Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
 		}
 		else if(AllAns[QnNo].getQnType().equals("Multiple_many")){
-			Log.d("Updating Multiple Ans ..", QnNo +" -- "+AllAns[QnNo].getSubmulManyAns().size());
-			int num = 0;
-			for(int i = 0;i<AllAns[QnNo].getTruemulManyAns().size();i++){
-				if(AllAns[QnNo].getSubmulManyAns().contains(AllAns[QnNo].getTruemulManyAns().get(i)))
-					num++;
+			float num = 0;
+			String tmp = "";
+			for(int i = 0;i<AllAns[QnNo].getSubmulManyAns().size();i++){
+				for(int j=0;j<AllAns[QnNo].getTruemulManyAns().size();j++){
+					if(AllAns[QnNo].getTruemulManyAns().get(j).equals(AllAns[QnNo].getSubmulManyAns().get(i)) && AllAns[QnNo].getTrueMulWeight().get(j)[0] > 0 ){
+						num += AllAns[QnNo].getTrueMulWeight().get(j)[0];
+						tmp += "<span class='correct'>"+AllAns[QnNo].getSubmulManyAns().get(i)+"</span><br>";
+					}
+					else if(AllAns[QnNo].getTruemulManyAns().get(j).equals(AllAns[QnNo].getSubmulManyAns().get(i))) {
+						tmp += "<span class='wrong'>"+AllAns[QnNo].getSubmulManyAns().get(i)+"</span><br>";
+					}
+				}
 			}
+			
+			if(num > 0 ){
+				if(num == 100){
+					AllAns[QnNo].setIsCorrect(1);
+					AllAns[QnNo].setCssCls("correct");
+				}
+				else {
+					AllAns[QnNo].setIsPartial(1);
+					AllAns[QnNo].setCssCls("partial");
+				}
+			}
+			else {
+				AllAns[QnNo].setIsCorrect(0);
+				AllAns[QnNo].setCssCls("wrong");
+			}
+			
+			AllAns[QnNo].setScoredWeight(num);
+			AllAns[QnNo].setSubString("Your Ans : <br>"+tmp);
 			Toast.makeText(getApplicationContext(), num + " Answers Correct", Toast.LENGTH_SHORT).show();
 		}
 		else if(AllAns[QnNo].getQnType().equals("Short_Answer")){
-			Log.d("Updating Short Ans ..", QnNo +" -- "+AllAns[QnNo].getSubShortAns());
-			Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubShortAns(), Toast.LENGTH_SHORT).show();
+			//Log.d("Updating Short Ans ..", QnNo +" -- "+AllAns[QnNo].getSubShortAns());
+			//Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubShortAns(), Toast.LENGTH_SHORT).show();
 		}
 		else if(AllAns[QnNo].getQnType().equals("Numeric")){
-			Log.d("Updating Numeric Ans ..", QnNo +" -- "+AllAns[QnNo].getSubNumeric());
-			Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubNumeric(), Toast.LENGTH_SHORT).show();
+			//Log.d("Updating Numeric Ans ..", QnNo +" -- "+AllAns[QnNo].getSubNumeric());
+			//Toast.makeText(getApplicationContext(), "You have enterd " + AllAns[QnNo].getSubNumeric(), Toast.LENGTH_SHORT).show();
 		}
 		else if(AllAns[QnNo].getQnType().equals("Matching")){
 			String ab = "";
@@ -294,7 +327,7 @@ public class QuizStart extends Activity implements OnAnswered{
 				ab += "Opt : "+ AllAns[QnNo].getSubMatch().get(i)[0] +" :--- " + AllAns[QnNo].getSubMatch().get(i)[1] + "\n";
 			}
 			Log.d("Updating Matching Ans ..", QnNo +" -- " + ab);
-			Toast.makeText(getApplicationContext(), "You have selected " + ab, Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getApplicationContext(), "You have selected " + ab, Toast.LENGTH_SHORT).show();
 		}
 		
 	}

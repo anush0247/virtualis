@@ -37,7 +37,7 @@ public class ParseAnswer {
 			else {
 				weight = Integer.parseInt(a[1]);
 				String[] b = a[2].split("#");
-				value = b[0].substring(1);
+				value = b[0];
 				if(b.length != 1){
 					feedback = b[1];
 				}
