@@ -1,0 +1,16 @@
+1403932295938	Rename type 'Conf'
+1403933294003	Rename type 'ApplicationExt'
+1403935352175	Encapsulate field 'AppBaseDir'
+1403937277747	Encapsulate field 'AppName'
+1403937282724	Encapsulate field 'Tag'
+1403937286730	Encapsulate field 'Version'
+1403937291621	Encapsulate field 'Authors'
+1403937296714	Encapsulate field 'Website'
+1403937300463	Encapsulate field 'Support'
+1403937305307	Encapsulate field 'downlods'
+1403937315698	Encapsulate field 'ClsNo'
+1403937325888	Encapsulate field 'ExpList_Link'
+1403937331957	Encapsulate field 'OneExp_Link'
+1403939910108	Encapsulate field 'GetStart'
+1403965318693	Delete element
+1403973449720	Delete element

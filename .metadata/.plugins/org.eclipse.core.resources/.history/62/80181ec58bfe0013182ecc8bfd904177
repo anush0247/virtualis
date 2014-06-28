@@ -1,0 +1,6 @@
+package com.virtualis;
+
+public interface Global {
+	public String PACKAGE = "com.virtulis";
+	
+}

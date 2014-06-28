@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/app_settings"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <LinearLayout
+        android:id="@+id/half0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:padding="5dp"
+        android:baselineAligned="false" >
+        
+	    <LinearLayout
+	        android:id="@+id/half1"
+	        android:layout_width="0dp"
+	        android:layout_weight="5"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical"
+	        android:padding="5dp" >
+	        
+	         <TextView
+		        android:id="@+id/select_class"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:padding="5dp"
+		        android:text="@string/caption_class"
+		        android:textSize="20sp" />
+		
+		    <Spinner
+		        android:id="@+id/student_class"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:padding="5dp" />
+	        
+	    </LinearLayout>
+	    
+	   
+	    <LinearLayout
+	        android:id="@+id/half2"
+	        android:layout_width="0dp"
+	        android:layout_weight="5"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical"
+	        android:padding="5dp" >
+		    
+	        <TextView
+		        android:id="@+id/show_getstart"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:padding="5dp"
+		        android:text="@string/caption_getstart"
+		        android:textSize="20sp" />
+		
+		    <RadioGroup
+		        android:id="@+id/getstart"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"
+		        android:padding="5dp" >
+		
+		        <RadioButton
+		            android:id="@+id/getstart_yes"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:checked="true"
+		            android:text="@string/caption_yes" />
+		
+		        <RadioButton
+		            android:id="@+id/getstart_no"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/caption_no" />
+		
+		    </RadioGroup>
+		   
+		</LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+	        android:id="@+id/yes_no"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:orientation="horizontal"
+	        android:padding="5dp"
+	        android:text="@string/caption_no">
+	        
+	        <Button
+		        android:id="@+id/settings_save"
+		        android:padding="10dp"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/caption_save"
+		        style="?android:attr/buttonBarButtonStyle" />
+		
+		    <Button
+		        android:textSize="16dp"
+		        android:id="@+id/settings_cancel"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/caption_cancel"
+		        style="?android:attr/buttonBarButtonStyle" />
+	    </LinearLayout>
+    
+
+</LinearLayout>

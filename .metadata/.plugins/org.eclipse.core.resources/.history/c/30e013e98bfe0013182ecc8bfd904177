@@ -1,0 +1,10 @@
+package com.virtualis;
+
+import java.io.File;
+
+import android.os.Environment;
+
+public interface Global {
+	public String PACKAGE = "com.virtulis";
+	File EXTDIR = Environment.getExternalStorageDirectory();
+}
