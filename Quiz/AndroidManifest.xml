@@ -28,6 +28,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="landscape"
             android:name="com.aakash.vlabs.quiz.QuizPreStart"
             android:label="@string/title_activity_quiz_pre_start" >
             <intent-filter>
