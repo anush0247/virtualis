@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="HardcodedText">
+        <ignore path="res/layout/one_quiz_quiz_start.xml" />
+    </issue>
+    <issue id="NestedWeights">
+        <ignore path="res/layout/one_quiz_quiz_start.xml" />
+    </issue>
+</lint>

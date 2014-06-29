@@ -12,7 +12,13 @@
     <string name="caption_yes">Yes</string>
     <string name="caption_no">No</string>
     <string name="caption_save">Save</string>
+    <string name="caption_saved">Saved</string>
     <string name="caption_cancel">Cancel</string>
-    <string name="caption_ok">Ok</string>
+    <string name="caption_ok">OK</string>
     <string name="caption_dontshow">Don\'t show again</string>
+    <string name="caption_end">End Quiz</string>
+	<string name="caption_next">Next</string>
+	<string name="caption_prev">Prev</string>
+	<string name="caption_quizStart">Quiz Start</string>
+	<string name="caption_quizEnd">Quiz End</string>
 </resources>
