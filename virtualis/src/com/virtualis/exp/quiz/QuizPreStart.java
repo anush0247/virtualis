@@ -36,7 +36,7 @@ public class QuizPreStart extends Activity {
 	String online_url = "http://www.cse.iitb.ac.in/~aneesh14/GIFT-examples.txt";
 	@SuppressLint("SdCardPath")
 	String offline_url = "/sdcard/Android/data/com.aakash.vlabs/ExPdaTA/9/physics/2/GIFT-examples.txt";
-	String view_mode = "offline"; // offline | online
+	String view_mode = "online"; // offline | online
 	
 	String[] Questions = {}; 
 	String gift_content = "";
@@ -62,6 +62,9 @@ public class QuizPreStart extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.one_quiz_pre_start);
+		
+		view_mode =  getIntent().getStringExtra("view_mode");
+		online_url = getIntent().getStringExtra("offline_url");
 		
 		if(view_mode.equals("online")){
 			new HttpAsyncTask().execute(online_url);
