@@ -47,6 +47,7 @@
 	            android:id="@+id/video_no"
 	            android:text="Video No"
 	            android:textStyle="bold|italic"
+	            android:paddingLeft="20dp"
 	            android:textSize="18sp"/>
        	
        	</LinearLayout>
@@ -66,7 +67,10 @@
 	            android:text="@string/caption_prev"
 	            android:textSize="14sp"
 	            android:layout_gravity="right|bottom"
-	            android:drawableLeft="@drawable/one_quiz_prev"/>
+	            android:drawableLeft="@drawable/one_quiz_prev"
+	            android:paddingRight="20dp"
+	            android:layout_marginRight="11dp"
+	            android:background="@drawable/all_border_ui_full" />
                
 	        <Button 
 	            android:layout_width="wrap_content"
@@ -75,7 +79,10 @@
 	            android:text="@string/caption_next"
 	            android:textSize="14sp"
 	            android:layout_gravity="left|center"
-	            android:drawableRight="@drawable/one_quiz_next"/>
+	            android:drawableRight="@drawable/one_quiz_next"
+	            android:paddingLeft="20dp"
+	            android:layout_marginLeft="11dp"
+	            android:background="@drawable/all_border_ui_full" />
         
    	  	</LinearLayout>
         

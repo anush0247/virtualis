@@ -5,7 +5,6 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnErrorListener;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -49,8 +48,9 @@ public class Videos extends Activity {
 		Urls = VideoUrls.split(",");
 		
 		viewFlipper = (ViewFlipper) findViewById(R.id.flipper);
-		label = (TextView) findViewById(R.id.video_no);
 		
+		label = (TextView) findViewById(R.id.video_no);
+		label.setText("Video 1");
 		for (int j = 0; j < Urls.length; j++) {
 			
 			
@@ -70,8 +70,9 @@ public class Videos extends Activity {
 					return true;
 				}
 			});
-		    
-			label.setText(Html.fromHtml("Video " + (j+1)));
+			
+			
+			//label.setText(Html.fromHtml("Video " + (j+1)));
 			//label.setPadding(10, 10, 10, 10);
 			//label.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 50));
 			
@@ -89,7 +90,7 @@ public class Videos extends Activity {
 			mLinearLayout2.addView(mLinearLayout3);
 			//mLinearLayout3.addView(label);
 			mLinearLayout.addView(video);
-			
+			mLinearLayout.setTag(""+(j+1));
 			viewFlipper.addView(mLinearLayout);
 			
 			btn1 = (Button) findViewById(R.id.prev_btn);
@@ -101,7 +102,7 @@ public class Videos extends Activity {
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
 					viewFlipper.showPrevious();
-					
+					label.setText("Video "+ (String)viewFlipper.getCurrentView().getTag());
 				}
 			});
 			
@@ -110,7 +111,9 @@ public class Videos extends Activity {
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					viewFlipper.showNext();					
+					viewFlipper.showNext();
+					label.setText("Video "+ (String)viewFlipper.getCurrentView().getTag());
+					//Toast.makeText(getApplication(), ""+viewFlipper.getCurrentView().getTag(), Toast.LENGTH_SHORT).show();
 				}
 			});
 			

@@ -10,7 +10,7 @@
         android:id="@+id/quiz_topbar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8.75"
+        android:layout_weight="8"
         android:orientation="horizontal">
         
         <FrameLayout 
@@ -25,7 +25,7 @@
         android:id="@+id/quiz_bottombar_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.25"
+        android:layout_weight="2"
         android:orientation="horizontal"
         android:weightSum="10"
         android:padding="5dp"
@@ -44,6 +44,7 @@
 		            android:id="@+id/quiz_qno_total"
 		            android:text="Quiz Question : 1 / 10"
 		            android:textStyle="bold|italic"
+		            android:paddingLeft="20dp"
 		            android:textSize="20sp"/>
         	
         	</LinearLayout>
@@ -51,27 +52,38 @@
            
     	  	
             <LinearLayout
-	           android:id="@+id/quiz_bottombar_buttons"
-	           android:layout_width="0dp"
-	           android:layout_weight="3"
-	           android:layout_height="wrap_content"
-	           android:layout_gravity="right|center">
+	           	android:id="@+id/quiz_bottombar_buttons"
+				android:layout_width="0dp"
+				android:layout_height="fill_parent"
+				android:layout_gravity="right"
+				android:layout_weight="3"
+				android:gravity="right" >
     
-                <Button 
+                
+		        
+		        <Button 
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:id="@+id/quiz_qn_prev"
 		            android:text="@string/caption_prev"
+		            android:textSize="15sp"
 		            android:layout_gravity="right|bottom"
-		            android:drawableLeft="@drawable/one_quiz_prev"/>
-                
+		            android:drawableLeft="@drawable/one_quiz_prev"
+		            android:paddingRight="20dp"
+		            android:layout_marginRight="11dp"
+		            android:background="@drawable/all_border_ui_full" />
+	               
 		        <Button 
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:id="@+id/quiz_qn_next"
 		            android:text="@string/caption_next"
-		            android:layout_gravity="left|center"
-		            android:drawableRight="@drawable/one_quiz_next"/>
+		            android:textSize="15sp"
+		            android:layout_gravity="left|bottom"
+		            android:drawableRight="@drawable/one_quiz_next"
+		            android:paddingLeft="20dp"
+		            android:layout_marginLeft="11dp"
+		            android:background="@drawable/all_border_ui_full" />
          
     	  	</LinearLayout>
         

@@ -73,7 +73,7 @@ public class Resources extends Activity {
                  return true;
               }
         });
-       mWebView.loadUrl("http://docs.google.com/gview?embedded=true&url=" + ResourceUrl);
+       mWebView.loadUrl(ResourceUrl);
         //mWebView.loadUrl("http://askdjfalk");
         
         

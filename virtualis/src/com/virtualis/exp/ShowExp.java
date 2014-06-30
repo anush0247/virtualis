@@ -71,7 +71,7 @@ public class ShowExp extends TabActivity {
 	    // Inflate the menu items for use in the action bar
 	    MenuInflater inflater = getMenuInflater();
 	    inflater.inflate(R.menu.one_optionmeu, menu);
-	    super.onCreateOptionsMenu(menu);
+	    
 	    
 	    this.menu = menu;
 		this.saved_btn = menu.findItem(R.id.saveExp);
@@ -86,11 +86,14 @@ public class ShowExp extends TabActivity {
 			Toast.makeText(getApplicationContext(), "You are in online mode", Toast.LENGTH_LONG).show();
 		}
 		else if(view_mode.equals("online") && saved_status.equals("yes")){
+			
+			//inflater.
 			saved_btn.setTitle("Update Exp");
 			exp_message = "Offline Experiment Files Updated";
 			Toast.makeText(getApplicationContext(), "You are viewing saved experimnet in online mode", Toast.LENGTH_LONG).show();
 		}
 		
+		super.onCreateOptionsMenu(menu);
 	    return true;
 	}
 	
@@ -162,7 +165,7 @@ public class ShowExp extends TabActivity {
 		VideoUrls = getIntent().getExtras().getString("video_urls");
 		
 		//mytitle = (TextView) findViewById(R.id.mytitle);
-		this.setTitle(Html.fromHtml("<b> Class "+class_no+" - "+subject+" - "+exp_no+"."+exp_name+"</b>"));
+		this.setTitle(Html.fromHtml("<b> Class "+class_no+" - "+subject+" - "+exp_no+". "+exp_name+"</b>"));
 		
 		//Toast.makeText(getApplicationContext(), no_vid,Toast.LENGTH_LONG ).show();
 		

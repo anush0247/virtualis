@@ -76,8 +76,7 @@ public class Question extends Fragment implements android.widget.CompoundButton.
 		ParseQuestion pQuestion = new ParseQuestion(Gift_qn);
 		parts = pQuestion.parts;
 		
-		mytext.setText("Question "+ currentId + ". "+parts[0] +"\n" 
-				+ parts[1] + "\n");
+		mytext.setText("Question "+ currentId + ". "+parts[0] +"\n" + parts[1]);
 		mytext.setPadding(10, 5, 10, 5);
 		mytext.setTextSize(18);
 		qun_layout.addView(mytext);

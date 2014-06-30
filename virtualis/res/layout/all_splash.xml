@@ -11,7 +11,8 @@
         android:layout_height="0dp"
         android:layout_gravity="right"
         android:layout_weight="1"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp" >
 
         <Button
             android:id="@+id/about_us"

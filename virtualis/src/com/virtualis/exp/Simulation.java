@@ -10,7 +10,6 @@ import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.virtualis.R;
@@ -26,9 +25,7 @@ public class Simulation extends Activity {
 
 		setContentView(R.layout.one_simulation);
 		
-		TextView mytext = (TextView) findViewById(R.id.simulation_title);
-		mytext.setText("Experiment Simulations");
-		mytext.setPadding(5,5,5,5);
+		
 		
 		blender = (Button) findViewById(R.id.open_blender);
 		blender.setOnClickListener(new OnClickListener() {
@@ -56,7 +53,7 @@ public class Simulation extends Activity {
 		            }
 		    	}
 		    	else {
-	            	Toast.makeText(Simulation.this, "No Blender player software found \n\n please download the apk from \n http://some.com/donwload.html ", Toast.LENGTH_SHORT).show();
+	            	Toast.makeText(Simulation.this, "No Blender player software found \n Please download the apk from -- http://some.com/donwload.html ", Toast.LENGTH_SHORT).show();
 	            }
 		    	
 			}	

@@ -80,11 +80,20 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 	    ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 	    Button offline = (Button) rowView.findViewById(R.id.offline);
 	    offline.setTag(position);
-	    textView1.setText(values.get(position));
-
-	    offline.setVisibility(View.INVISIBLE);
-	    textView2.setText(JSONdata.ExperimentsDesc.get(j).get(position));
 	    
+	    if(values.get(position).length()<=30){
+	    	textView1.setText(values.get(position));
+	    }else {
+	    	textView1.setText(values.get(position).substring(0, 30) + " [....]");
+	    }
+	    if(JSONdata.ExperimentsDesc.get(j).get(position).length()<=55){
+	    	textView2.setText(JSONdata.ExperimentsDesc.get(j).get(position));
+	    }else{
+	    	textView2.setText(JSONdata.ExperimentsDesc.get(j).get(position).substring(0, 55) + " [....]");
+	    }
+	    
+	    
+	    offline.setVisibility(View.INVISIBLE);
 	    ///
 	    
 	    URL myUrl;
@@ -112,7 +121,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 	    url2 = BASEDIR + "ExPdaTA/"+JSONdata.StudentClass+"/"+JSONdata.Subjects.get(SubPosition)+"/"+JSONdata.ExperimentsNum.get(j).get(position)+"/expData.json";
 	    File myFile = new File(url2);
 	    //Toast.makeText(parent.getContext(), url2 , Toast.LENGTH_SHORT).show();
-	    
+	    Log.d("url2",url2);
 	    if(myFile.exists()) {
 	    	
 	    	storage_status = "yes";
@@ -173,7 +182,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 					
 					//try {
 						//thisExp = json.getJSONObject(0);
-					Log.d("Received Jstring --",jString);
+					//Log.d("Received Jstring --",jString);
 					int var = 0;
 					for(;jString.charAt(var)!=',';var++);var-=2;
 					for(;jString.charAt(var)!='"';var--);var++;
@@ -287,15 +296,17 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 			});
 	    	}
 	    } else {
+	    	Log.d("i am here ", "msg");
 	    	storage_status = "no";
 	    }
-	    
+	    rowView.setTag(storage_status);
 	    rowView.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				
+				storage_status = (String) v.getTag();
 				if(JSONdata.fullOffline == 0) {
 				
 				JSONParser jParser = new JSONParser(); 
@@ -336,6 +347,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 						e.printStackTrace();
 					}	
 					
+					Log.d("Storage_Status", storage_status);
 					Intent intent=new Intent(parent.getContext(), com.virtualis.exp.ShowExp.class);   
 					dataSend = "";
 					intent.putExtra("saved_status", storage_status);
@@ -378,6 +390,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 			} else {
 			
 				url2 = BASEDIR+"ExPdaTA/"+JSONdata.StudentClass+"/"+JSONdata.Subjects.get(SubPosition)+"/"+JSONdata.ExperimentsNum.get(j).get(position)+"/expData.json";
+				
 				String exp_thumb = "";
 				String exp_simulation = "";
 				String exp_video = "";
