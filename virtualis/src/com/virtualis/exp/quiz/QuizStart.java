@@ -7,6 +7,9 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -19,7 +22,7 @@ import com.virtualis.exp.quiz.Question.OnAnswered;
 
 public class QuizStart extends Activity implements OnAnswered{
 
-	Button prev,next,end;
+	Button prev,next;
 	int currnt_qn = 1,next_qn = 2,prev_qn = 1,total_qn=10;
 	int correct = 0,wrong = 0,grand = 0;
 	
@@ -31,7 +34,29 @@ public class QuizStart extends Activity implements OnAnswered{
 	MyAns[] AllAns = null;
 	ArrayList<String> Qns = new ArrayList<String>();
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.one_quiz, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	
     @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+    	Intent quiz_summary= new Intent(getApplicationContext(),
+				Summary.class);
+		Bundle b = new Bundle();
+		b.putParcelableArray("allAns", AllAns);
+		quiz_summary.putExtras(b);
+		startActivity(quiz_summary);
+		return super.onOptionsItemSelected(item);
+	}
+
+
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.one_quiz_quiz_start);
@@ -155,7 +180,6 @@ public class QuizStart extends Activity implements OnAnswered{
         
         prev = (Button) findViewById(R.id.quiz_qn_prev);
         next = (Button) findViewById(R.id.quiz_qn_next);
-        end = (Button) findViewById(R.id.quiz_end);
         
         prev.setOnClickListener(new OnClickListener() {
 			
@@ -213,20 +237,7 @@ public class QuizStart extends Activity implements OnAnswered{
 				
 			}
 		});
-		end.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						
-						Intent quiz_summary= new Intent(getApplicationContext(),
-								Summary.class);
-						Bundle b = new Bundle();
-						b.putParcelableArray("allAns", AllAns);
-						quiz_summary.putExtras(b);
-						startActivity(quiz_summary);
-					}
-				});
+		
         
     }
 
