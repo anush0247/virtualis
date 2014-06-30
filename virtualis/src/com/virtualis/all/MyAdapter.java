@@ -42,7 +42,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 	JSONArray json = null;
 	private JSONObject thisExp;
 	private String dataSend = "";
-	private static String url = "http://www.cse.iitb.ac.in/~ashutosh14/subject.json";
+	private static String url = "http://www.cse.iitb.ac.in/~aneesh14/json/subject_exp.json";
 	private static String url2 = "";
 	private JSONArray vidList = null;
 	private JSONObject vid = null;
@@ -109,7 +109,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 	    
 	    url2 = BASEDIR + "ExPdaTA/"+JSONdata.StudentClass+"/"+JSONdata.Subjects.get(SubPosition)+"/"+JSONdata.ExperimentsNum.get(j).get(position)+"/expData.json";
 	    File myFile = new File(url2);
-	    //Toast.makeText(parent.getContext(), url2 , Toast.LENGTH_SHORT).show();
+	    Toast.makeText(parent.getContext(), url2 , Toast.LENGTH_SHORT).show();
 	    
 	    if(myFile.exists()) {
 	    	
