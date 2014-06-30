@@ -1076,10 +1076,14 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int all_border_ui=0x7f020057;
-        public static final int one_border_black2=0x7f020058;
-        public static final int one_trans=0x7f020059;
-        public static final int start_aakash2=0x7f02005a;
-        public static final int start_ic_launcher=0x7f02005b;
+        public static final int exp_simulation_ic_launcher=0x7f020058;
+        public static final int exp_simulation_icon=0x7f020059;
+        public static final int exp_simulation_scrubber_control_normal_holo=0x7f02005a;
+        public static final int exp_simulation_scrubber_control_pressed_holo=0x7f02005b;
+        public static final int one_border_black2=0x7f02005c;
+        public static final int one_trans=0x7f02005d;
+        public static final int start_aakash2=0x7f02005e;
+        public static final int start_ic_launcher=0x7f02005f;
     }
     public static final class id {
         public static final int about_us=0x7f06003f;
