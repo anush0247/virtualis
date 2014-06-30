@@ -1305,7 +1305,7 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f060023;
         public static final int action_bar_title=0x7f060022;
         public static final int action_context_bar=0x7f06001d;
-        public static final int action_end=0x7f06008e;
+        public static final int action_end=0x7f06008f;
         public static final int action_menu_divider=0x7f060016;
         public static final int action_menu_presenter=0x7f060017;
         public static final int action_mode_close_button=0x7f060024;
@@ -1320,6 +1320,7 @@ containing a value of this type.
         public static final int collapseActionView=0x7f06000d;
         public static final int controllers=0x7f060076;
         public static final int default_activity_button=0x7f060028;
+        public static final int delete=0x7f06008e;
         public static final int deleteButton=0x7f060057;
         public static final int deleteRadioButton=0x7f06004c;
         public static final int desc=0x7f06003e;
@@ -1515,7 +1516,7 @@ containing a value of this type.
     }
     public static final class string {
         public static final int InfoData=0x7f0b000f;
-        public static final int aakash_desc=0x7f0b0013;
+        public static final int aakash_desc=0x7f0b0015;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f0b0001;
@@ -1557,25 +1558,29 @@ containing a value of this type.
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0b000b;
         public static final int app_name=0x7f0b000e;
-        public static final int caption_cancel=0x7f0b001b;
-        public static final int caption_class=0x7f0b0015;
-        public static final int caption_dontshow=0x7f0b001d;
-        public static final int caption_end=0x7f0b001e;
-        public static final int caption_getstart=0x7f0b0016;
-        public static final int caption_next=0x7f0b001f;
-        public static final int caption_no=0x7f0b0018;
-        public static final int caption_ok=0x7f0b001c;
-        public static final int caption_prev=0x7f0b0020;
-        public static final int caption_quizEnd=0x7f0b0022;
-        public static final int caption_quizStart=0x7f0b0021;
-        public static final int caption_save=0x7f0b0019;
-        public static final int caption_saved=0x7f0b001a;
-        public static final int caption_yes=0x7f0b0017;
-        public static final int getstart_title=0x7f0b0014;
+        public static final int caption_cancel=0x7f0b001f;
+        public static final int caption_class=0x7f0b0017;
+        public static final int caption_del_exp=0x7f0b001e;
+        public static final int caption_dontshow=0x7f0b0021;
+        public static final int caption_end=0x7f0b0022;
+        public static final int caption_getstart=0x7f0b0018;
+        public static final int caption_next=0x7f0b0023;
+        public static final int caption_no=0x7f0b001a;
+        public static final int caption_ok=0x7f0b0020;
+        public static final int caption_prev=0x7f0b0024;
+        public static final int caption_quizEnd=0x7f0b0026;
+        public static final int caption_quizStart=0x7f0b0025;
+        public static final int caption_save=0x7f0b001b;
+        public static final int caption_save_exp=0x7f0b001d;
+        public static final int caption_saved=0x7f0b001c;
+        public static final int caption_yes=0x7f0b0019;
+        public static final int getstart_title=0x7f0b0016;
         public static final int hello=0x7f0b000d;
-        public static final int img_desc=0x7f0b0012;
-        public static final int menu1=0x7f0b0010;
-        public static final int menu2=0x7f0b0011;
+        public static final int img_desc=0x7f0b0014;
+        public static final int menu1=0x7f0b0012;
+        public static final int menu2=0x7f0b0013;
+        public static final int quiz_summary=0x7f0b0011;
+        public static final int quiz_title=0x7f0b0010;
     }
     public static final class style {
         /** 

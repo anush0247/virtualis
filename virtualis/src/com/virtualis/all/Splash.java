@@ -171,7 +171,7 @@ public class Splash extends Activity implements Global{
 					RadioButton yes = (RadioButton) settingsDialog.findViewById(R.id.getstart_yes),
 					no = (RadioButton) settingsDialog.findViewById(R.id.getstart_no);
 					
-					if(gf.getGetStart().equals("0")){
+					if(gf.getGetStart().equals("1")){
 						no.setChecked(true);
 					}
 					else{
@@ -186,10 +186,10 @@ public class Splash extends Activity implements Global{
 							gf.setClsNo(""+(spinner.getSelectedItemPosition()+6));
 							switch (rg.getCheckedRadioButtonId()) {
 							case R.id.getstart_yes:
-								gf.setGetStart("1");
+								gf.setGetStart("0");
 								break;
 							case R.id.getstart_no:
-								gf.setGetStart("0");
+								gf.setGetStart("1");
 								break;
 							default:
 								break;

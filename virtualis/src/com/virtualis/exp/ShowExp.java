@@ -33,12 +33,13 @@ import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.virtualis.Global;
 import com.virtualis.R;
 import com.virtualis.exp.quiz.QuizPreStart;
 
 @SuppressWarnings("deprecation")
 @SuppressLint("NewApi")
-public class ShowExp extends TabActivity {
+public class ShowExp extends TabActivity implements Global {
 	
 	
 	Button theory,procedure,videos,simulation,quiz,resources;
@@ -55,13 +56,14 @@ public class ShowExp extends TabActivity {
 	
 	File extStorageAppBasePath,extStorageAppExpPath,myExpFilesDir;
 	File externalStorageDir = Environment.getExternalStorageDirectory();
-
+	File expDir;
+	
 	
 	public static final int DIALOG_DOWNLOAD_PROGRESS = 0;
     private ProgressDialog pDialog;
     
     Menu menu;
-    MenuItem saved_btn; 
+    MenuItem saved_btn,del_btn; 
     
     int total_files = 3, completed = 0;
     String exp_message = "Offline Experiment Files Saved";
@@ -75,20 +77,24 @@ public class ShowExp extends TabActivity {
 	    
 	    this.menu = menu;
 		this.saved_btn = menu.findItem(R.id.saveExp);
+		this.del_btn = menu.findItem(R.id.delete);
 		
 		if(view_mode.equals("offline")){
-			saved_btn.setTitle("Offline Exp");
+			saved_btn.setTitle("Offline Mode");
+			saved_btn.setIcon(android.R.drawable.ic_menu_info_details);
+			del_btn.setVisible(false);
 			Toast.makeText(getApplicationContext(), "You are now in offline mode", Toast.LENGTH_LONG).show();
 		}
 		else if(view_mode.equals("online") && saved_status.equals("no")){
-			saved_btn.setTitle("Save Exp");
+			//saved_btn.setTitle("Save Exp");
+			del_btn.setVisible(false);
 			exp_message = "Offline Experiment Files Saved";
 			Toast.makeText(getApplicationContext(), "You are in online mode", Toast.LENGTH_LONG).show();
 		}
 		else if(view_mode.equals("online") && saved_status.equals("yes")){
 			
-			//inflater.
-			saved_btn.setTitle("Update Exp");
+			saved_btn.setIcon(android.R.drawable.ic_menu_rotate);
+			saved_btn.setTitle("Update Experiment");
 			exp_message = "Offline Experiment Files Updated";
 			Toast.makeText(getApplicationContext(), "You are viewing saved experimnet in online mode", Toast.LENGTH_LONG).show();
 		}
@@ -107,6 +113,9 @@ public class ShowExp extends TabActivity {
 	        	if(view_mode.equals("offline")) return true;
 	        	else return saveExp();
 	            //return true;
+	        case R.id.delete:
+	        	if(view_mode.equals("online") && saved_status.equals("yes")) return delExp();
+	        	else return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
@@ -114,12 +123,45 @@ public class ShowExp extends TabActivity {
 	}
 	
 	
+	private boolean delExp() {
+		// TODO Auto-generated method stub
+		
+		if(deleteDirectory(expDir)){
+			
+			saved_btn.setIcon(android.R.drawable.ic_menu_save);
+			saved_btn.setTitle("Save Experiment");
+			del_btn.setVisible(false);
+			return true;
+		}
+		else {
+			Toast.makeText(getApplicationContext(), "Unable to Delete Experiment", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+	}
+
+	public static boolean deleteDirectory(File path) {
+	    if( path.exists() ) {
+	      File[] files = path.listFiles();
+	      if (files == null) {
+	          return true;
+	      }
+	      for(int i=0; i<files.length; i++) {
+	         if(files[i].isDirectory()) {
+	           deleteDirectory(files[i]);
+	         }
+	         else {
+	           files[i].delete();
+	         }
+	      }
+	    }
+	    return( path.delete() );
+	  }
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            //WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
 		setContentView(R.layout.one_showexp);
 		
 		class_no = getIntent().getExtras().getString("class_no");
@@ -127,34 +169,11 @@ public class ShowExp extends TabActivity {
 		exp_name = getIntent().getExtras().getString("exp_name");
 		exp_no = getIntent().getExtras().getString("exp_no");
 		ExpDesc = getIntent().getExtras().getString("exp_desc");
-		
 		exp_icon = getIntent().getExtras().getString("exp_icon");
 		
 		view_mode = getIntent().getExtras().getString("view_mode");
 		saved_status = getIntent().getExtras().getString("saved_status");
 		
-		/*if(view_mode.equals("online")){
-			
-			URL myUrl;
-			InputStream inputStream = null;
-			try {
-				myUrl = new URL(exp_icon);
-				inputStream = (InputStream)myUrl.getContent();
-			} catch (MalformedURLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			Drawable drawable = Drawable.createFromStream(inputStream, null);
-			
-			ActionBar actionbar = getActionBar();
-			actionbar.setIcon(drawable);
-			//logo.setImageDrawable(drawable);
-			
-		}*/
 		TheoryUrl = getIntent().getExtras().getString("theory_url");
 		ProcedureUrl = getIntent().getExtras().getString("procedure_url");
 		ResourceUrl = getIntent().getExtras().getString("resource_url");
@@ -164,10 +183,13 @@ public class ShowExp extends TabActivity {
 	
 		VideoUrls = getIntent().getExtras().getString("video_urls");
 		
-		//mytitle = (TextView) findViewById(R.id.mytitle);
+		expDir = new File(BASEDIR + "ExPdaTA"
+						+File.separator+class_no
+						+File.separator+subject
+						+File.separator+exp_no);
+		
 		this.setTitle(Html.fromHtml("<b> Class "+class_no+" - "+subject+" - "+exp_no+". "+exp_name+"</b>"));
 		
-		//Toast.makeText(getApplicationContext(), no_vid,Toast.LENGTH_LONG ).show();
 		
 		
 		theory = (Button) findViewById(R.id.theory);
@@ -176,8 +198,6 @@ public class ShowExp extends TabActivity {
 		simulation = (Button) findViewById(R.id.simulation);
 		quiz = (Button) findViewById(R.id.quiz);
 		resources = (Button) findViewById(R.id.resources);
-		
-		//procedure.setBackground(getResources().getDrawable(R.drawable.border_black));
 		
 		tabHost = getTabHost();
 		
@@ -490,7 +510,9 @@ public class ShowExp extends TabActivity {
 					e.printStackTrace();
 				}
 				
-				saved_btn.setTitle("Update Exp");
+				saved_btn.setIcon(android.R.drawable.ic_menu_rotate);
+				saved_btn.setTitle("Update Experiment");
+				del_btn.setVisible(true);
 				completed = 0;
 				Toast.makeText(getApplicationContext(), exp_message , Toast.LENGTH_LONG).show();
 			}
