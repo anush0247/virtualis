@@ -18,7 +18,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@android:drawable/ic_input_get" />
+            android:drawableLeft="@drawable/all_about"/>
 
         <Button
             android:id="@+id/settings"
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="68dp"
-            android:drawableLeft="@android:drawable/ic_menu_preferences" />
+            android:drawableLeft="@drawable/all_settings" />
     </LinearLayout>
 
     <LinearLayout
@@ -63,18 +63,27 @@
                 android:layout_gravity="center"
                 android:drawableLeft="@android:drawable/ic_menu_directions"
                 android:text="@string/menu1"
-                android:textSize="20sp"
-                style="?android:attr/buttonBarButtonStyle" />
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:padding="10dp"
+                android:paddingRight="20dp"
+                style="?android:attr/buttonBarButtonStyle"
+                android:background="@drawable/all_border_ui_full" />
 
             <Button
+                android:layout_marginTop="10dp"
                 android:id="@+id/offline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:drawableLeft="@android:drawable/ic_menu_directions"
                 android:text="@string/menu2"
-                android:textSize="20sp" 
-                style="?android:attr/buttonBarButtonStyle"/>
+                android:textColor="#fff"
+                android:textSize="16sp" 
+                android:padding="10dp"
+                android:paddingRight="20dp"
+                style="?android:attr/buttonBarButtonStyle"
+                android:background="@drawable/all_border_ui_full"/>
         </LinearLayout>
     </LinearLayout>
 

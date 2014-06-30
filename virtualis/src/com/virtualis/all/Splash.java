@@ -294,13 +294,13 @@ public class Splash extends Activity implements Global{
 			e1.printStackTrace();
 		}	
 		
-		JSONdata.Subjects.clear();
-		JSONdata.ExperimentsHead.clear();
-		JSONdata.ExperimentsDesc.clear();
-		JSONdata.ExperimentsThumb.clear();
-		JSONdata.SubExpThumb.clear();
-		JSONdata.SubExpHead.clear();
-		JSONdata.SubExpDesc.clear();
+//		JSONdata.Subjects.clear();
+//		JSONdata.ExperimentsHead.clear();
+//		JSONdata.ExperimentsDesc.clear();
+//		JSONdata.ExperimentsThumb.clear();
+//		JSONdata.SubExpThumb.clear();
+//		JSONdata.SubExpHead.clear();
+//		JSONdata.SubExpDesc.clear();
 		JSONdata.ExperimentNo = -1;
 		JSONdata.subjectNo = -1;
 		JSONdata.fullOffline = 0;

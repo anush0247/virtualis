@@ -28,6 +28,7 @@ public class SubjectList extends ListFragment {
                 android.R.layout.simple_list_item_activated_1 : android.R.layout.simple_list_item_1;
         //Log.d("I am again here ---", JSONdata.Subjects.toString());
         setListAdapter(new ArrayAdapter<String>(getActivity(), layout, JSONdata.Subjects));
+       
     }
 
     @Override

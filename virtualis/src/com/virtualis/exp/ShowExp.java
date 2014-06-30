@@ -43,7 +43,7 @@ public class ShowExp extends TabActivity {
 	
 	Button theory,procedure,videos,simulation,quiz,resources;
 	TabHost tabHost;
-	int mycolor = Color.BLACK;//Color.rgb(51, 204, 255);//33CCFF
+	int mycolor = Color.rgb(52, 153, 255);//33CCFF #3399FF
 	TextView mytitle;
 	
 	String class_no,subject,exp_name,exp_no,exp_icon, view_mode,saved_status;

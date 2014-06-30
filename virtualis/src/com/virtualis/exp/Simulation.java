@@ -15,7 +15,8 @@ public class Simulation extends Activity {
 		setContentView(R.layout.one_simulation);
 		
 		TextView mytext = (TextView) findViewById(R.id.simulation_title);
-		mytext.setText("This is simulation tab");
+		mytext.setText("Experiment Simulations");
+		mytext.setPadding(10, 10, 10, 10);
 
 	}
 }
