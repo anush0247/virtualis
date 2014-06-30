@@ -210,6 +210,25 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int activityChooserViewStyle=0x7f01006c;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int arcColor=0x7f010077;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int arcWidth=0x7f010072;
         /**  Specifies a background drawable for the action bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -241,6 +260,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int buttonBarStyle=0x7f010017;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int clockwise=0x7f01007b;
         /**  Specifies a layout for custom navigation. Overrides navigationMode. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -463,6 +490,14 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int logo=0x7f01002d;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int max=0x7f010070;
         /**  The type of navigation to use. 
          <p>Must be one of the following constant values.</p>
 <table>
@@ -526,6 +561,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int popupPromptView=0x7f010053;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int progress=0x7f010073;
         /**  Specifies the horizontal padding on either end for an embedded progress bar. 
          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
@@ -542,6 +585,25 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int progressBarStyle=0x7f010034;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int progressColor=0x7f010078;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int progressWidth=0x7f010071;
         /**  The prompt to display when the spinner's dialog is shown. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -556,6 +618,22 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int queryHint=0x7f01005b;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int rotation=0x7f010074;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int roundEdges=0x7f010079;
         /**  SearchView dropdown background 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -617,6 +695,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int searchViewVoiceIcon=0x7f010060;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int seekArcStyle=0x7f01007c;
         /**  A style that may be applied to buttons or other selectable items
          that should react to pressed and focus states, but that do not
          have a clear visual border along the edges. 
@@ -685,6 +767,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int spinnerStyle=0x7f010057;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int startAngle=0x7f010075;
         /**  Specifies subtitle text used for navigationMode="normal" 
          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
@@ -699,6 +789,14 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int subtitleTextStyle=0x7f01002b;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int sweepAngle=0x7f010076;
         /**  Present the text in ALL CAPS. This may use a small-caps form when available. 
          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -742,6 +840,20 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
         public static final int textColorSearchUrl=0x7f010068;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int thumb=0x7f01006e;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int thumbOffset=0x7f01006f;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -755,6 +867,14 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int titleTextStyle=0x7f01002a;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int touchInside=0x7f01007a;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -864,10 +984,19 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f070002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f080003;
+        public static final int abc_search_url_text_holo=0x7f08000c;
         public static final int abc_search_url_text_normal=0x7f080000;
         public static final int abc_search_url_text_pressed=0x7f080002;
         public static final int abc_search_url_text_selected=0x7f080001;
+        public static final int blue=0x7f080007;
+        public static final int drop_target_color1=0x7f080008;
+        public static final int drop_target_color2=0x7f080009;
+        public static final int drop_target_disabled=0x7f08000b;
+        public static final int drop_target_enabled=0x7f08000a;
+        public static final int green=0x7f080006;
+        public static final int progress_gray=0x7f080003;
+        public static final int progress_gray_dark=0x7f080004;
+        public static final int red=0x7f080005;
     }
     public static final class dimen {
         public static final int Size1=0x7f090015;
@@ -954,6 +1083,19 @@ containing a value of this type.
  Minimum width of the search view text entry area. 
          */
         public static final int abc_search_view_text_min_width=0x7f09000c;
+        /**  height of the bottom row of controls 
+         */
+        public static final int button_bar_height=0x7f090017;
+        /**  so we have access to this dimension in landscape mode even though
+         button_bar_height changes 
+         */
+        public static final int button_bar_height_portrait=0x7f090018;
+        /**  delete_zone_size_full - button_bar_height_portrait 
+         */
+        public static final int delete_zone_padding=0x7f09001c;
+        /**  height & width of the drop rectangle for the trash icon 
+         */
+        public static final int delete_zone_size=0x7f09001b;
         /**  The platform's desired fixed height for a dialog along the major axis
          (the screen is in portrait). This may be either a fraction or a dimension.
  The platform's desired fixed height for a dialog along the major axis
@@ -986,6 +1128,19 @@ containing a value of this type.
          (the screen is in portrait). This may be either a fraction or a dimension.
          */
         public static final int dialog_fixed_width_minor=0x7f090012;
+        /**  roughly half a status bar (for vertically centering the right-hand
+         button cluster in landscape) 
+         */
+        public static final int half_status_bar_height=0x7f09001a;
+        /**  the area at the edge of the screen that makes the workspace go left
+         or right while you're dragging. 
+         */
+        public static final int scroll_zone=0x7f09001d;
+        /**  roughly a status bar (for vertically centering the all apps
+         home icon in landscape) 
+         */
+        public static final int status_bar_height=0x7f090019;
+        public static final int title_texture_width=0x7f090016;
     }
     public static final class drawable {
         public static final int abc_ab_bottom_solid_dark_holo=0x7f020000;
@@ -1076,16 +1231,57 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int all_border_ui=0x7f020057;
-        public static final int exp_simulation_ic_launcher=0x7f020058;
-        public static final int exp_simulation_icon=0x7f020059;
-        public static final int exp_simulation_scrubber_control_normal_holo=0x7f02005a;
-        public static final int exp_simulation_scrubber_control_pressed_holo=0x7f02005b;
-        public static final int one_border_black2=0x7f02005c;
-        public static final int one_trans=0x7f02005d;
-        public static final int start_aakash2=0x7f02005e;
-        public static final int start_ic_launcher=0x7f02005f;
+        public static final int exp_simulation_add_button_icon=0x7f020058;
+        public static final int exp_simulation_ammeter=0x7f020059;
+        public static final int exp_simulation_battery=0x7f02005a;
+        public static final int exp_simulation_beaker=0x7f02005b;
+        public static final int exp_simulation_black_back=0x7f02005c;
+        public static final int exp_simulation_blank_white_shape=0x7f02005d;
+        public static final int exp_simulation_bulb=0x7f02005e;
+        public static final int exp_simulation_burrete=0x7f02005f;
+        public static final int exp_simulation_cancel_icon=0x7f020060;
+        public static final int exp_simulation_chemicon=0x7f020061;
+        public static final int exp_simulation_delete_confirmation=0x7f020062;
+        public static final int exp_simulation_flaskicon=0x7f020063;
+        public static final int exp_simulation_ghost_button=0x7f020064;
+        public static final int exp_simulation_glossy_green_button=0x7f020065;
+        public static final int exp_simulation_glossy_red_button=0x7f020066;
+        public static final int exp_simulation_hello=0x7f020067;
+        public static final int exp_simulation_ic_launcher=0x7f020068;
+        public static final int exp_simulation_icon=0x7f020069;
+        public static final int exp_simulation_line_icon=0x7f02006a;
+        public static final int exp_simulation_minus_icon=0x7f02006b;
+        public static final int exp_simulation_minus_sign=0x7f02006c;
+        public static final int exp_simulation_onepx=0x7f02006d;
+        public static final int exp_simulation_photo1=0x7f02006e;
+        public static final int exp_simulation_photo2=0x7f02006f;
+        public static final int exp_simulation_play_button=0x7f020070;
+        public static final int exp_simulation_plus_icon=0x7f020071;
+        public static final int exp_simulation_plus_sign=0x7f020072;
+        public static final int exp_simulation_reset_button=0x7f020073;
+        public static final int exp_simulation_resistor=0x7f020074;
+        public static final int exp_simulation_scrubber_control_disabled_holo=0x7f020075;
+        public static final int exp_simulation_scrubber_control_focused_holo=0x7f020076;
+        public static final int exp_simulation_scrubber_control_normal_holo=0x7f020077;
+        public static final int exp_simulation_scrubber_control_pressed_holo=0x7f020078;
+        public static final int exp_simulation_seek_arc_control_selector=0x7f020079;
+        public static final int exp_simulation_test_bg1=0x7f02007a;
+        public static final int exp_simulation_test_bg2=0x7f02007b;
+        public static final int exp_simulation_testtube=0x7f02007c;
+        public static final int exp_simulation_text_icon=0x7f02007d;
+        public static final int exp_simulation_transparent=0x7f02007e;
+        public static final int exp_simulation_transparent_background=0x7f02007f;
+        public static final int exp_simulation_transparent_without_border=0x7f020080;
+        public static final int exp_simulation_voltmeter=0x7f020081;
+        public static final int one_border_black2=0x7f020082;
+        public static final int one_trans=0x7f020083;
+        public static final int start_aakash2=0x7f020084;
+        public static final int start_ic_launcher=0x7f020085;
     }
     public static final class id {
+        public static final int Image1=0x7f06005b;
+        public static final int Image2=0x7f06005c;
+        public static final int Text1=0x7f06005a;
         public static final int about_us=0x7f06003f;
         public static final int action_bar=0x7f06001c;
         public static final int action_bar_activity_content=0x7f060015;
@@ -1100,69 +1296,86 @@ containing a value of this type.
         public static final int action_mode_close_button=0x7f060024;
         public static final int activity_chooser_view_content=0x7f060025;
         public static final int always=0x7f06000b;
-        public static final int app_settings=0x7f060066;
+        public static final int app_settings=0x7f06007e;
         public static final int beginning=0x7f060011;
-        public static final int check_dont=0x7f060064;
+        public static final int blankBackground=0x7f060048;
+        public static final int buttonContainer=0x7f060054;
+        public static final int check_dont=0x7f06007c;
         public static final int checkbox=0x7f06002d;
         public static final int collapseActionView=0x7f06000d;
-        public static final int controllers=0x7f06005f;
+        public static final int controllers=0x7f060077;
         public static final int default_activity_button=0x7f060028;
+        public static final int deleteButton=0x7f060057;
+        public static final int deleteRadioButton=0x7f06004c;
         public static final int desc=0x7f06003e;
         public static final int dialog=0x7f06000e;
         public static final int disableHome=0x7f060008;
+        public static final int drag_layer=0x7f060047;
         public static final int dropdown=0x7f06000f;
         public static final int edit_query=0x7f060030;
         public static final int end=0x7f060013;
-        public static final int exp_button=0x7f060045;
+        public static final int exp_button=0x7f06005d;
         public static final int expand_activities_button=0x7f060026;
         public static final int expanded_menu=0x7f06002c;
         public static final int experiment_list=0x7f060044;
-        public static final int flipper=0x7f06005e;
-        public static final int frag_question=0x7f06004b;
-        public static final int getstart=0x7f06006d;
-        public static final int getstart1=0x7f060062;
-        public static final int getstart_no=0x7f06006f;
-        public static final int getstart_title=0x7f060063;
-        public static final int getstart_yes=0x7f06006e;
-        public static final int half0=0x7f060067;
-        public static final int half1=0x7f060068;
-        public static final int half2=0x7f06006b;
+        public static final int flipper=0x7f060076;
+        public static final int frag_question=0x7f060063;
+        public static final int getstart=0x7f060085;
+        public static final int getstart1=0x7f06007a;
+        public static final int getstart_no=0x7f060087;
+        public static final int getstart_title=0x7f06007b;
+        public static final int getstart_yes=0x7f060086;
+        public static final int ghostModeToggle=0x7f060053;
+        public static final int half0=0x7f06007f;
+        public static final int half1=0x7f060080;
+        public static final int half2=0x7f060083;
         public static final int headin=0x7f06003c;
         public static final int home=0x7f060014;
         public static final int homeAsUp=0x7f060005;
         public static final int icon=0x7f06002a;
         public static final int ifRoom=0x7f06000a;
         public static final int image=0x7f060027;
+        public static final int img=0x7f060045;
+        public static final int list=0x7f060058;
         public static final int listMode=0x7f060001;
         public static final int list_item=0x7f060029;
         public static final int logo=0x7f060041;
         public static final int middle=0x7f060012;
-        public static final int mydesc=0x7f06005c;
-        public static final int myquestions_page=0x7f060049;
+        public static final int minusSignImage=0x7f060050;
+        public static final int modeRadioGroup=0x7f060049;
+        public static final int moveRadioButton=0x7f06004a;
+        public static final int mydesc=0x7f060074;
+        public static final int myquestions_page=0x7f060061;
         public static final int never=0x7f060009;
-        public static final int next_btn=0x7f060061;
+        public static final int next_btn=0x7f060079;
         public static final int none=0x7f060010;
         public static final int normal=0x7f060000;
         public static final int offline=0x7f06003d;
-        public static final int ok_btn=0x7f060065;
+        public static final int ok_btn=0x7f06007d;
         public static final int online=0x7f060042;
-        public static final int prev_btn=0x7f060060;
-        public static final int procedure=0x7f060056;
+        public static final int playButton=0x7f060055;
+        public static final int plusSignImage=0x7f06004f;
+        public static final int prev_btn=0x7f060078;
+        public static final int procedure=0x7f06006e;
         public static final int progress_circular=0x7f060018;
         public static final int progress_horizontal=0x7f060019;
-        public static final int quiz=0x7f060059;
-        public static final int quiz_bottombar_buttons=0x7f06004f;
-        public static final int quiz_bottombar_layout=0x7f06004c;
-        public static final int quiz_bottombar_text=0x7f06004d;
-        public static final int quiz_end=0x7f060050;
-        public static final int quiz_qn_next=0x7f060052;
-        public static final int quiz_qn_prev=0x7f060051;
-        public static final int quiz_qno_total=0x7f06004e;
-        public static final int quiz_title=0x7f060047;
-        public static final int quiz_topbar=0x7f06004a;
+        public static final int quiz=0x7f060071;
+        public static final int quiz_bottombar_buttons=0x7f060067;
+        public static final int quiz_bottombar_layout=0x7f060064;
+        public static final int quiz_bottombar_text=0x7f060065;
+        public static final int quiz_end=0x7f060068;
+        public static final int quiz_qn_next=0x7f06006a;
+        public static final int quiz_qn_prev=0x7f060069;
+        public static final int quiz_qno_total=0x7f060066;
+        public static final int quiz_title=0x7f06005f;
+        public static final int quiz_topbar=0x7f060062;
         public static final int radio=0x7f06002f;
-        public static final int resources=0x7f06005a;
-        public static final int saveExp=0x7f060073;
+        public static final int resetButton=0x7f060056;
+        public static final int resources=0x7f060072;
+        public static final int rotateValueText=0x7f060059;
+        public static final int saveExp=0x7f06008b;
+        public static final int scaleBar=0x7f060051;
+        public static final int scaleRadioButton=0x7f06004b;
         public static final int search_badge=0x7f060032;
         public static final int search_bar=0x7f060031;
         public static final int search_button=0x7f060033;
@@ -1173,35 +1386,39 @@ containing a value of this type.
         public static final int search_plate=0x7f060036;
         public static final int search_src_text=0x7f060037;
         public static final int search_voice_btn=0x7f06003b;
-        public static final int select_class=0x7f060069;
+        public static final int seekArc=0x7f060052;
+        public static final int select_class=0x7f060081;
         public static final int settings=0x7f060040;
-        public static final int settings_cancel=0x7f060072;
-        public static final int settings_save=0x7f060071;
+        public static final int settings_cancel=0x7f06008a;
+        public static final int settings_save=0x7f060089;
         public static final int shortcut=0x7f06002e;
         public static final int showCustom=0x7f060007;
         public static final int showHome=0x7f060004;
         public static final int showTitle=0x7f060006;
-        public static final int show_getstart=0x7f06006c;
-        public static final int simulation=0x7f060058;
-        public static final int simulation_title=0x7f06005b;
+        public static final int show_getstart=0x7f060084;
+        public static final int simulation=0x7f060070;
+        public static final int simulation_title=0x7f060073;
         public static final int split_action_bar=0x7f06001e;
-        public static final int star_quiz=0x7f060048;
-        public static final int student_class=0x7f06006a;
+        public static final int star_quiz=0x7f060060;
+        public static final int stepModeToggle=0x7f06004e;
+        public static final int student_class=0x7f060082;
         public static final int subject_list=0x7f060043;
         public static final int submit_area=0x7f060039;
-        public static final int summary_page=0x7f060053;
+        public static final int summary_page=0x7f06006b;
         public static final int tabMode=0x7f060002;
-        public static final int theory=0x7f060055;
+        public static final int theory=0x7f06006d;
         public static final int title=0x7f06002b;
         public static final int top_action_bar=0x7f060020;
+        public static final int txt=0x7f060046;
         public static final int up=0x7f060021;
         public static final int useLogo=0x7f060003;
-        public static final int videos=0x7f060057;
-        public static final int webview=0x7f06005d;
-        public static final int webview_procedure=0x7f060046;
-        public static final int webview_resources=0x7f060054;
+        public static final int verticalSeekBarContainer=0x7f06004d;
+        public static final int videos=0x7f06006f;
+        public static final int webview=0x7f060075;
+        public static final int webview_procedure=0x7f06005e;
+        public static final int webview_resources=0x7f06006c;
         public static final int withText=0x7f06000c;
-        public static final int yes_no=0x7f060070;
+        public static final int yes_no=0x7f060088;
     }
     public static final class integer {
         /**  The maximum number of action buttons that should be permitted within
@@ -1257,27 +1474,31 @@ containing a value of this type.
         public static final int all_experiment_list=0x7f030019;
         public static final int all_splash=0x7f03001a;
         public static final int all_subject_list=0x7f03001b;
-        public static final int one_expand_exp=0x7f03001c;
-        public static final int one_procedure=0x7f03001d;
-        public static final int one_quiz=0x7f03001e;
-        public static final int one_quiz_pre_start=0x7f03001f;
-        public static final int one_quiz_question=0x7f030020;
-        public static final int one_quiz_quiz_start=0x7f030021;
-        public static final int one_quiz_summary=0x7f030022;
-        public static final int one_resources=0x7f030023;
-        public static final int one_showexp=0x7f030024;
-        public static final int one_simulation=0x7f030025;
-        public static final int one_theory=0x7f030026;
-        public static final int one_videos=0x7f030027;
-        public static final int start_get_start=0x7f030028;
-        public static final int start_settings=0x7f030029;
-        public static final int support_simple_spinner_dropdown_item=0x7f03002a;
+        public static final int exp_simulation_list_single=0x7f03001c;
+        public static final int exp_simulation_main=0x7f03001d;
+        public static final int exp_simulation_main_v1=0x7f03001e;
+        public static final int one_expand_exp=0x7f03001f;
+        public static final int one_procedure=0x7f030020;
+        public static final int one_quiz=0x7f030021;
+        public static final int one_quiz_pre_start=0x7f030022;
+        public static final int one_quiz_question=0x7f030023;
+        public static final int one_quiz_quiz_start=0x7f030024;
+        public static final int one_quiz_summary=0x7f030025;
+        public static final int one_resources=0x7f030026;
+        public static final int one_showexp=0x7f030027;
+        public static final int one_simulation=0x7f030028;
+        public static final int one_theory=0x7f030029;
+        public static final int one_videos=0x7f03002a;
+        public static final int start_get_start=0x7f03002b;
+        public static final int start_settings=0x7f03002c;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002d;
     }
     public static final class menu {
         public static final int one_optionmeu=0x7f0d0000;
     }
     public static final class string {
-        public static final int aakash_desc=0x7f0b0011;
+        public static final int InfoData=0x7f0b000f;
+        public static final int aakash_desc=0x7f0b0013;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f0b0001;
@@ -1318,28 +1539,34 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0b000b;
-        public static final int app_name=0x7f0b000d;
-        public static final int caption_cancel=0x7f0b0019;
-        public static final int caption_class=0x7f0b0013;
-        public static final int caption_dontshow=0x7f0b001b;
-        public static final int caption_end=0x7f0b001c;
-        public static final int caption_getstart=0x7f0b0014;
-        public static final int caption_next=0x7f0b001d;
-        public static final int caption_no=0x7f0b0016;
-        public static final int caption_ok=0x7f0b001a;
-        public static final int caption_prev=0x7f0b001e;
-        public static final int caption_quizEnd=0x7f0b0020;
-        public static final int caption_quizStart=0x7f0b001f;
-        public static final int caption_save=0x7f0b0017;
-        public static final int caption_saved=0x7f0b0018;
-        public static final int caption_yes=0x7f0b0015;
-        public static final int getstart_title=0x7f0b0012;
-        public static final int img_desc=0x7f0b0010;
-        public static final int menu1=0x7f0b000e;
-        public static final int menu2=0x7f0b000f;
+        public static final int app_name=0x7f0b000e;
+        public static final int caption_cancel=0x7f0b001b;
+        public static final int caption_class=0x7f0b0015;
+        public static final int caption_dontshow=0x7f0b001d;
+        public static final int caption_end=0x7f0b001e;
+        public static final int caption_getstart=0x7f0b0016;
+        public static final int caption_next=0x7f0b001f;
+        public static final int caption_no=0x7f0b0018;
+        public static final int caption_ok=0x7f0b001c;
+        public static final int caption_prev=0x7f0b0020;
+        public static final int caption_quizEnd=0x7f0b0022;
+        public static final int caption_quizStart=0x7f0b0021;
+        public static final int caption_save=0x7f0b0019;
+        public static final int caption_saved=0x7f0b001a;
+        public static final int caption_yes=0x7f0b0017;
+        public static final int getstart_title=0x7f0b0014;
+        public static final int hello=0x7f0b000d;
+        public static final int img_desc=0x7f0b0012;
+        public static final int menu1=0x7f0b0010;
+        public static final int menu2=0x7f0b0011;
     }
     public static final class style {
         /** 
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        
+
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     
@@ -1360,11 +1587,13 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f0c008b;
+        public static final int AppBaseTheme=0x7f0c008d;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0c008c;
+        public static final int AppTheme=0x7f0c008e;
+        public static final int SeekArc=0x7f0c008b;
+        public static final int SeekArcLight=0x7f0c008c;
         /**  Mimic text appearance in select_dialog_item.xml 
          */
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0c0063;
@@ -2870,6 +3099,271 @@ containing a value of this type.
           @attr name com.virtualis:queryHint
         */
         public static final int SearchView_queryHint = 4;
+        /** Attributes that can be used with a SeekArc.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #SeekArc_arcColor com.virtualis:arcColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_arcWidth com.virtualis:arcWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_clockwise com.virtualis:clockwise}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_max com.virtualis:max}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_progress com.virtualis:progress}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_progressColor com.virtualis:progressColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_progressWidth com.virtualis:progressWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_rotation com.virtualis:rotation}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_roundEdges com.virtualis:roundEdges}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_startAngle com.virtualis:startAngle}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_sweepAngle com.virtualis:sweepAngle}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_thumb com.virtualis:thumb}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_thumbOffset com.virtualis:thumbOffset}</code></td><td></td></tr>
+           <tr><td><code>{@link #SeekArc_touchInside com.virtualis:touchInside}</code></td><td></td></tr>
+           </table>
+           @see #SeekArc_arcColor
+           @see #SeekArc_arcWidth
+           @see #SeekArc_clockwise
+           @see #SeekArc_max
+           @see #SeekArc_progress
+           @see #SeekArc_progressColor
+           @see #SeekArc_progressWidth
+           @see #SeekArc_rotation
+           @see #SeekArc_roundEdges
+           @see #SeekArc_startAngle
+           @see #SeekArc_sweepAngle
+           @see #SeekArc_thumb
+           @see #SeekArc_thumbOffset
+           @see #SeekArc_touchInside
+         */
+        public static final int[] SeekArc = {
+            0x7f01006e, 0x7f01006f, 0x7f010070, 0x7f010071,
+            0x7f010072, 0x7f010073, 0x7f010074, 0x7f010075,
+            0x7f010076, 0x7f010077, 0x7f010078, 0x7f010079,
+            0x7f01007a, 0x7f01007b
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#arcColor}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:arcColor
+        */
+        public static final int SeekArc_arcColor = 9;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#arcWidth}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:arcWidth
+        */
+        public static final int SeekArc_arcWidth = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#clockwise}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:clockwise
+        */
+        public static final int SeekArc_clockwise = 13;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#max}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:max
+        */
+        public static final int SeekArc_max = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#progress}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:progress
+        */
+        public static final int SeekArc_progress = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#progressColor}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:progressColor
+        */
+        public static final int SeekArc_progressColor = 10;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#progressWidth}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:progressWidth
+        */
+        public static final int SeekArc_progressWidth = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#rotation}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:rotation
+        */
+        public static final int SeekArc_rotation = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#roundEdges}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:roundEdges
+        */
+        public static final int SeekArc_roundEdges = 11;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#startAngle}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:startAngle
+        */
+        public static final int SeekArc_startAngle = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#sweepAngle}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:sweepAngle
+        */
+        public static final int SeekArc_sweepAngle = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#thumb}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.virtualis:thumb
+        */
+        public static final int SeekArc_thumb = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#thumbOffset}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:thumbOffset
+        */
+        public static final int SeekArc_thumbOffset = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#touchInside}
+          attribute's value can be found in the {@link #SeekArc} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.virtualis:touchInside
+        */
+        public static final int SeekArc_touchInside = 12;
+        /** Attributes that can be used with a SeekArcTheme.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #SeekArcTheme_seekArcStyle com.virtualis:seekArcStyle}</code></td><td></td></tr>
+           </table>
+           @see #SeekArcTheme_seekArcStyle
+         */
+        public static final int[] SeekArcTheme = {
+            0x7f01007c
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.virtualis.R.attr#seekArcStyle}
+          attribute's value can be found in the {@link #SeekArcTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.virtualis:seekArcStyle
+        */
+        public static final int SeekArcTheme_seekArcStyle = 0;
         /** Attributes that can be used with a Spinner.
            <p>Includes the following attributes:</p>
            <table>
