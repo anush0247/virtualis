@@ -51,7 +51,14 @@ public class Simulation extends Activity {
 		                        Toast.makeText(Simulation.this, "No software found\n please download the apk from \n http://some.com/donwload.html", Toast.LENGTH_SHORT).show();
 		                  }
 		            }
+		            else {
+		            	Toast.makeText(Simulation.this, "No Blender file available", Toast.LENGTH_SHORT).show();
+		            }
 		    	}
+		    	else {
+	            	Toast.makeText(Simulation.this, "No Blender player software found \n\n please download the apk from \n http://some.com/donwload.html ", Toast.LENGTH_SHORT).show();
+	            }
+		    	
 			}	
 		});
 		

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"  ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+	<LinearLayout 
+	    android:layout_height="0dp"
+	    android:layout_width="wrap_content"
+	    android:orientation="horizontal"
+	    android:id="@+id/flipper"
+	    android:layout_weight="9"
+	    android:baselineAligned="false">
+	    
+	   <ViewFlipper 
+		    android:id="@+id/flipper"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent" >
+		</ViewFlipper> 
+	</LinearLayout>
+	  
+	<LinearLayout 
+	    android:layout_height="0dp"
+	    android:layout_width="wrap_content"
+	    android:orientation="horizontal"
+	    android:id="@+id/controllers"
+	    android:layout_weight="1"
+	    android:baselineAligned="false" > 
+	       
+    	<LinearLayout
+           android:id="@+id/video_no_layout"
+           android:layout_width="0dp"
+           android:layout_weight="7"
+           android:layout_height="wrap_content"
+           android:layout_gravity="left|center"
+           android:orientation="horizontal" >
+      
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/video_no"
+	            android:text="Video No"
+	            android:textStyle="bold|italic"
+	            android:textSize="18sp"/>
+       	
+       	</LinearLayout>
+        	
+        <LinearLayout
+            android:id="@+id/video_bottombar_buttons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:layout_weight="3"
+            
+            android:gravity="right|fill" >
+   
+            <Button 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/prev_btn"
+	            android:text="@string/caption_prev"
+	            android:layout_gravity="right|bottom"
+	            android:drawableLeft="@drawable/one_quiz_prev"/>
+               
+	        <Button 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/next_btn"
+	            android:text="@string/caption_next"
+	            android:layout_gravity="left|center"
+	            android:drawableRight="@drawable/one_quiz_next"/>
+        
+   	  	</LinearLayout>
+        
+	</LinearLayout>
+</LinearLayout>

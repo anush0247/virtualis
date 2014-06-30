@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="47" version="2.0">
+<workbench progressCount="22" version="2.0">
 <workbenchAdvisor/>
-<window height="744" maximized="true" width="1024" x="41" y="24">
+<window height="687" maximized="true" width="1018" x="41" y="24">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="45"/>
@@ -17,7 +17,7 @@
 <coolItem id="org.eclipse.dltk.tcl.ui.debug.consoleActionSet" itemType="typeToolBarContribution" x="60" y="30"/>
 <coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="88" y="30"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="88" y="30"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="124" y="30"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="68" y="30"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="68" y="30"/>
 <coolItem id="org.eclipse.jpt.jpa.ui.jptCreation.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -41,34 +41,33 @@
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_simulation.xml" partName="one_simulation.xml" path="/home/node1/virtualis/virtualis/res/layout/one_simulation.xml" title="one_simulation.xml" tooltip="virtualis/res/layout/one_simulation.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/virtualis/res/layout/one_simulation.xml"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MyAdapter.java" partName="MyAdapter.java" path="/home/node1/virtualis/virtualis/src/com/virtualis/all/MyAdapter.java" title="MyAdapter.java" tooltip="virtualis/src/com/virtualis/all/MyAdapter.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/virtualis/src/com/virtualis/all/MyAdapter.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1226" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Simulation.java" partName="Simulation.java" path="/home/node1/virtualis/virtualis/src/com/virtualis/exp/Simulation.java" title="Simulation.java" tooltip="virtualis/src/com/virtualis/exp/Simulation.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/virtualis/src/com/virtualis/exp/Simulation.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="509" selectionTopPixel="0"/>
+<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_showexp.xml" partName="one_showexp.xml" path="/home/node1/virtualis/virtualis/res/layout/one_showexp.xml" title="one_showexp.xml" tooltip="virtualis/res/layout/one_showexp.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/virtualis/res/layout/one_showexp.xml"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuizPreStart.java" partName="QuizPreStart.java" path="/home/node1/virtualis/virtualis/src/com/virtualis/exp/quiz/QuizPreStart.java" title="QuizPreStart.java" tooltip="virtualis/src/com/virtualis/exp/quiz/QuizPreStart.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/virtualis/src/com/virtualis/exp/quiz/QuizPreStart.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="174" selectionOffset="2423" selectionTopPixel="746"/>
+<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="all_subject_list.xml" partName="all_subject_list.xml" path="/home/node1/virtualis/virtualis/res/layout/all_subject_list.xml" title="all_subject_list.xml" tooltip="virtualis/res/layout/all_subject_list.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/virtualis/res/layout/all_subject_list.xml"/>
+</editor>
+<editor activePart="true" focus="true" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" partName="virtualis Manifest" path="/home/node1/virtualis/virtualis/AndroidManifest.xml" title="virtualis Manifest" tooltip="virtualis/AndroidManifest.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/virtualis/AndroidManifest.xml"/>
 </editor>
 </editors>
 <views>
 <view id="com.android.ide.eclipse.ddms.views.LogCatView" partName="LogCat">
 <viewState/>
 </view>
-<view id="org.eclipse.ui.views.ProgressView" partName="Progress">
-<viewState/>
-</view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Errors"/>
-<category IMemento.internal.id="Errors (3 items)"/>
+<category IMemento.internal.id="Errors (5 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="374" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -129,7 +128,7 @@
 <view id="org.eclipse.jdt.ui.SourceView" partName="Declaration"/>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="com.android.ide.eclipse.editors.manifest.ManifestEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="4" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -275,14 +274,9 @@
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.jdt.ui.JavadocView"/>
 <view id="org.eclipse.jdt.ui.SourceView"/>
-<view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="com.android.ide.eclipse.ddms.views.LogCatView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
 <fastViewBars>
-<fastViewBar fastViewLocation="1024" id="bottom" orientation="256" selectedTabId="org.eclipse.ui.views.ProgressView" style="0">
-<fastViews>
-<view id="org.eclipse.ui.views.ProgressView" ratio="0.3"/>
-</fastViews>
-</fastViewBar>
 <fastViewBar fastViewLocation="131072" id="right" orientation="512" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">
 <fastViews>
 <view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
@@ -310,7 +304,7 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.2046875" ratioLeft="262" ratioRight="1018" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.19375" ratioLeft="248" ratioRight="1032" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.5645646" ratioLeft="376" ratioRight="290" relationship="4" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
@@ -327,19 +321,19 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1281aff" ratio="0.9441088" ratioLeft="625" ratioRight="37" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@15b233d" ratio="0.6696697" ratioLeft="446" ratioRight="220" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="com.android.ide.eclipse.ddms.views.LogCatView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LogCat"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
-<part id="3"/>
 <part id="4"/>
+<part id="3"/>
 </presentation>
 </folder>
 </info>
@@ -350,150 +344,112 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/values/strings.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/exp/ShowExp.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" path="/virtualis/AndroidManifest.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/one_showexp.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/all/Splash.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/all/ExperimentList.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/Global.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/exp/quiz/ParseAnswer.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/exp/quiz/QuizPreStart.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/exp/quiz/Summary.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/exp/ShowExp.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/menu/one_quiz.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/exp/quiz/QuizStart.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/one_quiz_summary.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/one_quiz_quiz_start.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/all_splash.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/one_quiz_pre_start.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/exp/quiz/Question.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/exp/Videos.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/all/MyAdapter.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/one_simulation.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/exp/Simulation.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/exp/quiz/QuizPreStart.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/one_quiz_pre_start.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/one_showexp.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/one_videos.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/one_quiz_quiz_start.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/exp/quiz/Summary.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/OfflineCache.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/all_subject_list.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/one_resources.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/one_theory.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/virtualis/res/layout/one_quiz.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/exp/Quiz.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" path="/virtualis/AndroidManifest.xml"/>
 </editors>
-<item historyLabel="ShowExp.java" index="1">
-<position info="not_deleted" x="7057" y="0"/>
+<item historyLabel="MyAdapter.java" index="1">
+<position info="not_deleted" x="12514" y="0"/>
 </item>
-<item historyLabel="virtualis Manifest" index="2"/>
-<item historyLabel="strings.xml" index="0"/>
-<item historyLabel="virtualis Manifest" index="2"/>
-<item historyLabel="one_showexp.xml" index="3"/>
-<item historyLabel="virtualis Manifest" index="2"/>
-<item historyLabel="Splash.java" index="4">
-<position info="not_deleted" x="10381" y="0"/>
-</item>
-<item historyLabel="ExperimentList.java" index="5">
-<position info="not_deleted" x="2245" y="0"/>
-</item>
-<item historyLabel="Global.java" index="6">
+<item historyLabel="one_simulation.xml" index="2"/>
+<item historyLabel="one_quiz_pre_start.xml" index="3"/>
+<item historyLabel="one_showexp.xml" index="4"/>
+<item historyLabel="one_simulation.xml" index="2"/>
+<item historyLabel="one_showexp.xml" index="4"/>
+<item historyLabel="one_videos.xml" index="5"/>
+<item historyLabel="one_quiz_quiz_start.xml" index="6"/>
+<item historyLabel="one_videos.xml" index="5"/>
+<item historyLabel="Videos.java" index="0">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="ParseAnswer.java" index="7">
+<item historyLabel="Videos.java" index="0">
+<position info="not_deleted" x="1577" y="0"/>
+</item>
+<item historyLabel="Summary.java" index="7">
+<position info="not_deleted" x="3086" y="0"/>
+</item>
+<item historyLabel="Videos.java" index="0">
+<position info="not_deleted" x="1682" y="0"/>
+</item>
+<item historyLabel="one_quiz_quiz_start.xml" index="6"/>
+<item historyLabel="Videos.java" index="0">
+<position info="not_deleted" x="1682" y="0"/>
+</item>
+<item historyLabel="one_videos.xml" index="5"/>
+<item historyLabel="Videos.java" index="0">
+<position info="not_deleted" x="2957" y="0"/>
+</item>
+<item historyLabel="one_videos.xml" index="5"/>
+<item historyLabel="Videos.java" index="0">
+<position info="not_deleted" x="2412" y="0"/>
+</item>
+<item historyLabel="one_videos.xml" index="5"/>
+<item historyLabel="Videos.java" index="0">
+<position info="not_deleted" x="1951" y="0"/>
+</item>
+<item historyLabel="one_videos.xml" index="5"/>
+<item historyLabel="Videos.java" index="0">
+<position info="not_deleted" x="2518" y="0"/>
+</item>
+<item historyLabel="one_videos.xml" index="5"/>
+<item historyLabel="one_showexp.xml" index="4"/>
+<item historyLabel="one_videos.xml" index="5"/>
+<item historyLabel="Videos.java" index="0">
+<position info="not_deleted" x="2622" y="0"/>
+</item>
+<item historyLabel="one_videos.xml" index="5"/>
+<item historyLabel="one_showexp.xml" index="4"/>
+<item historyLabel="OfflineCache.java" index="8">
+<position info="not_deleted" x="690" y="0"/>
+</item>
+<item historyLabel="one_showexp.xml" index="4"/>
+<item historyLabel="one_videos.xml" index="5"/>
+<item historyLabel="Videos.java" index="0">
+<position info="not_deleted" x="2622" y="0"/>
+</item>
+<item historyLabel="one_quiz_pre_start.xml" index="3"/>
+<item historyLabel="MyAdapter.java" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="QuizPreStart.java" index="8">
-<position/>
+<item historyLabel="MyAdapter.java" index="1">
+<position info="not_deleted" x="1226" y="0"/>
 </item>
-<item historyLabel="Summary.java" index="9">
-<position/>
-</item>
-<item historyLabel="QuizPreStart.java" index="8">
-<position info="not_deleted" x="1233" y="0"/>
-</item>
-<item historyLabel="ShowExp.java" index="10">
-<position info="not_deleted" x="1664" y="0"/>
-</item>
-<item historyLabel="QuizPreStart.java" index="8">
-<position info="not_deleted" x="2016" y="0"/>
-</item>
-<item historyLabel="one_quiz.xml" index="11"/>
-<item historyLabel="QuizPreStart.java" index="8">
-<position info="not_deleted" x="1318" y="0"/>
-</item>
-<item historyLabel="Summary.java" index="9">
+<item historyLabel="one_showexp.xml" index="4"/>
+<item historyLabel="all_subject_list.xml" index="9"/>
+<item historyLabel="one_resources.xml" index="10"/>
+<item historyLabel="one_simulation.xml" index="2"/>
+<item historyLabel="one_theory.xml" index="11"/>
+<item historyLabel="one_resources.xml" index="10"/>
+<item historyLabel="one_theory.xml" index="11"/>
+<item historyLabel="one_simulation.xml" index="2"/>
+<item historyLabel="one_quiz.xml" index="12"/>
+<item historyLabel="one_simulation.xml" index="2"/>
+<item historyLabel="all_subject_list.xml" index="9"/>
+<item historyLabel="Quiz.java" index="13">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="one_quiz.xml" index="11"/>
-<item historyLabel="Summary.java" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ShowExp.java" index="10">
-<position info="not_deleted" x="1664" y="0"/>
-</item>
-<item historyLabel="QuizPreStart.java" index="8">
-<position info="not_deleted" x="1318" y="0"/>
-</item>
-<item historyLabel="ShowExp.java" index="10">
-<position info="not_deleted" x="1664" y="0"/>
-</item>
-<item historyLabel="QuizPreStart.java" index="8">
-<position info="not_deleted" x="1665" y="0"/>
-</item>
-<item historyLabel="QuizStart.java" index="12">
-<position info="not_deleted" x="682" y="0"/>
-</item>
-<item historyLabel="one_quiz_summary.xml" index="13"/>
-<item historyLabel="one_quiz_quiz_start.xml" index="14"/>
-<item historyLabel="all_splash.xml" index="15"/>
-<item historyLabel="one_quiz_quiz_start.xml" index="14"/>
-<item historyLabel="one_quiz_pre_start.xml" index="16"/>
-<item historyLabel="QuizPreStart.java" index="8">
-<position info="not_deleted" x="1724" y="0"/>
-</item>
-<item historyLabel="one_quiz_pre_start.xml" index="16"/>
-<item historyLabel="one_quiz_quiz_start.xml" index="14"/>
-<item historyLabel="Question.java" index="17">
-<position info="not_deleted" x="2359" y="0"/>
-</item>
-<item historyLabel="one_simulation.xml" index="18"/>
-<item historyLabel="one_quiz_quiz_start.xml" index="14"/>
-<item historyLabel="QuizPreStart.java" index="8">
-<position info="not_deleted" x="1134" y="0"/>
-</item>
-<item historyLabel="one_simulation.xml" index="18"/>
-<item historyLabel="Question.java" index="17">
-<position info="not_deleted" x="2359" y="0"/>
-</item>
-<item historyLabel="one_simulation.xml" index="18"/>
-<item historyLabel="Simulation.java" index="19">
-<position info="not_deleted" x="703" y="0"/>
-</item>
-<item historyLabel="one_simulation.xml" index="18"/>
-<item historyLabel="Simulation.java" index="19">
-<position info="not_deleted" x="703" y="0"/>
-</item>
-<item historyLabel="one_simulation.xml" index="18"/>
-<item historyLabel="Simulation.java" index="19">
-<position info="not_deleted" x="703" y="0"/>
-</item>
-<item historyLabel="Simulation.java" index="19">
-<position info="not_deleted" x="908" y="0"/>
-</item>
-<item historyLabel="Simulation.java" index="19">
-<position info="not_deleted" x="1002" y="15"/>
-</item>
-<item historyLabel="Simulation.java" index="19">
-<position info="not_deleted" x="2365" y="0"/>
-</item>
-<item historyLabel="QuizPreStart.java" index="20">
-<position info="not_deleted" x="2423" y="174"/>
-</item>
-<item active="true" historyLabel="Simulation.java" index="19">
-<position info="not_deleted" x="2365" y="0"/>
-</item>
+<item historyLabel="all_subject_list.xml" index="9"/>
+<item active="true" historyLabel="virtualis Manifest" index="14"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="left"/>
-</trimArea>
 <trimArea IMemento.internal.id="131072">
 <trimItem IMemento.internal.id="right"/>
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@1281aff"/>
 </trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
@@ -502,55 +458,54 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuizPreStart.java" tooltip="virtualis/src/com/virtualis/exp/quiz/QuizPreStart.java">
-<persistable path="/virtualis/src/com/virtualis/exp/quiz/QuizPreStart.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="virtualis/AndroidManifest.xml">
+<persistable path="/virtualis/AndroidManifest.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Simulation.java" tooltip="virtualis/src/com/virtualis/exp/Simulation.java">
-<persistable path="/virtualis/src/com/virtualis/exp/Simulation.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Quiz.java" tooltip="virtualis/src/com/virtualis/exp/Quiz.java">
+<persistable path="/virtualis/src/com/virtualis/exp/Quiz.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_quiz.xml" tooltip="virtualis/res/layout/one_quiz.xml">
+<persistable path="/virtualis/res/layout/one_quiz.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_theory.xml" tooltip="virtualis/res/layout/one_theory.xml">
+<persistable path="/virtualis/res/layout/one_theory.xml"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_simulation.xml" tooltip="virtualis/res/layout/one_simulation.xml">
 <persistable path="/virtualis/res/layout/one_simulation.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Question.java" tooltip="virtualis/src/com/virtualis/exp/quiz/Question.java">
-<persistable path="/virtualis/src/com/virtualis/exp/quiz/Question.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_resources.xml" tooltip="virtualis/res/layout/one_resources.xml">
+<persistable path="/virtualis/res/layout/one_resources.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_quiz_pre_start.xml" tooltip="virtualis/res/layout/one_quiz_pre_start.xml">
-<persistable path="/virtualis/res/layout/one_quiz_pre_start.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="all_splash.xml" tooltip="virtualis/res/layout/all_splash.xml">
-<persistable path="/virtualis/res/layout/all_splash.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_quiz_quiz_start.xml" tooltip="virtualis/res/layout/one_quiz_quiz_start.xml">
-<persistable path="/virtualis/res/layout/one_quiz_quiz_start.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_quiz_summary.xml" tooltip="virtualis/res/layout/one_quiz_summary.xml">
-<persistable path="/virtualis/res/layout/one_quiz_summary.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuizStart.java" tooltip="virtualis/src/com/virtualis/exp/quiz/QuizStart.java">
-<persistable path="/virtualis/src/com/virtualis/exp/quiz/QuizStart.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Summary.java" tooltip="virtualis/src/com/virtualis/exp/quiz/Summary.java">
-<persistable path="/virtualis/src/com/virtualis/exp/quiz/Summary.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_quiz.xml" tooltip="virtualis/res/menu/one_quiz.xml">
-<persistable path="/virtualis/res/menu/one_quiz.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ShowExp.java" tooltip="virtualis/src/com/virtualis/exp/ShowExp.java">
-<persistable path="/virtualis/src/com/virtualis/exp/ShowExp.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="all_subject_list.xml" tooltip="virtualis/res/layout/all_subject_list.xml">
+<persistable path="/virtualis/res/layout/all_subject_list.xml"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_showexp.xml" tooltip="virtualis/res/layout/one_showexp.xml">
 <persistable path="/virtualis/res/layout/one_showexp.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="virtualis/AndroidManifest.xml">
-<persistable path="/virtualis/AndroidManifest.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MyAdapter.java" tooltip="virtualis/src/com/virtualis/all/MyAdapter.java">
+<persistable path="/virtualis/src/com/virtualis/all/MyAdapter.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ParseAnswer.java" tooltip="virtualis/src/com/virtualis/exp/quiz/ParseAnswer.java">
-<persistable path="/virtualis/src/com/virtualis/exp/quiz/ParseAnswer.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="OfflineCache.java" tooltip="virtualis/src/com/virtualis/OfflineCache.java">
+<persistable path="/virtualis/src/com/virtualis/OfflineCache.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Summary.java" tooltip="virtualis/src/com/virtualis/exp/quiz/Summary.java">
+<persistable path="/virtualis/src/com/virtualis/exp/quiz/Summary.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Videos.java" tooltip="virtualis/src/com/virtualis/exp/Videos.java">
+<persistable path="/virtualis/src/com/virtualis/exp/Videos.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_quiz_quiz_start.xml" tooltip="virtualis/res/layout/one_quiz_quiz_start.xml">
+<persistable path="/virtualis/res/layout/one_quiz_quiz_start.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_videos.xml" tooltip="virtualis/res/layout/one_videos.xml">
+<persistable path="/virtualis/res/layout/one_videos.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_quiz_pre_start.xml" tooltip="virtualis/res/layout/one_quiz_pre_start.xml">
+<persistable path="/virtualis/res/layout/one_quiz_pre_start.xml"/>
 </file>
 </mruList>
 </workbench>

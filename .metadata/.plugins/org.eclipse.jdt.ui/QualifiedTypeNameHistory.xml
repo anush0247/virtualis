@@ -9,7 +9,6 @@
 <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="android.widget.RadioGroup"/>
-<fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="android.widget.RadioButton"/>
 <fullyQualifiedTypeName name="android.text.Html"/>
@@ -30,7 +29,12 @@
 <fullyQualifiedTypeName name="com.virtualis.exp.quiz.QuizPreStart"/>
 <fullyQualifiedTypeName name="java.lang.InternalError"/>
 <fullyQualifiedTypeName name="android.widget.Button"/>
-<fullyQualifiedTypeName name="com.virtualis.R.id"/>
 <fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
+<fullyQualifiedTypeName name="android.media.MediaPlayer.OnErrorListener"/>
+<fullyQualifiedTypeName name="com.virtualis.exp.Videos"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="com.virtualis.exp.Simulation"/>
+<fullyQualifiedTypeName name="com.virtualis.R.id"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="android.app.ActionBar.LayoutParams"/>
 </qualifiedTypeNameHistroy>

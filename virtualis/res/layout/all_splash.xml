@@ -61,13 +61,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:drawableLeft="@android:drawable/ic_menu_directions"
                 android:text="@string/menu1"
                 android:textColor="#fff"
                 android:textSize="16sp"
                 android:padding="10dp"
                 android:paddingRight="20dp"
-                style="?android:attr/buttonBarButtonStyle"
                 android:background="@drawable/all_border_ui_full" />
 
             <Button
@@ -76,13 +74,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:drawableLeft="@android:drawable/ic_menu_directions"
                 android:text="@string/menu2"
                 android:textColor="#fff"
                 android:textSize="16sp" 
                 android:padding="10dp"
                 android:paddingRight="20dp"
-                style="?android:attr/buttonBarButtonStyle"
                 android:background="@drawable/all_border_ui_full"/>
         </LinearLayout>
     </LinearLayout>

@@ -1,6 +1,8 @@
 package com.virtualis.exp;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
@@ -14,6 +16,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 import android.widget.ViewFlipper;
 
@@ -36,7 +39,7 @@ public class Videos extends Activity {
 	String VideoUrls;
 	String[] Urls = null;
 	int no_vid = 0;
-	
+	TextView label;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,25 +49,35 @@ public class Videos extends Activity {
 		Urls = VideoUrls.split(",");
 		
 		viewFlipper = (ViewFlipper) findViewById(R.id.flipper);
+		label = (TextView) findViewById(R.id.video_no);
 		
 		for (int j = 0; j < Urls.length; j++) {
 			
-			TextView label = new TextView(this);
+			
 			
 			VideoView video = new VideoView(this);
 			Uri uri=Uri.parse(Urls[j]);
 		    video.setVideoURI(uri);
 		    MediaController mc = new MediaController(this);
 		    video.setMediaController(mc);
-		    video.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT  , LayoutParams.WRAP_CONTENT ));
-			
-			label.setText(Html.fromHtml("<h3>Video " + (j+1) +/* "."+ name[j]+*/"</h3>"));
-			label.setPadding(10, 10, 10, 10);
-			label.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 50));
+		    video.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT  , LayoutParams.MATCH_PARENT ));
+			video.setOnErrorListener(new OnErrorListener() {
+				
+				@Override
+				public boolean onError(MediaPlayer arg0, int arg1, int arg2) {
+					// TODO Auto-generated method stub
+					Toast.makeText(Videos.this, "Video URL Unreachable ", Toast.LENGTH_SHORT).show();
+					return true;
+				}
+			});
+		    
+			label.setText(Html.fromHtml("Video " + (j+1)));
+			//label.setPadding(10, 10, 10, 10);
+			//label.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 50));
 			
 			
 			LinearLayout mLinearLayout = new LinearLayout(this);
-			mLinearLayout.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, 200));
+			mLinearLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
 			mLinearLayout.setOrientation(1);
 			LinearLayout mLinearLayout2 = new LinearLayout(this);
 			
@@ -74,7 +87,7 @@ public class Videos extends Activity {
 			
 			mLinearLayout3.setOrientation(1);
 			mLinearLayout2.addView(mLinearLayout3);
-			mLinearLayout3.addView(label);
+			//mLinearLayout3.addView(label);
 			mLinearLayout.addView(video);
 			
 			viewFlipper.addView(mLinearLayout);

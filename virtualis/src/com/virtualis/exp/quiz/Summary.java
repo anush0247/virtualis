@@ -62,12 +62,12 @@ public class Summary extends Activity{
 		html += "<tr><th class='left-clear'>Correct Questions </th><td >"+crtQns+"</td></tr>";
 		html += "<tr><th class='left-clear'>Wrong Questions </th><td >"+wrngQns+"</td> </tr>";
 		html += "<tr><th class='left-clear'>Partial Correct Questions </th><td >"+partial+"</td></tr>";
-		html += "<tr style='padding:10px;'><th style='text-align:left;border-top:1px solid black;'>Grand Total Score </th><td style='border-top:1px solid black;'>"+grand+" pt</td> </tr></table><br>";
+		html += "<tr style='padding:10px;'><th style='text-align:left;border-top:1px solid black;'>Grand Total Score </th><td style='border-top:1px solid black;'>"+(grand/100)+" pt</td> </tr></table><br>";
 		return html;
 	}
 	
 	public String getQnTitleHtml(String QnTitle, int No, String cls, float pts){
-		String html = "<tr ><th width='75%' class='left-clear'>Question "+No+" &raquo; <small class='"+cls+"'>"+cls+"</small></th><th width='25%' class='right'> "+pts+" pt </th></tr>";
+		String html = "<tr ><th width='75%' class='left-clear'>Question "+No+" &raquo; <small class='"+cls+"'>"+cls+"</small></th><th width='25%' class='right'> "+(pts/100)+" pt </th></tr>";
 		html += "<td colspan='2' style='border-top:1px solid black; padding-top:15px;'>"+QnTitle+"</td></tr>";
 		return html;
 	}

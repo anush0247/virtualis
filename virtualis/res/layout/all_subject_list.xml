@@ -4,21 +4,18 @@
     android:weightSum="4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:baselineAligned="false"
-    android:background="@drawable/all_border_ui_square">
+    android:baselineAligned="false">
 
     <fragment android:name="com.virtualis.all.SubjectList"
               android:id="@+id/subject_list"
               android:layout_width="0dp"
               android:layout_weight="1"	
-              android:layout_height="fill_parent"
-              android:background="@drawable/all_border_ui" />
+              android:layout_height="fill_parent" />
 
     <fragment android:name="com.virtualis.all.ExperimentList"
               android:id="@+id/experiment_list"
               android:layout_width="0dp"
               android:layout_weight="3"
-              android:layout_height="fill_parent"
-              android:background="@drawable/all_border_ui" />
+              android:layout_height="fill_parent" />
 
 </LinearLayout>

@@ -41,6 +41,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 	int SubPosition = 0;
 	JSONArray json = null;
 	private JSONObject thisExp;
+	@SuppressWarnings("unused")
 	private String dataSend = "";
 	private static String url = "http://www.cse.iitb.ac.in/~aneesh14/json/subject_exp.json";
 	private static String url2 = "";
@@ -78,6 +79,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 		TextView textView2 = (TextView) rowView.findViewById(R.id.desc);
 	    ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 	    Button offline = (Button) rowView.findViewById(R.id.offline);
+	    offline.setTag(position);
 	    textView1.setText(values.get(position));
 
 	    offline.setVisibility(View.INVISIBLE);
@@ -109,7 +111,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 	    
 	    url2 = BASEDIR + "ExPdaTA/"+JSONdata.StudentClass+"/"+JSONdata.Subjects.get(SubPosition)+"/"+JSONdata.ExperimentsNum.get(j).get(position)+"/expData.json";
 	    File myFile = new File(url2);
-	    Toast.makeText(parent.getContext(), url2 , Toast.LENGTH_SHORT).show();
+	    //Toast.makeText(parent.getContext(), url2 , Toast.LENGTH_SHORT).show();
 	    
 	    if(myFile.exists()) {
 	    	
@@ -122,6 +124,10 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
+					Object obj = v.getTag(); 
+					int which = ((Integer)obj).intValue(); 
+					url2 = BASEDIR+"ExPdaTA/"+JSONdata.StudentClass+"/"+JSONdata.Subjects.get(SubPosition)+"/"+JSONdata.ExperimentsNum.get(j).get(which)+"/expData.json";
+					
 					String exp_thumb = "";
 					String exp_simulation = "";
 					String exp_video = "";
@@ -359,7 +365,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 					intent.putExtra("video_urls", allVideos);
 					dataSend += "video: " + allVideos;
 					
-					Toast.makeText(parent.getContext(), dataSend, Toast.LENGTH_SHORT).show();
+					//Toast.makeText(parent.getContext(), dataSend, Toast.LENGTH_SHORT).show();
 				
 					parent.getContext().startActivity(intent);
 					//START ACTIVITY
@@ -371,6 +377,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 				
 			} else {
 			
+				url2 = BASEDIR+"ExPdaTA/"+JSONdata.StudentClass+"/"+JSONdata.Subjects.get(SubPosition)+"/"+JSONdata.ExperimentsNum.get(j).get(position)+"/expData.json";
 				String exp_thumb = "";
 				String exp_simulation = "";
 				String exp_video = "";
