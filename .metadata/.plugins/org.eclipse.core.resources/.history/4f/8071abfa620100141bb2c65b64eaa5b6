@@ -86,10 +86,10 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 	    }else {
 	    	textView1.setText(values.get(position).substring(0, 30) + " ....");
 	    }
-	    if(JSONdata.ExperimentsDesc.get(j).get(position).length()<=55){
+	    if(JSONdata.ExperimentsDesc.get(j).get(position).length()<=110){
 	    	textView2.setText(JSONdata.ExperimentsDesc.get(j).get(position));
 	    }else{
-	    	textView2.setText(JSONdata.ExperimentsDesc.get(j).get(position).substring(0, 55) + " ....");
+	    	textView2.setText(JSONdata.ExperimentsDesc.get(j).get(position).substring(0, 110) + " ....");
 	    }
 	    
 	    

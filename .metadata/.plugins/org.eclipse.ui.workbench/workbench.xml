@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="16" version="2.0">
+<workbench progressCount="15" version="2.0">
 <workbenchAdvisor/>
-<window height="687" maximized="true" width="1018" x="41" y="24">
+<window height="658" maximized="true" width="1012" x="427" y="76">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="45"/>
@@ -17,9 +17,9 @@
 <coolItem id="org.eclipse.dltk.tcl.ui.debug.consoleActionSet" itemType="typeToolBarContribution" x="60" y="30"/>
 <coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="88" y="30"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="88" y="30"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="124" y="30"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="68" y="30"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="68" y="30"/>
 <coolItem id="org.eclipse.jpt.jpa.ui.jptCreation.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.debug.ui.launch.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="40" y="30"/>
@@ -27,8 +27,9 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="232" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.jdt.ui.PropertiesFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="com.android.ide.eclipse.editors.CommonXmlEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -37,16 +38,10 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Splash.java" partName="Splash.java" path="/home/node1/virtualis/virtualis/src/com/virtualis/all/Splash.java" title="Splash.java" tooltip="virtualis/src/com/virtualis/all/Splash.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/virtualis/src/com/virtualis/all/Splash.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="18798" selectionTopPixel="9668"/>
-</editor>
 </editors>
 <views>
 <view id="com.android.ide.eclipse.ddms.views.DeviceView" partName="Devices">
@@ -80,7 +75,7 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (29 items)"/>
+<category IMemento.internal.id="Warnings (26 items)"/>
 <category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="374" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
@@ -131,7 +126,7 @@
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 <view id="com.android.ide.eclipse.ddms.views.AllocTrackerView" partName="Allocation Tracker"/>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="4" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -324,8 +319,8 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@15b233d" ratio="0.8783784" ratioLeft="585" ratioRight="81" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="com.android.ide.eclipse.ddms.views.LogCatView" appearance="2" expanded="2">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@15b233d" ratio="0.92911875" ratioLeft="485" ratioRight="37" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
@@ -426,35 +421,7 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory>
-<editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/virtualis/src/com/virtualis/all/Splash.java"/>
-</editors>
-<item historyLabel="Splash.java" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Splash.java" index="0">
-<position info="not_deleted" x="8102" y="0"/>
-</item>
-<item historyLabel="Splash.java" index="0">
-<position info="not_deleted" x="8490" y="0"/>
-</item>
-<item historyLabel="Splash.java" index="0">
-<position info="not_deleted" x="11503" y="84"/>
-</item>
-<item historyLabel="Splash.java" index="0">
-<position info="not_deleted" x="9525" y="0"/>
-</item>
-<item historyLabel="Splash.java" index="0">
-<position info="not_deleted" x="18739" y="0"/>
-</item>
-<item historyLabel="Splash.java" index="0">
-<position info="not_deleted" x="18767" y="0"/>
-</item>
-<item active="true" historyLabel="Splash.java" index="0">
-<position info="not_deleted" x="18798" y="0"/>
-</item>
-</navigationHistory>
+<navigationHistory/>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -474,6 +441,33 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Splash.java" tooltip="main/src/com/vitrualis/Splash.java">
+<persistable path="/main/src/com/vitrualis/Splash.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="main/AndroidManifest.xml">
+<persistable path="/main/AndroidManifest.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="virtualis/AndroidManifest.xml">
+<persistable path="/virtualis/AndroidManifest.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="start_splash.xml" tooltip="main/res/layout/start_splash.xml">
+<persistable path="/main/res/layout/start_splash.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="splash.java" tooltip="main/src/com/vitrualis/splash.java">
+<persistable path="/main/src/com/vitrualis/splash.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="main/bin/AndroidManifest.xml">
+<persistable path="/main/bin/AndroidManifest.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.PropertiesFileEditor" name="project.properties" tooltip="main/project.properties">
+<persistable path="/main/project.properties"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ShowcaseManager.java" tooltip="MainActivity/src/com/blundell/tut/showcase/ShowcaseManager.java">
+<persistable path="/MainActivity/src/com/blundell/tut/showcase/ShowcaseManager.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="view_showcase.xml" tooltip="MainActivity/res/layout/view_showcase.xml">
+<persistable path="/MainActivity/res/layout/view_showcase.xml"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Splash.java" tooltip="virtualis/src/com/virtualis/all/Splash.java">
 <persistable path="/virtualis/src/com/virtualis/all/Splash.java"/>
 </file>
@@ -491,33 +485,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DragActivityV2.java" tooltip="virtualis/src/com/virtualis/exp/simulation/DragActivityV2.java">
 <persistable path="/virtualis/src/com/virtualis/exp/simulation/DragActivityV2.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuizStart.java" tooltip="virtualis/src/com/virtualis/exp/quiz/QuizStart.java">
-<persistable path="/virtualis/src/com/virtualis/exp/quiz/QuizStart.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="virtualis/AndroidManifest.xml">
-<persistable path="/virtualis/AndroidManifest.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="strings.xml" tooltip="virtualis/res/values/strings.xml">
-<persistable path="/virtualis/res/values/strings.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_quiz.xml" tooltip="virtualis/res/menu/one_quiz.xml">
-<persistable path="/virtualis/res/menu/one_quiz.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="one_optionmeu.xml" tooltip="virtualis/res/menu/one_optionmeu.xml">
-<persistable path="/virtualis/res/menu/one_optionmeu.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Videos.java" tooltip="virtualis/src/com/virtualis/exp/Videos.java">
-<persistable path="/virtualis/src/com/virtualis/exp/Videos.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ShowExp.java" tooltip="virtualis/src/com/virtualis/exp/ShowExp.java">
-<persistable path="/virtualis/src/com/virtualis/exp/ShowExp.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MyAdapter.java" tooltip="virtualis/src/com/virtualis/all/MyAdapter.java">
-<persistable path="/virtualis/src/com/virtualis/all/MyAdapter.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Resources.java" tooltip="virtualis/src/com/virtualis/exp/Resources.java">
-<persistable path="/virtualis/src/com/virtualis/exp/Resources.java"/>
 </file>
 </mruList>
 </workbench>
