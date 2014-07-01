@@ -59,6 +59,7 @@ public class Splash extends Activity implements Global{
 	JSONArray json = null, json1 = null;
 	JSONObject classSubList = null;
 	
+	int count = 0,subcount = 0;
 	String url = "http://www.cse.iitb.ac.in/~ashutosh14/file2.json";
 	
     @Override
@@ -349,154 +350,173 @@ public class Splash extends Activity implements Global{
 		String pathAppend = BASEDIR + "ExPdaTA/" + JSONdata.StudentClass + "/";
 		String pathAppend1 = "";
 		String pathAppend2 = "";
-		File extStore = Environment.getExternalStorageDirectory();
-		File myFile1 = new File(pathAppend);
 		
-		File list1[] = myFile1.listFiles();
-		
-		for(int i=0; i<list1.length; i++) {
-			
-			JSONdata.setSubject(list1[i].getName());
-			pathAppend1 = JSONdata.Subjects.get(i) + "/";
-			File myFile2 = new File(pathAppend + pathAppend1);
-			File list2[] = myFile2.listFiles();
-			
-			for(int j=0; j<list2.length; j++) {
-				
-				JSONdata.setExperimentNum(i,list2[j].getName());
-				pathAppend2 = list2[j].getName() + "/expData.json";
-				
-				/*JSONParser jParser = new JSONParser(); 
-				json = jParser.getJSONFromUrl(extStore.getAbsolutePath() + pathAppend + pathAppend1 + pathAppend2);
-				
-				JSONObject subExp;
-				try {
-					subExp = json.getJSONObject(j);
-					JSONdata.setExperimentHead(i,subExp.getString("exp_name"));
-					JSONdata.setExperimentDesc(i,subExp.getString("exp_desc"));
-					JSONdata.setExperimentThumb(i,subExp.getString("thumb"));
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}*/
-				
-				
-				String exp_thumb = "";
-				
-				String exp_simulation = "";
-				String exp_video = "";
-				String exp_resource = "";
-				String exp_theory = "";
-				String exp_quiz = "";
-				String exp_procedure = "";
-				
-				String exp_class = "";
-				String exp_subject = "";
-				String exp_name = "";
-				String exp_no = "";
-				String exp_desc = "";
-				String jString = null;
-				
-				try {
+		count = 0;
+		getFile(pathAppend,"global") ;
+		Log.d("count no of files ",""+count);
 
-		            //File dir = Environment.getExternalStorageDirectory();
-		            File yourFile = new File(pathAppend + pathAppend1 + pathAppend2);
-		            FileInputStream stream = new FileInputStream(yourFile);
-		            
-		            try {
-		                FileChannel fc = stream.getChannel();
-		                MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
-		                
-		                jString = Charset.defaultCharset().decode(bb).toString();
-		              }
-		              finally {
-		                stream.close();
-		              }
+		if(count == 0 ){
+			Toast.makeText(getApplicationContext(), "No offline Experiments Found", Toast.LENGTH_SHORT).show();
+		}
+		else {
+			File extStore = Environment.getExternalStorageDirectory();
+			File myFile1 = new File(pathAppend);
+			
+			File list1[] = myFile1.listFiles();
+			int k = 0;
+			for(int i=0; i<list1.length; i++) {
+				
+				subcount = 0;
+				getFile(pathAppend + list1[i].getName()+File.separator, "subject");
+				Log.d("subject",list1[i].getName()+File.separator);
+				Log.d("subcount",""+subcount);
+				
+				if(subcount == 0){
+					continue;
+				}
+				
+				pathAppend1 = list1[i].getName() + "/";
+				File myFile2 = new File(pathAppend + pathAppend1);
+				File list2[] = myFile2.listFiles();
+				JSONdata.setSubject(list1[i].getName());
+				for(int j=0; j<list2.length; j++) {
+					
+					JSONdata.setExperimentNum(k,list2[j].getName());
+					pathAppend2 = list2[j].getName() + "/expData.json";
+					
+					/*JSONParser jParser = new JSONParser(); 
+					json = jParser.getJSONFromUrl(extStore.getAbsolutePath() + pathAppend + pathAppend1 + pathAppend2);
+					
+					JSONObject subExp;
+					try {
+						subExp = json.getJSONObject(j);
+						JSONdata.setExperimentHead(i,subExp.getString("exp_name"));
+						JSONdata.setExperimentDesc(i,subExp.getString("exp_desc"));
+						JSONdata.setExperimentThumb(i,subExp.getString("thumb"));
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}*/
+					
+					
+					String exp_thumb = "";
+					
+					String exp_simulation = "";
+					String exp_video = "";
+					String exp_resource = "";
+					String exp_theory = "";
+					String exp_quiz = "";
+					String exp_procedure = "";
+					
+					String exp_class = "";
+					String exp_subject = "";
+					String exp_name = "";
+					String exp_no = "";
+					String exp_desc = "";
+					String jString = null;
+					
+					try {
 
-		        } catch (Exception e) {e.printStackTrace();}
+			            //File dir = Environment.getExternalStorageDirectory();
+			            File yourFile = new File(pathAppend + pathAppend1 + pathAppend2);
+			            FileInputStream stream = new FileInputStream(yourFile);
+			            
+			            try {
+			                FileChannel fc = stream.getChannel();
+			                MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
+			                
+			                jString = Charset.defaultCharset().decode(bb).toString();
+			              }
+			              finally {
+			                stream.close();
+			              }
+
+			        } catch (Exception e) {e.printStackTrace();}
+					
+					int var = 0;
+					for(;jString.charAt(var)!=',';var++);var-=2;
+					for(;jString.charAt(var)!='"';var--);var++;
+					for(;jString.charAt(var)!='"';var++)
+						exp_class += jString.charAt(var);
+					var+=2;
+					
+					for(;jString.charAt(var)!=',';var++);var-=2;
+					for(;jString.charAt(var)!='"';var--);var++;
+					for(;jString.charAt(var)!='"';var++)
+						exp_subject += jString.charAt(var);
+					var+=2;
+					
+					for(;jString.charAt(var)!=',';var++);var-=2;
+					for(;jString.charAt(var)!='"';var--);var++;
+					for(;jString.charAt(var)!='"';var++)
+						exp_name += jString.charAt(var);
+					var+=2;
+					
+					for(;jString.charAt(var)!=',';var++);var-=2;
+					for(;jString.charAt(var)!='"';var--);var++;
+					for(;jString.charAt(var)!='"';var++)
+						exp_no += jString.charAt(var);
+					var+=2;
+					
+					for(;jString.charAt(var)!=',';var++);var-=2;
+					for(;jString.charAt(var)!='"';var--);var++;
+					for(;jString.charAt(var)!='"';var++)
+						exp_desc += jString.charAt(var);
+					var+=2;
+					
+					for(;jString.charAt(var)!=',';var++);var-=2;
+					for(;jString.charAt(var)!='"';var--);var++;
+					for(;jString.charAt(var)!='"';var++)
+						exp_thumb += jString.charAt(var);
+					var+=2;
+					
+					for(;jString.charAt(var)!=',';var++);var-=2;
+					for(;jString.charAt(var)!='"';var--);var++;
+					for(;jString.charAt(var)!='"';var++)
+						exp_simulation += jString.charAt(var);
+					var+=2;
+					
+					for(;jString.charAt(var)!=',';var++);var-=2;
+					for(;jString.charAt(var)!='"';var--);var++;
+					for(;jString.charAt(var)!='"';var++)
+						exp_resource += jString.charAt(var);
+					var+=2;
+					
+					for(;jString.charAt(var)!=',';var++);var-=2;
+					for(;jString.charAt(var)!='"';var--);var++;
+					for(;jString.charAt(var)!='"';var++)
+						exp_video += jString.charAt(var);
+					var+=2;
+					
+					for(;jString.charAt(var)!=',';var++);var-=2;
+					for(;jString.charAt(var)!='"';var--);var++;
+					for(;jString.charAt(var)!='"';var++)
+						exp_theory += jString.charAt(var);
+					var+=2;
+					
+					for(;jString.charAt(var)!=',';var++);var-=2;
+					for(;jString.charAt(var)!='"';var--);var++;
+					for(;jString.charAt(var)!='"';var++)
+						exp_procedure += jString.charAt(var);
+					var+=2;
+					
+					for(;jString.charAt(var)!='}';var++);var-=2;
+					for(;jString.charAt(var)!='"';var--);var++;
+					for(;jString.charAt(var)!='"';var++)
+						exp_quiz += jString.charAt(var);
+					
+					JSONdata.setExperimentHead(k,exp_name);
+					JSONdata.setExperimentDesc(k,exp_desc);
+					JSONdata.setExperimentThumb(k,exp_thumb);
+					
+				}
 				
-				int var = 0;
-				for(;jString.charAt(var)!=',';var++);var-=2;
-				for(;jString.charAt(var)!='"';var--);var++;
-				for(;jString.charAt(var)!='"';var++)
-					exp_class += jString.charAt(var);
-				var+=2;
-				
-				for(;jString.charAt(var)!=',';var++);var-=2;
-				for(;jString.charAt(var)!='"';var--);var++;
-				for(;jString.charAt(var)!='"';var++)
-					exp_subject += jString.charAt(var);
-				var+=2;
-				
-				for(;jString.charAt(var)!=',';var++);var-=2;
-				for(;jString.charAt(var)!='"';var--);var++;
-				for(;jString.charAt(var)!='"';var++)
-					exp_name += jString.charAt(var);
-				var+=2;
-				
-				for(;jString.charAt(var)!=',';var++);var-=2;
-				for(;jString.charAt(var)!='"';var--);var++;
-				for(;jString.charAt(var)!='"';var++)
-					exp_no += jString.charAt(var);
-				var+=2;
-				
-				for(;jString.charAt(var)!=',';var++);var-=2;
-				for(;jString.charAt(var)!='"';var--);var++;
-				for(;jString.charAt(var)!='"';var++)
-					exp_desc += jString.charAt(var);
-				var+=2;
-				
-				for(;jString.charAt(var)!=',';var++);var-=2;
-				for(;jString.charAt(var)!='"';var--);var++;
-				for(;jString.charAt(var)!='"';var++)
-					exp_thumb += jString.charAt(var);
-				var+=2;
-				
-				for(;jString.charAt(var)!=',';var++);var-=2;
-				for(;jString.charAt(var)!='"';var--);var++;
-				for(;jString.charAt(var)!='"';var++)
-					exp_simulation += jString.charAt(var);
-				var+=2;
-				
-				for(;jString.charAt(var)!=',';var++);var-=2;
-				for(;jString.charAt(var)!='"';var--);var++;
-				for(;jString.charAt(var)!='"';var++)
-					exp_resource += jString.charAt(var);
-				var+=2;
-				
-				for(;jString.charAt(var)!=',';var++);var-=2;
-				for(;jString.charAt(var)!='"';var--);var++;
-				for(;jString.charAt(var)!='"';var++)
-					exp_video += jString.charAt(var);
-				var+=2;
-				
-				for(;jString.charAt(var)!=',';var++);var-=2;
-				for(;jString.charAt(var)!='"';var--);var++;
-				for(;jString.charAt(var)!='"';var++)
-					exp_theory += jString.charAt(var);
-				var+=2;
-				
-				for(;jString.charAt(var)!=',';var++);var-=2;
-				for(;jString.charAt(var)!='"';var--);var++;
-				for(;jString.charAt(var)!='"';var++)
-					exp_procedure += jString.charAt(var);
-				var+=2;
-				
-				for(;jString.charAt(var)!='}';var++);var-=2;
-				for(;jString.charAt(var)!='"';var--);var++;
-				for(;jString.charAt(var)!='"';var++)
-					exp_quiz += jString.charAt(var);
-				
-				JSONdata.setExperimentHead(i,exp_name);
-				JSONdata.setExperimentDesc(i,exp_desc);
-				JSONdata.setExperimentThumb(i,exp_thumb);
-				
+				k++;
 			}
 			
-			
+			moveOffline();
 		}
 		
-		moveOffline();
 	}
 	@SuppressWarnings("rawtypes")
 	public void moveOnline() {
@@ -524,6 +544,27 @@ public class Splash extends Activity implements Global{
 		}
 		
 	}
+	
+	private void getFile(String dirPath, String cas) 
+	{
+	    File f = new File(dirPath);
+	    File[] files  = f.listFiles();
+
+	    if(files != null)
+	    for(int i=0; i < files.length; i++)
+	    {
+	    	File file = files[i];
+	        
+	        if(file.isDirectory())
+	        {   
+	             getFile(file.getAbsolutePath(),cas); 
+	        }
+	        else {
+	        	if(cas.equals("global"))count++;
+	        	else subcount++;
+	        }
+	     }
+	}
     
 	private class HttpAsyncTask extends AsyncTask<String, Void, String> {
 		
@@ -545,4 +586,8 @@ public class Splash extends Activity implements Global{
 			spl.recreate();
 		}
 	}
+	
+	
+	
+	
 }

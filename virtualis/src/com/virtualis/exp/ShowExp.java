@@ -513,6 +513,7 @@ public class ShowExp extends TabActivity implements Global {
 				saved_btn.setIcon(android.R.drawable.ic_menu_rotate);
 				saved_btn.setTitle("Update Experiment");
 				del_btn.setVisible(true);
+				saved_status="yes";
 				completed = 0;
 				Toast.makeText(getApplicationContext(), exp_message , Toast.LENGTH_LONG).show();
 			}

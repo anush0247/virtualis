@@ -23,7 +23,6 @@
 <fullyQualifiedTypeName name="com.virtualis.all.Splash"/>
 <fullyQualifiedTypeName name="com.virtualis.all.ChooseExperiment"/>
 <fullyQualifiedTypeName name="com.virtualis.all.JSONdata"/>
-<fullyQualifiedTypeName name="com.virtualis.Global"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
 <fullyQualifiedTypeName name="com.virtualis.R"/>
 <fullyQualifiedTypeName name="com.virtualis.exp.quiz.QuizPreStart"/>
@@ -34,7 +33,12 @@
 <fullyQualifiedTypeName name="com.virtualis.exp.Videos"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="com.virtualis.exp.Simulation"/>
-<fullyQualifiedTypeName name="com.virtualis.R.id"/>
 <fullyQualifiedTypeName name="android.widget.TextView"/>
 <fullyQualifiedTypeName name="android.app.ActionBar.LayoutParams"/>
+<fullyQualifiedTypeName name="android.app.Fragment.SavedState"/>
+<fullyQualifiedTypeName name="com.virtualis.R.drawable"/>
+<fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="android.R.drawable"/>
+<fullyQualifiedTypeName name="com.virtualis.R.id"/>
+<fullyQualifiedTypeName name="com.virtualis.Global"/>
 </qualifiedTypeNameHistroy>
