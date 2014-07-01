@@ -35,24 +35,21 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:onClick="modeRadioClick"
-                android:text="Move" 
-                android:textColor="@color/white"/>
+                android:text="Move" />
 
             <RadioButton
                 android:id="@+id/scaleRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="modeRadioClick"
-                android:text="Scale/Rotate"
-                android:textColor="@color/white" />
+                android:text="Scale/Rotate" />
 
             <RadioButton
                 android:id="@+id/deleteRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="modeRadioClick"
-                android:text="Delete" 
-                android:textColor="@color/white"/>
+                android:text="Delete" />
         </RadioGroup>
 
         <RelativeLayout
@@ -186,8 +183,7 @@
             android:layout_alignRight="@+id/seekArc"
             android:gravity="center"
             android:text="0"
-            android:textAppearance="?android:attr/textAppearanceSmall" 
-			android:textColor="@color/white"/>
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <ToggleButton
             android:id="@+id/stepModeToggle"

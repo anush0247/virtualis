@@ -984,19 +984,20 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f070002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f08000c;
+        public static final int abc_search_url_text_holo=0x7f08000d;
         public static final int abc_search_url_text_normal=0x7f080000;
         public static final int abc_search_url_text_pressed=0x7f080002;
         public static final int abc_search_url_text_selected=0x7f080001;
-        public static final int blue=0x7f080007;
-        public static final int drop_target_color1=0x7f080008;
-        public static final int drop_target_color2=0x7f080009;
-        public static final int drop_target_disabled=0x7f08000b;
-        public static final int drop_target_enabled=0x7f08000a;
-        public static final int green=0x7f080006;
+        public static final int blue=0x7f080008;
+        public static final int drop_target_color1=0x7f080009;
+        public static final int drop_target_color2=0x7f08000a;
+        public static final int drop_target_disabled=0x7f08000c;
+        public static final int drop_target_enabled=0x7f08000b;
+        public static final int green=0x7f080007;
         public static final int progress_gray=0x7f080003;
         public static final int progress_gray_dark=0x7f080004;
-        public static final int red=0x7f080005;
+        public static final int red=0x7f080006;
+        public static final int white=0x7f080005;
     }
     public static final class dimen {
         public static final int Size1=0x7f090015;

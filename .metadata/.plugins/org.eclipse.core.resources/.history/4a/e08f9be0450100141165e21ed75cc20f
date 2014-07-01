@@ -899,8 +899,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 			else
 			{
 				//				findViewById(R.id.addButton).setVisibility(View.VISIBLE);
-				if(ghostMode)
-					findViewById(R.id.modeRadioGroup).setVisibility(View.VISIBLE);
+				findViewById(R.id.modeRadioGroup).setVisibility(View.VISIBLE);
 				//				findViewById(R.id.playButton).setVisibility(View.VISIBLE);
 				findViewById(R.id.resetButton).setVisibility(View.VISIBLE);
 				findViewById(R.id.stepModeToggle).setVisibility(View.VISIBLE);
