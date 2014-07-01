@@ -13,9 +13,11 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -36,6 +38,7 @@ import android.widget.Toast;
 import com.virtualis.Global;
 import com.virtualis.R;
 import com.virtualis.exp.quiz.QuizPreStart;
+import com.virtualis.exp.quiz.QuizStart;
 
 @SuppressWarnings("deprecation")
 @SuppressLint("NewApi")
@@ -67,6 +70,7 @@ public class ShowExp extends TabActivity implements Global {
     
     int total_files = 3, completed = 0;
     String exp_message = "Offline Experiment Files Saved";
+    boolean del = false;
     
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -126,17 +130,41 @@ public class ShowExp extends TabActivity implements Global {
 	private boolean delExp() {
 		// TODO Auto-generated method stub
 		
-		if(deleteDirectory(expDir)){
+		AlertDialog.Builder confDel = new AlertDialog.Builder(ShowExp.this);
+		confDel.setTitle("Confirmation");
+		confDel.setCancelable(false);
+		confDel.setMessage(Html.fromHtml("<center><p>Are you sure, do you want to Delete this Experiment ? </p></center>"));  
+		confDel.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
 			
-			saved_btn.setIcon(android.R.drawable.ic_menu_save);
-			saved_btn.setTitle("Save Experiment");
-			del_btn.setVisible(false);
-			return true;
-		}
-		else {
-			Toast.makeText(getApplicationContext(), "Unable to Delete Experiment", Toast.LENGTH_SHORT).show();
-			return false;
-		}
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				//tmpQuizStart.finish();
+				if(deleteDirectory(expDir)){
+					
+					saved_btn.setIcon(android.R.drawable.ic_menu_save);
+					saved_btn.setTitle("Save Experiment");
+					del_btn.setVisible(false);
+					del = true;
+				}
+				else {
+					Toast.makeText(getApplicationContext(), "Unable to Delete Experiment", Toast.LENGTH_SHORT).show();
+					del = false;
+				}
+				return; 
+			}
+		});
+		confDel.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface my, int arg1) {
+				// TODO Auto-generated method stub
+				my.dismiss();
+				return;
+			}
+		});
+		confDel.show(); 
+		return del;
 	}
 
 	public static boolean deleteDirectory(File path) {

@@ -3,10 +3,13 @@ package com.virtualis.exp.quiz;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.virtualis.R;
+import com.virtualis.all.Splash;
 import com.virtualis.exp.quiz.ParseAnswer.McqOpts;
 import com.virtualis.exp.quiz.Question.OnAnswered;
 
@@ -26,6 +30,7 @@ public class QuizStart extends Activity implements OnAnswered{
 	int currnt_qn = 1,next_qn = 2,prev_qn = 1,total_qn=10;
 	int correct = 0,wrong = 0,grand = 0;
 	
+	QuizStart tmpQuizStart;
 	FragmentManager fragmentManager ;
 	FragmentTransaction fragmentTransaction;
 	
@@ -41,6 +46,7 @@ public class QuizStart extends Activity implements OnAnswered{
         inflater.inflate(R.menu.one_quiz, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
+	
 	
 	
     @Override
@@ -61,6 +67,7 @@ public class QuizStart extends Activity implements OnAnswered{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.one_quiz_quiz_start);
         
+        tmpQuizStart = this;
         Qns = getIntent().getStringArrayListExtra("qn_array");
         
         total_qn = Qns.size();
@@ -244,8 +251,30 @@ public class QuizStart extends Activity implements OnAnswered{
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
-		this.finish();
-		super.onBackPressed();
+		
+		AlertDialog.Builder goBack = new AlertDialog.Builder(QuizStart.this);
+		goBack.setTitle("Confirmation");
+		goBack.setCancelable(false);
+		goBack.setMessage(Html.fromHtml("<center><p>Are you sure, do you want to close Quiz now ? </p></center>"));  
+		goBack.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				tmpQuizStart.finish();
+				tmpQuizStart.onBackPressed();
+			}
+		});
+		goBack.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface my, int arg1) {
+				// TODO Auto-generated method stub
+				my.dismiss();
+			}
+		});
+		goBack.show(); 
+		
 		
 	}
 

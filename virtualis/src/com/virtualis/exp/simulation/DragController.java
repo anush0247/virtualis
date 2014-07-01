@@ -1,3 +1,22 @@
+/*
+ * This is a modified version of a class from the Android
+ * Open Source Project. The original copyright and license information follows.
+ * 
+ * Copyright (C) 2008 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.virtualis.exp.simulation;
 
 import java.io.BufferedReader;
@@ -41,6 +60,7 @@ public class DragController {
 //	}
 
 	private static int moveNo = 1 ;
+	public String fileName = "media" ;
 
 	public static int getMoveNo() {
 		return moveNo;
@@ -161,6 +181,8 @@ public class DragController {
 	 */
 	public void startDrag(View v, DragSource source, Object dragInfo, int dragAction) {
 		// Start dragging, but only if the source has something to drag.
+		Log.d ("DragController","REached inside startDrag") ;
+		
 		boolean doDrag = source.allowDrag ();
 		if (!doDrag) return;
 
@@ -468,9 +490,10 @@ public class DragController {
 				//                }
 				if(!DragActivityV2.studentMode)
 				{
+					Log.d ("DragController","wrong");
 					FileOutputStream fos = null;
 					try {
-						fos = mContext.openFileOutput("media", Context.MODE_APPEND);
+						fos = mContext.openFileOutput(fileName, Context.MODE_APPEND);
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -498,7 +521,7 @@ public class DragController {
 				}
 				else
 				{
-					@SuppressWarnings("unused")
+					Log.d ("DragController","Correct") ;
 					int imageId ;
 					float initX, finX, initY, finY ;
 					String[] RowData = null;
@@ -507,7 +530,7 @@ public class DragController {
 					FileInputStream fis = null ;
 
 					try {
-						fis = mContext.openFileInput("media") ;
+						fis = mContext.openFileInput(fileName) ;
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
 						//			e1.printStackTrace();
@@ -528,6 +551,8 @@ public class DragController {
 						{
 
 							RowData = line.split(",");
+							Log.d ("DragController","Entered DragController" + RowData[0]) ;
+							Log.d ("DragController","Move" + moveNo ); 
 							if(RowData[0].charAt(0) != 'm')
 							{
 								if(RowData[0].charAt(0) == 'a')
@@ -604,7 +629,8 @@ public class DragController {
 							}
 							while(movePer == 'd'
 									|| movePer == 'a'
-									|| movePer == 'c');
+									|| movePer == 'c'
+									|| movePer == 'l');
 //							moveNo++ ;
 						}
 					}
