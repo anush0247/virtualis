@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.virtualis.R;
+import com.virtualis.all.Splash;
 import com.virtualis.exp.quiz.ParseAnswer.McqOpts;
 import com.virtualis.exp.quiz.Question.OnAnswered;
 

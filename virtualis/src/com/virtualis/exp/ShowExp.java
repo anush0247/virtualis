@@ -38,7 +38,6 @@ import android.widget.Toast;
 import com.virtualis.Global;
 import com.virtualis.R;
 import com.virtualis.exp.quiz.QuizPreStart;
-import com.virtualis.exp.quiz.QuizStart;
 
 @SuppressWarnings("deprecation")
 @SuppressLint("NewApi")

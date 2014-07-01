@@ -41,4 +41,6 @@
 <fullyQualifiedTypeName name="android.R.drawable"/>
 <fullyQualifiedTypeName name="com.virtualis.R.id"/>
 <fullyQualifiedTypeName name="com.virtualis.Global"/>
+<fullyQualifiedTypeName name="com.virtualis.exp.quiz.QuizStart"/>
+<fullyQualifiedTypeName name="com.virtualis.exp.ShowExp"/>
 </qualifiedTypeNameHistroy>
