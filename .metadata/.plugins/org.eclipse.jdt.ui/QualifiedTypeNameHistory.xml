@@ -31,7 +31,6 @@
 <fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="android.media.MediaPlayer.OnErrorListener"/>
 <fullyQualifiedTypeName name="com.virtualis.exp.Videos"/>
-<fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="com.virtualis.exp.Simulation"/>
 <fullyQualifiedTypeName name="android.widget.TextView"/>
 <fullyQualifiedTypeName name="android.app.ActionBar.LayoutParams"/>
@@ -43,4 +42,6 @@
 <fullyQualifiedTypeName name="com.virtualis.Global"/>
 <fullyQualifiedTypeName name="com.virtualis.exp.quiz.QuizStart"/>
 <fullyQualifiedTypeName name="com.virtualis.exp.ShowExp"/>
+<fullyQualifiedTypeName name="com.virtualis.all.Splash.JsonDownload"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
 </qualifiedTypeNameHistroy>

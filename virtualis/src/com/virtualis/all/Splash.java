@@ -51,10 +51,13 @@ public class Splash extends Activity implements Global{
 	Dialog settingsDialog,getStarted;
 	Spinner spinner;
 	RadioGroup rg;
-	ProgressDialog pDialog;
+	ProgressDialog pDialog,expDownload;
 	Activity spl;
 	File ConfFile;
 	CheckBox cb_dont;
+	
+	int error_flag = 0;
+	String error_msg = "Error Msg";
 	
 	JSONArray json = null, json1 = null;
 	JSONObject classSubList = null;
@@ -245,7 +248,16 @@ public class Splash extends Activity implements Global{
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					parseOnline();
+					expDownload = new ProgressDialog(spl);
+		    		expDownload.setMessage("Downloading Experiments please wait..");
+		    		expDownload.setIndeterminate(false);
+		    		expDownload.setMax(100);
+		    		expDownload.setCancelable(false);
+		    		error_flag = 0;
+		    		error_msg = "";
+		        	new JsonDownload().execute("online");
+		        	Log.d("waiting to downloading exp","..........");
+					
 				}
 			});
 			
@@ -256,7 +268,16 @@ public class Splash extends Activity implements Global{
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					parseOffline();
+					expDownload = new ProgressDialog(spl);
+		    		expDownload.setMessage("Loading Experiments please wait..");
+		    		expDownload.setIndeterminate(false);
+		    		expDownload.setMax(100);
+		    		expDownload.setCancelable(false);
+		    		error_flag = 0;
+		    		error_msg = "";
+		        	new JsonDownload().execute("offline");
+		        	Log.d("waiting to downloading exp","..........");
+					//parseOffline();
 				}
 			});
 			
@@ -278,11 +299,13 @@ public class Splash extends Activity implements Global{
 		json = jParser.getJSONFromUrl(url);
 		//Log.d("jsong-received",json.toString());
 		if(json == null) {
-			Context context = getApplicationContext();
+			Context context = spl;
 			CharSequence text = "No Internet Connection";
 			int duration = Toast.LENGTH_SHORT;
 
-			Toast.makeText(context, text, duration).show();
+			//Toast.makeText(context, text, duration).show();
+			error_flag = 1;
+			error_msg = "No Internet Connection";
 			
 		} else {
 		
@@ -356,7 +379,9 @@ public class Splash extends Activity implements Global{
 		Log.d("count no of files ",""+count);
 
 		if(count == 0 ){
-			Toast.makeText(getApplicationContext(), "No offline Experiments Found", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(spl, "No offline Experiments Found", Toast.LENGTH_SHORT).show();
+			error_flag = 1;
+			error_msg = "No offline Exps found";
 		}
 		else {
 			File extStore = Environment.getExternalStorageDirectory();
@@ -587,6 +612,30 @@ public class Splash extends Activity implements Global{
 		}
 	}
 	
+	private class JsonDownload extends AsyncTask<String, Void, String> {
+		
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			expDownload.show();
+		}
+		
+		@Override
+		protected String doInBackground(String... urls) {
+			if(urls[0].equals("online")) parseOnline();
+			if(urls[0].equals("offline")) parseOffline();
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			expDownload.dismiss();
+			if(error_flag == 1){
+				Toast.makeText(getApplicationContext(), error_msg, Toast.LENGTH_LONG).show();
+			}
+			
+		}
+	}
 	
 	
 	
