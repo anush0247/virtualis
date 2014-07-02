@@ -1,0 +1,134 @@
+package com.virtualis.exp;
+
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.virtualis.R;
+
+public class Videos extends Activity implements OnClickListener{
+	
+	int cardRest;
+	String userRest;
+	
+	
+	int currentVideoNo = 0,total_videos = 0;//next_video = 1,prev_video = 1,total_videos  = 0;
+	
+	FragmentManager fragmentManager ;
+	FragmentTransaction fragmentTransaction;
+	
+	private Button btn1,btn2;
+	String VideoUrls;
+	String[] Urls = null;
+	int no_vid = 0;
+	TextView label;
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.one_videos);
+		
+		VideoUrls = getIntent().getExtras().getString("video_urls");
+		Urls = VideoUrls.split(",");
+		total_videos = Urls.length;
+		
+		label = (TextView) findViewById(R.id.video_no);
+		label.setText("Video 1 / "+ total_videos);
+		
+		fragmentManager = getFragmentManager();
+		fragmentTransaction = fragmentManager.beginTransaction();
+		Video_Frag currentVideo = new Video_Frag(Urls[currentVideoNo-1]);
+		fragmentTransaction.add(R.id.fragment, currentVideo);
+		fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+        
+		
+		btn1 = (Button) findViewById(R.id.prev_btn);
+		btn2 = (Button) findViewById(R.id.next_btn);
+		
+		if(currentVideoNo <= 0){
+			btn1.setEnabled(false);
+		}
+		
+//		btn1.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View arg0) {
+//				// TODO Auto-generated method stub
+//				Video_Frag nextVideo = new Video_Frag(Urls[prev_video-1]);
+//				
+//				if(currentVideoNo <= 1) {
+//					btn1.setEnabled(true);
+//					//prev_video = 1;
+//					//next_video = 2;
+//				}
+//				else {
+//					if(currentVideoNo < total_videos) btn2.setEnabled(true);
+//					//btn1.setEnabled(true);
+//					label.setText("Video : "+(prev_video)+" / " + total_videos);
+//					next_video = currentVideoNo;
+//					currentVideoNo = prev_video;
+//					prev_video--;
+//					fragmentTransaction = fragmentManager.beginTransaction();
+//					fragmentTransaction.replace(R.id.fragment, nextVideo);
+//					fragmentTransaction.addToBackStack(null);
+//			        fragmentTransaction.commit();
+//				}
+//			}
+//		});
+//		
+//		btn2.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View arg0) {
+//				// TODO Auto-generated method stub
+//					Video_Frag nextVideo = new Video_Frag(Urls[next_video-1]);
+//				
+//					
+//					if(currentVideoNo >= total_videos) {
+//						btn2.setEnabled(false);
+//						//prev_video = total_videos-1;
+//						//next_video = total_videos;
+//					}
+//					else {
+//						if(currentVideoNo >= 1) btn1.setEnabled(true);
+//						//btn2
+//						label.setText("Video : "+(next_video)+" / " + total_videos);
+//						prev_video = currentVideoNo;
+//						currentVideoNo = next_video;
+//						next_video++;
+//						fragmentTransaction = fragmentManager.beginTransaction();
+//						fragmentTransaction.replace(R.id.fragment, nextVideo);
+//						fragmentTransaction.addToBackStack(null);
+//				        fragmentTransaction.commit();
+//					}
+//			}
+//		});
+//		
+		
+
+	}
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch(v.getId()){
+			case R.id.next_btn:
+				currentVideoNo++;
+				break;
+			case R.id.prev_btn:
+				currentVideoNo--;
+				break;
+		}
+		
+		if(currentVideoNo <= 0){
+			btn1.setEnabled(false);
+		}
+		
+	}
+
+}
+

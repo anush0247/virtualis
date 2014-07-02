@@ -43,7 +43,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Global{
 	private JSONObject thisExp;
 	@SuppressWarnings("unused")
 	private String dataSend = "";
-	private static String url = "http://www.cse.iitb.ac.in/~aneesh14/json/subject_exp.json";
+	private static String url = "http://www.cse.iitb.ac.in/~ashutosh14/subject.json";
 	private static String url2 = "";
 	private JSONArray vidList = null;
 	private JSONObject vid = null;

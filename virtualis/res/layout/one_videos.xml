@@ -14,11 +14,10 @@
 	    android:baselineAligned="false"
 	    android:orientation="horizontal" >
 	    
-	   <ViewFlipper 
-		    android:id="@+id/flipper"
+	   <FrameLayout
+		    android:id="@+id/fragment"
 		    android:layout_width="match_parent"
-		    android:layout_height="match_parent" >
-		</ViewFlipper> 
+		    android:layout_height="match_parent" />
 	</LinearLayout>
 	  
 	<LinearLayout
