@@ -36,7 +36,6 @@ public class Videos extends Activity implements OnClickListener{
 		setContentView(R.layout.one_videos);
 		
 		vd = this;
-		
 		VideoUrls = getIntent().getExtras().getString("video_urls");
 		Urls = VideoUrls.split(",");
 		total_videos = Urls.length;
@@ -86,15 +85,6 @@ public class Videos extends Activity implements OnClickListener{
         fragmentTransaction.commit();
 		
 	}
-
-	@Override
-	public void onBackPressed() {
-		// TODO Auto-generated method stub
-		vd.finish();
-		super.onBackPressed();
-	}
-	
-	
 
 }
 
