@@ -10,9 +10,7 @@ IITB Summer Intern Project
 * Use any development branch for get the code
 
 ~~~~~~~~~~~~
-
 git checkout Branch1
-
 ~~~~~~~~~~~
 
 * Branch1 - Complete Aakash IITB Android Portal of My Portion
