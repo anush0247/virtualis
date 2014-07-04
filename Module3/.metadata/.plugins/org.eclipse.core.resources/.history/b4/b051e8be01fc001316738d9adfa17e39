@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Quiz</string>
+    <string name="title_activity_quiz_pre_start">QuizPreStart</string>
+	<string name="action_settings">Submit Quiz</string>
+	<string name="action_next">Next Question</string>
+	<string name="action_prev">Prev Question</string>
+</resources>

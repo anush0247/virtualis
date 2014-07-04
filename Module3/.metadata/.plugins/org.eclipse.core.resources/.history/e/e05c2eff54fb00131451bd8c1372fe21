@@ -1,0 +1,53 @@
+package com.aakash.vlabs.quiz;
+
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.aakash.vlabs.quiz.Question.McqOpts;
+
+public class parseAnswer {
+	
+	String AnsString = null;
+	
+	public parseAnswer(String ansString){
+		this.AnsString = ansString;
+	}
+	
+public ArrayList<McqOpts> parseMCQ(String ans){
+		
+		ArrayList<McqOpts> list = new ArrayList<McqOpts>(); 
+		Pattern p = Pattern.compile("([~=][^~=]+)");
+		Matcher m = p.matcher(ans);
+		while(m.find()){
+
+			boolean isAns = (m.group(0).contains("~"))?false:true;
+			int weight = 100;
+			String feedback = "";
+			String value = "";
+			
+			String[] a = m.group(0).split("%",3);
+			if(a.length == 1){
+				String[] b = a[0].split("#");
+				value = b[0].substring(1);
+				if(b.length != 1)feedback = b[1];
+				else feedback = "No Feedback Provided.";
+				
+				if(isAns) weight = 100;
+				else weight = 0;
+			}
+			else {
+				weight = Integer.parseInt(a[1]);
+				String[] b = a[2].split("#");
+				value = b[0].substring(1);
+				if(b.length != 1){
+					feedback = b[1];
+				}
+				else feedback = "No Feedback Provided.";
+			}
+			list.add(new McqOpts(weight, value, feedback, isAns));
+		}
+		return list;
+	}
+
+}
