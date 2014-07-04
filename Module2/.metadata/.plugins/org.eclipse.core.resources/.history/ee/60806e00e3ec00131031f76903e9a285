@@ -1,0 +1,50 @@
+package com.aakash.vlabs;
+
+
+
+import android.annotation.SuppressLint;
+import android.app.TabActivity;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.Html;
+import android.widget.Button;
+import android.widget.TabHost;
+import android.widget.TextView;
+
+@SuppressLint("NewApi")
+public class ShowExp extends TabActivity {
+	
+	Button theory,procedure,videos,simulation,quiz,resources;
+	TabHost tabHost;
+	int mycolor = Color.BLACK;//Color.rgb(51, 204, 255);//33CCFF
+	TextView mytitle;
+	
+	String class_no;
+	String subject;
+	String exp_name;
+	String exp_no;
+	
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.showexp);
+		
+		class_no = getIntent().getExtras().getString("class_no");
+		subject = getIntent().getExtras().getString("subject");
+		exp_name = getIntent().getExtras().getString("exp_name");
+		exp_no = getIntent().getExtras().getString("exp_no");
+		
+		/*mytitle = (TextView) findViewById(R.id.mytitle);
+		mytitle.setText(Html.fromHtml("<b> Class "+class_no+" - "+subject+" - "+exp_no+"."+exp_name+"</b>"));
+		mytitle.setBackground(getResources().getDrawable(R.drawable.border_black));*/
+		
+		/*theory = (Button) findViewById(R.id.theory);
+		procedure = (Button) findViewById(R.id.procedure);
+		videos = (Button) findViewById(R.id.videos);
+		simulation = (Button) findViewById(R.id.simulation);
+		quiz = (Button) findViewById(R.id.quiz);
+		resources = (Button) findViewById(R.id.resources);*/
+		
+		//procedure.setBackground(getResources().getDrawable(R.drawable.border_black));
+	}
+	
+}

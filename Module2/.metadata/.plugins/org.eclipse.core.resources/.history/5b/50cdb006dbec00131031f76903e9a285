@@ -1,0 +1,20 @@
+package com.aakash.vlabs;
+
+import android.app.Activity;
+import android.graphics.Color;
+import android.widget.Button;
+import android.widget.TabHost;
+import android.widget.TextView;
+
+public class ShowExp extends Activity {
+	
+	Button theory,procedure,videos,simulation,quiz,resources;
+	TabHost tabHost;
+	int mycolor = Color.BLACK;//Color.rgb(51, 204, 255);//33CCFF
+	TextView mytitle;
+	
+	String class_no;
+	String subject;
+	String exp_name;
+	String exp_no;
+}

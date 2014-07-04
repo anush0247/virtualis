@@ -1,0 +1,35 @@
+package com.aakash.vlabs;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+public class Theory extends Activity {
+
+	@SuppressLint({ "NewApi", "SetJavaScriptEnabled" })
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.theory);
+		WebView mWebView = (WebView) findViewById(R.id.webview);
+		final ProgressDialog pd = ProgressDialog.show(this, "", "Theory is Loading...",true);        
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.getSettings().setSupportZoom(true);  
+        mWebView.getSettings().setBuiltInZoomControls(true);
+        mWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                if(pd.isShowing()&&pd!=null)
+                {
+                    pd.dismiss();
+                }
+            }
+        });
+		mWebView.loadUrl("http://www.cse.iitb.ac.in/~aneesh14/html/theory.html");
+		
+	}
+}
