@@ -1,0 +1,29 @@
+package com.example.vtabs;
+import android.app.Activity;
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.MediaController;
+import android.widget.VideoView;
+
+public class Videos extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.videos);
+		
+		String path1="http://www.cse.iitb.ac.in/~aneesh14/videos/thum_hiho.mp4";
+
+	    Uri uri=Uri.parse(path1);
+
+	    VideoView video=(VideoView)findViewById(R.id.videoView1);
+	    video.setVideoURI(uri);
+	    //video.setVideoPath(path1);
+	    //video.setFocusable(true);
+	    //video.start();
+	    MediaController mc = new MediaController(this);
+	    video.setMediaController(mc);
+
+	}
+}

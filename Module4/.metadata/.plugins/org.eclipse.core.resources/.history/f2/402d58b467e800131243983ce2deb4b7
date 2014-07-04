@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentExampleActivity" >
+
+    <fragment
+        android:id="@+id/toolbar_fragment"
+        android:name="com.example.fragmentexample.ToolbarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        tools:layout="@layout/menu" />
+
+    <fragment
+        android:id="@+id/text_fragment"
+        android:name="com.example.fragmentexample.TextFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        tools:layout="@layout/text_fragment" />
+</RelativeLayout>

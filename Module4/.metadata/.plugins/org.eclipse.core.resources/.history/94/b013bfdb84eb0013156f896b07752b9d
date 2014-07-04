@@ -1,0 +1,19 @@
+package com.example.vtabs;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.Button;
+
+public class Base extends Activity{
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.base);
+		
+		Button exp_button = (Button) findViewById(R.id.exp_button);
+	}
+
+	
+}
