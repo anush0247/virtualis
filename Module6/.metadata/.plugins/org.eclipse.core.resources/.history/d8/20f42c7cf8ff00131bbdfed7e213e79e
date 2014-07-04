@@ -1,0 +1,72 @@
+package com.virtualis.exp;
+import java.io.File;
+
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.virtualis.R;
+import com.virtualis.exp.quiz.QuizStart;
+
+public class Simulation extends Activity {
+
+	Button blender, simulation;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.one_simulation);
+		
+		TextView mytext = (TextView) findViewById(R.id.simulation_title);
+		mytext.setText("Experiment Simulations");
+		mytext.setPadding(5,5,5,5);
+		
+		blender = (Button) findViewById(R.id.open_blender);
+		blender.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				File storage = Environment.getExternalStorageDirectory() ;
+		    	File directory = new File(storage.getAbsolutePath() + "/BlenderPlayer");
+		    	File file = new File(directory,"/test.blend") ;
+		    	if(file.canRead()){
+		            if(file.exists()){
+		                  Uri path=Uri.fromFile(file);
+		                  Intent intent=new Intent(Intent.ACTION_VIEW);
+		                  intent.setDataAndType(path, "application/readername");
+		                  try{
+		                        startActivity(intent);
+		                  }
+		                  catch(ActivityNotFoundException e){
+		                        Toast.makeText(Simulation.this, "No software found\n please download the apk from \n http://some.com/donwload.html", Toast.LENGTH_SHORT).show();
+		                  }
+		            }
+		    	}
+			}	
+		});
+		
+		simulation = (Button) findViewById(R.id.open_simulation);
+		simulation.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent simulation = new Intent(getApplicationContext(),
+						QuizStart.class);
+				//simulation.putStringArrayListExtra("qn_array", gift_qns);
+				startActivity(quiz_start);
+			}
+		});
+		
+	}
+}

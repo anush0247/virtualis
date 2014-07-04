@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/all_border_ui_square" >
+    
+        <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:baselineAligned="false"
+	        android:orientation="horizontal"
+	        android:weightSum="13" >
+	
+	        <FrameLayout
+	            android:layout_width="0dip"
+	            android:layout_height="fill_parent"
+	            android:layout_weight="1"  >
+	
+	            <TabWidget
+	                android:id="@android:id/tabs"
+	                android:layout_width="fill_parent"
+	                android:layout_height="0dp"
+	                android:visibility="gone" />
+	
+	            <ScrollView
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent" >
+	
+	                <LinearLayout
+	                    android:layout_width="fill_parent"
+	                    android:layout_height="wrap_content"
+	                    android:orientation="vertical" >
+	
+	                    <Button
+					        android:id="@+id/theory"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:onClick="tabHandler"
+					        android:drawableLeft="@drawable/one_theory" 
+					         />
+					
+					    <Button
+					        android:id="@+id/procedure"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:onClick="tabHandler"
+					        android:drawableLeft="@drawable/one_procedure"
+					        />
+					
+					    <Button
+					        android:id="@+id/videos"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:onClick="tabHandler"
+					        android:drawableLeft="@drawable/one_videos"
+					        />
+					
+					    <Button
+					        android:id="@+id/simulation"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:onClick="tabHandler"
+					        android:drawableLeft="@drawable/one_simulation" 
+					         />
+					    
+					    <Button
+					        android:id="@+id/quiz"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:onClick="tabHandler"
+					        android:drawableLeft="@drawable/one_quiz" 
+					         />
+					
+					    <Button
+					        android:id="@+id/resources"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:onClick="tabHandler"
+					        android:drawableLeft="@drawable/one_resources"
+					        />
+	                </LinearLayout>
+	            </ScrollView>
+	        </FrameLayout>
+	
+	        <FrameLayout
+	            android:id="@android:id/tabcontent"
+	            android:layout_width="0dip"
+	            android:layout_height="match_parent"
+	            android:layout_weight="12"
+	             />
+	    </LinearLayout>
+
+	
+   
+
+</TabHost>

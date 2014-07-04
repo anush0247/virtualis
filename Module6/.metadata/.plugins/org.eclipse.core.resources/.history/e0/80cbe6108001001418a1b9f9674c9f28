@@ -1,0 +1,7 @@
+package com.virtualis.exp;
+
+import android.app.Fragment;
+
+public class video_frag extends Fragment{
+
+}

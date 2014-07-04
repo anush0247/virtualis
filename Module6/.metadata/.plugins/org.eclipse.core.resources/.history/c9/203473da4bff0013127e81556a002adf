@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">virtualis</string>
+	<string name="menu1">Go Online </string>
+    <string name="menu2">Go Offline</string>
+    <string name="img_desc">My Aakash Logo</string>
+    <string name="aakash_desc">Welcome to Aakash vlabs v1.0. Get Started with Class 9 or Use change class</string>
+	<string name="getstart_title">This is GetStart Title</string>
+    <string name="caption_class">Select Your Class</string>
+    <string name="caption_getstart">Show Get Started</string>
+    <string name="caption_yes">Yes</string>
+    <string name="caption_no">No</string>
+    <string name="caption_save">Save</string>
+    <string name="caption_saved">Saved</string>
+    <string name="caption_cancel">Cancel</string>
+    <string name="caption_ok">Ok</string>
+    <string name="caption_dontshow">Don\'t show again</string>
+</resources>

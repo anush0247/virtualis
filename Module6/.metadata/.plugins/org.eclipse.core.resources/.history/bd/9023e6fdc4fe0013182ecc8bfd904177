@@ -1,0 +1,19 @@
+package com.virtualis;
+
+import java.io.File;
+import android.os.Environment;
+
+public interface Global {
+	
+	File EXTDIR = Environment.getExternalStorageDirectory();
+	
+	public String CONFURL = "some url"; // My conf file URL
+	public String CONFFILE = "conf.json";
+	public String PACKAGE = "com.virtualis.a";
+	public String BASEDIR = EXTDIR.getAbsolutePath() 
+			+ File.separator + "Android" 
+			+ File.separator + "data" 
+			+ File.separator + PACKAGE
+			+ File.separator;
+	
+}

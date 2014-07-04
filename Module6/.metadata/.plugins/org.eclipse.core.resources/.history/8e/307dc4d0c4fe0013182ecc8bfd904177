@@ -1,0 +1,18 @@
+package com.virtualis;
+
+import java.io.File;
+import android.os.Environment;
+
+public interface Global {
+	
+	File EXTDIR = Environment.getExternalStorageDirectory();
+	
+	public String PACKAGE = "com.virtualis.a";
+	public String CONFFILE = "conf.json";
+	public String BASEDIR = EXTDIR.getAbsolutePath() 
+			+ File.separator + "Android" 
+			+ File.separator + "data" 
+			+ File.separator + PACKAGE
+			+ File.separator;
+	
+}

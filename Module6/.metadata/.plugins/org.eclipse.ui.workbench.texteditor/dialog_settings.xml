@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="330" key="DIALOG_WIDTH"/>
+		<item value="204" key="DIALOG_Y_ORIGIN"/>
+		<item value="512" key="DIALOG_HEIGHT"/>
+		<item value="817" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="Update Exp" key="selection"/>
+		<list key="findhistory">
+			<item value="update exp"/>
+			<item value="android:drawableRight=&quot;@drawable/one_trans&quot;"/>
+			<item value="android:drawableRight=&quot;@drawable/one_trans&quot; "/>
+			<item value="PACKAGE"/>
+			<item value="com.aakash.vlabs"/>
+			<item value="com.aakash"/>
+			<item value="com.virtualis.one"/>
+			<item value="getJS"/>
+		</list>
+		<list key="replacehistory">
+			<item value=" "/>
+			<item value=""/>
+			<item value="com.virtualis.exp"/>
+			<item value="Splash"/>
+			<item value="16sp"/>
+			<item value="5dp"/>
+			<item value="20sp"/>
+		</list>
+	</section>
+</section>

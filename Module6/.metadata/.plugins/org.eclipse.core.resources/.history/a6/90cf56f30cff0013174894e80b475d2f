@@ -1,0 +1,9 @@
+package com.aakash.vlabs.exp.all;
+
+public class ExpDetail {
+	
+	String headin;
+	String desc;
+	String icon;
+
+}
