@@ -1,0 +1,66 @@
+package com.virtualis.exp;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.virtualis.R;
+
+public class Simulation extends Activity {
+
+	Button blender, simulation;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.one_simulation);
+		
+		TextView mytext = (TextView) findViewById(R.id.simulation_title);
+		mytext.setText("Experiment Simulations");
+		mytext.setPadding(5,5,5,5);
+		
+		blender = (Button) findViewById(R.id.open_blender);
+		blender.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				File storage = Environment.getExternalStorageDirectory() ;
+		    	File directory = new File(storage.getAbsolutePath() + "/BlenderPlayer");
+		    	File file = new File(directory,"/test.blend") ;
+		    	if(file.canRead())
+		    	{
+		            if(file.exists())
+		            {
+		                  Uri path=Uri.fromFile(file);
+		                  Intent intent=new Intent(Intent.ACTION_VIEW);
+		                  intent.setDataAndType(path, "application/readername");
+
+		                  try
+		                  {
+
+		                        startActivity(intent);
+		                  }
+		                  catch(ActivityNotFoundException e)
+		                  {
+		                        Toast.makeText(MainActivity.this, "No software found", Toast.LENGTH_SHORT).show();
+		                  }
+		            }
+			}
+		});
+		
+		simulation = (Button) findViewById(R.id.open_simulation);
+		simulation.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+	}
+}

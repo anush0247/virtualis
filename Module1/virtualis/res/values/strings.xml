@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">Virtualis</string>
+    <string name="quiz_title">Virtualis - Quiz</string>
+    <string name="quiz_summary">Virtualis - Quiz Summary</string>
+	<string name="menu1">Go Online   </string>
+    <string name="menu2">Go Offline  </string>
+    <string name="img_desc">My Aakash Logo</string>
+    <string name="aakash_desc">Welcome to Aakash vlabs v1.0. Get Started with Class 9 or Use change class</string>
+	<string name="getstart_title">This is GetStart Title</string>
+    <string name="caption_class">Select Your Class</string>
+    <string name="caption_getstart">Show Get Started</string>
+    <string name="caption_yes">Yes</string>
+    <string name="caption_no">No</string>
+    <string name="caption_save">Save</string>
+    <string name="caption_saved">View Saved Exp</string>
+    <string name="caption_save_exp">Save Experiment</string>
+    <string name="caption_del_exp">Delete Experiment</string>
+    <string name="caption_cancel">Cancel</string>
+    <string name="caption_ok">OK</string>
+    <string name="caption_dontshow">Don\'t show again</string>
+    <string name="caption_end">End Quiz Now</string>
+	<string name="caption_next">Next</string>
+	<string name="caption_prev">Prev</string>
+	<string name="caption_quizStart">Quiz Start</string>
+	<string name="caption_quizEnd">Quiz End</string>
+</resources>

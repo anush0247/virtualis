@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"  ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+	<LinearLayout
+	    android:id="@+id/flipper_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="8.5"
+	    android:baselineAligned="false"
+	    android:orientation="horizontal" >
+	    
+	   <ViewFlipper 
+		    android:id="@+id/flipper"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent" >
+		</ViewFlipper> 
+	</LinearLayout>
+	  
+	<LinearLayout
+	    android:id="@+id/controllers"
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="1.5"
+	    android:baselineAligned="false"
+	    android:orientation="horizontal"
+	    android:padding="5dp"
+	    android:weightSum="10" >
+	       
+    	<LinearLayout
+    	    android:id="@+id/video_no_layout"
+    	    android:layout_width="0dp"
+    	    android:layout_height="fill_parent"
+    	    android:layout_gravity="left|center"
+    	    android:layout_weight="7"
+    	    android:gravity="left"
+    	    android:orientation="horizontal" >
+      
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:id="@+id/video_no"
+	            android:text="Video No"
+	            android:textStyle="bold|italic"
+	            android:paddingLeft="20dp"
+	            android:textSize="18sp"/>
+       	
+       	</LinearLayout>
+        	
+        <LinearLayout
+            android:id="@+id/video_bottombar_buttons"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right"
+            android:layout_weight="3"
+            android:gravity="right" >
+   
+            <Button 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/prev_btn"
+	            android:text="@string/caption_prev"
+	            android:textSize="14sp"
+	            android:layout_gravity="right|bottom"
+	            android:drawableLeft="@drawable/one_quiz_prev"
+	            android:paddingRight="20dp"
+	            android:background="@drawable/all_border_ui_full" />
+               
+	        <Button 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/next_btn"
+	            android:text="@string/caption_next"
+	            android:textSize="14sp"
+	            android:layout_gravity="left|center"
+	            android:drawableRight="@drawable/one_quiz_next"
+	            android:paddingLeft="20dp"
+	            android:layout_marginLeft="20dp"
+	            android:background="@drawable/all_border_ui_full" />
+        
+   	  	</LinearLayout>
+        
+	</LinearLayout>
+</LinearLayout>

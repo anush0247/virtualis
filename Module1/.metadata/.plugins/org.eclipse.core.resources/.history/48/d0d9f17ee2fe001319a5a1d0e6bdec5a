@@ -1,0 +1,8 @@
+package com.virtualis;
+
+public class SetConf implements Global{
+	
+	public SetConf(String key, String val){
+		
+	}
+}

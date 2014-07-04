@@ -1,0 +1,38 @@
+package com.virtualis.exp;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.virtualis.R;
+
+public class Simulation extends Activity {
+
+	Button blender, simulation;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.one_simulation);
+		
+		TextView mytext = (TextView) findViewById(R.id.simulation_title);
+		mytext.setText("Experiment Simulations");
+		mytext.setPadding(5,5,5,5);
+		
+		blender = (Button) findViewById(R.id.open_blender);
+		blender.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		simulation = (Button) findViewById(R.id.open_simulation);
+		
+	}
+}

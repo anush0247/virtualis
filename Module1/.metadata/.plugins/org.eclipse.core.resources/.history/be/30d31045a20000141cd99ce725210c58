@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.virtualis"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:name="com.virtualis.OfflineCache"
+        android:allowBackup="true"
+        android:icon="@drawable/start_ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:screenOrientation="landscape"
+            android:name="com.virtualis.all.Splash"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+           	android:screenOrientation="landscape" 
+            android:name="com.virtualis.all.ChooseExperiment"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+           	android:screenOrientation="landscape" 
+			android:name="com.virtualis.exp.ShowExp"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+           	android:screenOrientation="landscape" 
+			android:name="com.virtualis.exp.Theory"
+            android:label="@string/app_name"/>
+        <activity
+			android:name="com.virtualis.exp.Procedure"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" />
+        <activity
+			android:name="com.virtualis.exp.Videos"
+          	android:label="@string/app_name"
+            android:screenOrientation="landscape" />
+        <activity
+			android:name="com.virtualis.exp.Simulation"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" />
+        <activity
+			android:name="com.virtualis.exp.Resources"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" />
+         <activity
+            android:screenOrientation="landscape"
+		    android:name="com.virtualis.exp.quiz.QuizStart"
+            android:label="@string/app_name"   
+            android:uiOptions="splitActionBarWhenNarrow" >
+  			<meta-data android:name="android.support.UI_OPTIONS"
+    		android:value="splitActionBarWhenNarrow" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:screenOrientation="landscape"
+			android:name="com.virtualis.exp.quiz.QuizPreStart"
+            android:label="@string/caption_quizStart" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+         <activity
+            android:screenOrientation="landscape"
+			android:name="com.virtualis.exp.quiz.Summary"
+            android:label="@string/caption_quizEnd" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+         <activity android:name="com.virtualis.exp.simulation.DragActivityV2"
+                  android:label="@string/app_name"
+                  android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
