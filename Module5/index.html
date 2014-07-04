@@ -1,0 +1,118 @@
+<html>
+  <head>
+      <title>Virtual Lab Simulator v1.0</title>
+	<script type="text/javascript">
+	
+	var ctx, canvas, width, height;
+	var dragok = false;
+	var myobj = null;
+	var x = 50, y = 50;
+	
+	function init(){
+		canvas = document.getElementById("canvas");
+		ctx = canvas.getContext('2d');		
+		width = screen.width;
+		height = screen.height;	
+		drawGrid();
+		
+		//make_base()
+	}
+	
+	function clear() {
+		 ctx.clearRect(0, 0, width, height);
+		 drawGrid();
+	}
+	
+	function drawGrid(){
+		for (var x = 0.5; x < width; x += 5) {
+			  ctx.moveTo(x, 0);
+			  ctx.lineTo(x, height);
+			}
+			
+			for (var y = 0.5; y < height; y += 5) {
+				  ctx.moveTo(0, y);
+				  ctx.lineTo(width, y );
+				}
+			ctx.strokeStyle="#eee";
+			ctx.stroke();
+	}
+	
+	
+	function make_base(url,x,y)
+	{
+	  base_image = new Image();
+	  base_image.src = url;
+	  base_image.onload = function(){
+	    ctx.drawImage(base_image, x, y);
+	  }
+	 
+	}
+	
+	function addItem(){
+		make_base("beaker.png",x,50);
+		//make_base("jar.png",x+150,50);
+		x+= 150;
+		
+	}
+	
+	
+	function myMove(e){
+		 if (dragok){
+		  x = e.pageX - canvas.offsetLeft;
+		  y = e.pageY - canvas.offsetTop;
+		  make_base(myobj,x,y);
+		 }
+		 
+	}
+	
+	function myDown(e){
+		 if (e.pageX < x + 15 + canvas.offsetLeft && e.pageX > x - 15 +
+		 canvas.offsetLeft && e.pageY < y + 15 + canvas.offsetTop &&
+		 e.pageY > y -15 + canvas.offsetTop){
+		  x = e.pageX - canvas.offsetLeft;
+		  y = e.pageY - canvas.offsetTop;
+		  dragok = true;
+		  myobj = "beaker.png";
+		  
+		  canvas.onmousemove = myMove;
+		 }
+	}
+
+	function myUp(){
+		alert("I am mouse a move");
+		 dragok = false;
+		 canvas.onmousemove = null;
+	}
+	
+	canvas.onmousedown = myDown;
+	canvas.onmouseup = myUp;
+	
+	
+    </script>
+    <style type="text/css">
+      canvas { border: 1px solid #eee; }
+      body{margin:0px; padding:15px;}
+    </style>
+  </head>
+  <body onload="init();">
+  
+  	<h4 align="center">Virtual Lab Simulator v1.0</h4>
+  	<table border="0" width="100%">
+  		<tr>
+  			<td width="80%"> <canvas id="canvas" width="1020%" height="550" style="clear:both;"></canvas> </td>
+  			<td width="20%" valign="top" style="padding:10px;padding-left:5px;border-left:2px solid #eee;">
+  				<h5 style="padding-left:8px;margin-top:-5px;border-bottom:2px solid #eee;">Tool bar</h5>
+  				<button onclick="addItem();">Add Item</button>
+  				<button onclick="clear();">Clear</button>
+  			</td>
+  		</tr>
+  		
+  	</table>
+  	<div align="left">
+  		
+  	</div>
+    <div align="right" valign="top" style="clear:both;">
+    	
+    </div>
+  </body>
+</html>

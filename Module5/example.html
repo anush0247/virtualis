@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Virtual simulator</title>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<script type="text/javascript">
+	 
+	function Obj(){
+		this.url = null;
+		this.x = 0;
+		this.y = 0;
+		this.w = 50;
+		this.h = 50;
+		this.deg = 0;
+		this.fill = "#444444";
+		this.id = -1;
+		this.contains= function(mx, my) {
+		  return  (this.x <= mx) && (this.x + this.w >= mx) &&
+		          (this.y <= my) && (this.y + this.h >= my);
+		}
+	}
+	
+	var count = 0
+	var MyObj = []; // array of objects
+	
+	function addObj(url,x,y,w,h,deg,fill){
+		var myObj = new Obj;
+		myObj.url = url;
+		myObj.x = x;
+		myObj.y = y;
+		myObj.w = w;
+		myObj.h = h;
+		myObj.deg = deg;
+		myObj.fill = fill;
+		myObj.id = count;
+		MyObj.push(myObj);
+		invalidate();
+		count++;
+	}
+	
+	var canvas; // basic vars
+	var ctx;
+	var WIDTH;
+	var HEIGHT;
+	var INTERVAL = 20;  
+	
+	var isDrag = false;
+	var mx, my; // mouse coordinates
+	var canvasValid = false;
+	
+	var mySel; // my selction
+	var mySelColor = '#CC0000'; // selction border & color
+	var mySelWidth = 1;
+	var TO_RADIANS = Math.PI/180;
+	
+	var offsetx, offsety; // offset for mouse click
+	var stylePaddingLeft, stylePaddingTop, styleBorderLeft, styleBorderTop;
+	
+	function init(){
+		canvas = document.getElementById('canvas');
+		HEIGHT = canvas.height;
+		WIDTH = canvas.width;
+		ctx = canvas.getContext('2d');
+		canvas.onselectstart = function () { return false; }
+		
+		if (document.defaultView && document.defaultView.getComputedStyle) {
+		    stylePaddingLeft = parseInt(document.defaultView.getComputedStyle(canvas, null)['paddingLeft'], 10)      || 0;
+		    stylePaddingTop  = parseInt(document.defaultView.getComputedStyle(canvas, null)['paddingTop'], 10)       || 0;
+		    styleBorderLeft  = parseInt(document.defaultView.getComputedStyle(canvas, null)['borderLeftWidth'], 10)  || 0;
+		    styleBorderTop   = parseInt(document.defaultView.getComputedStyle(canvas, null)['borderTopWidth'], 10)   || 0;
+		  }
+		
+		setInterval(draw, INTERVAL);
+		
+		canvas.onmousedown = myDown;
+		canvas.onmouseup = myUp;
+		//canvas.ondblclick = myDblClick;
+		 
+		//addItem('beaker.png');
+	}
+	
+	function drawGrid(){
+		for (var x = 0.5; x < WIDTH; x += 5) {
+			  ctx.moveTo(x, 0);
+			  ctx.lineTo(x, HEIGHT);
+			}
+			
+		for (var y = 0.5; y < HEIGHT; y += 5) {
+			  ctx.moveTo(0, y);
+			  ctx.lineTo(WIDTH, y );
+			}
+		ctx.strokeStyle="#eee";
+		ctx.stroke();
+	}
+	
+	function clear(c) {
+		  c.clearRect(0, 0, WIDTH, HEIGHT);
+		  //drawGrid();
+	}
+	
+	function draw() {
+		  if (canvasValid == false) {
+		    clear(ctx);
+		    
+		    var l = MyObj.length;
+		    for (var i = 0; i < l; i++) {
+		        //drawshape(ctx, boxes[i], boxes[i].fill);
+		        drawObj(ctx,MyObj[i]);
+		    }
+		    
+		    if (mySel != null) {
+		      ctx.strokeStyle = mySelColor;
+		      ctx.strokeRect(mySel.x,mySel.y,mySel.w,mySel.h);
+		    }
+		    
+		    
+		    canvasValid = true;
+		  }
+	}
+	
+	function drawObj(context, shape) {
+		  if (shape.x > WIDTH || shape.y > HEIGHT) return; 
+		  if (shape.x + shape.w < 0 || shape.y + shape.h < 0) return;
+		  
+		  var base_image = new Image();
+		  base_image.src = shape.url;
+		  base_image.onload = function(){
+			//ctx.save();
+			//ctx.rotate(30*TO_RADIANS);
+		    ctx.drawImage(base_image, shape.x, shape.y);
+		    //ctx.restore();
+		    
+		  }
+	}
+	
+	function myMove(e){
+		  if (isDrag){
+		    getMouse(e);
+		    mySel.x = mx - offsetx;
+		    mySel.y = my - offsety;   
+		    invalidate();
+		  }
+	}
+	
+	function myDown(e){
+	  getMouse(e);
+	  
+	  var l = MyObj.length;
+	  for (var i = 0; i < l; i++) {
+	    if (MyObj[i].contains(mx,my)) {
+	      mySel = MyObj[i];
+	      offsetx = mx - mySel.x;
+	      offsety = my - mySel.y;
+	      mySel.x = mx - offsetx;
+	      mySel.y = my - offsety;
+	      isDrag = true;
+	      canvas.onmousemove = myMove;
+	      invalidate();
+	      clear(ctx);
+	      return;
+	    }
+	  }
+	  mySel = null;
+	  clear(ctx);
+	  invalidate();
+	}
+	
+	function myUp(){
+	  isDrag = false;
+	  canvas.onmousemove = null;
+	}
+	
+	function invalidate() {
+		  canvasValid = false;
+	}
+	
+	function getMouse(e) {
+	      var element = canvas, offsetX = 0, offsetY = 0;
+	      
+	      if (element.offsetParent) {
+	        do {
+	          offsetX += element.offsetLeft;
+	          offsetY += element.offsetTop;
+	        } while ((element = element.offsetParent));
+	      }
+
+	      offsetX += stylePaddingLeft;
+	      offsetY += stylePaddingTop;
+
+	      offsetX += styleBorderLeft;
+	      offsetY += styleBorderTop;
+
+	      mx = e.pageX - offsetX;
+	      my = e.pageY - offsetY
+	}
+		
+	function addItem(url){
+		var img_x = 0 ,img_y = 0;
+		var image = new Image();
+		image.onload = function(){
+		 	img_x = this.width;
+		 	img_y = this.height;
+		 	addObj(url,Math.floor(Math.random()*(1020-img_x)),Math.floor(Math.random()*(550-img_y)),img_x,img_y,0,"#eee");
+		}
+		image.src = url;
+	}
+	
+	function rotateMe(angle){
+		  
+		  var l = MyObj.length;
+		  for (var i = 0; i < l; i++) {
+		    if (rotate(i)) {
+		      
+		      ctx.save();
+		      ctx.rotateMe(angle);
+		      ctx.restore();
+		      invalidate();
+		      clear(ctx);
+		      return;
+		    }
+		  }
+		  mySel = null;
+		  clear(ctx);
+		  invalidate();
+		}
+	
+	function rotate(i){
+		if(i == 2) return true;
+		else return false;
+	}
+	</script>
+</head>
+<body onload="init();">
+
+	<h4 align="center">Virtual Lab Simulator v1.0</h4>
+  	<table border="0" width="100%">
+  		<tr>
+  			<td width="60%"> <canvas id="canvas" width="820px" height="550px" style="border:2px solid #eee;"></canvas> </td>
+  			<td width="40%" valign="top" style="padding:10px;padding-left:5px;border-left:2px solid #eee;">
+  				<h5 style="padding-left:8px;margin-top:-5px;border-bottom:2px solid #eee;">Tool bar</h5>
+  				<button onclick="addItem('jar.png');">Add Jar</button><br>
+  				<button onclick="addItem('beaker.png');">Add Beaker</button><br>
+  				<button onclick="addItem('beaker-3.png');">Add Beaker-3</button><br>
+  				<button onclick="rotateItem();">rotate</button>
+  			</td>
+  		</tr>
+  		
+  	</table>
+  	
+  	
+</body>
+</html>
